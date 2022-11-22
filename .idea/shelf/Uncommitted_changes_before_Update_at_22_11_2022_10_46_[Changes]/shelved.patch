@@ -1,0 +1,109 @@
+Index: src/main/java/org/example/Engine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\nimport java.util.Scanner;\r\n\r\npublic class Engine {\r\n    Scanner scan = new Scanner(System.in);\r\n\r\n    public void startMenu() {\r\n      /*  boolean isRunning = true;\r\n        while (isRunning){\r\n            String command = scan.nextLine();\r\n\r\n            switch (command) {\r\n                case \"1\" -> addMember();\r\n                case \"2\" ->\r\n                case \"3\" ->\r\n                case \"4\" ->\r\n                case \"5\" ->\r\n                case \"6\" ->\r\n                case \"7\" ->\r\n                case \"8\" ->\r\n                case \"9\" ->\r\n                case \"0\" ->\r\n\r\n            }*/\r\n        int menu;\r\n        menu = scan.nextInt();\r\n        scan.nextLine();\r\n        if (menu == 1) {\r\n            addMember();\r\n        }\r\n    }\r\n\r\n    private void addMember() {\r\n        try {\r\n            System.out.println();\r\n            String surName = scan.next();\r\n            scan.nextLine();\r\n            String lastName = scan.next();\r\n            int date = scan.nextInt();\r\n            int month = scan.nextInt();\r\n            int year = scan.nextInt();\r\n            boolean competitionSwimmer = scan.hasNextBoolean();\r\n            System.out.println(surName + lastName + date + month + year + competitionSwimmer);\r\n        } catch (Exception e) {\r\n            System.out.println(\"There was a typo in the information\");\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Engine.java b/src/main/java/org/example/Engine.java
+--- a/src/main/java/org/example/Engine.java	(revision 71b70dd9296d67b78fed771472da800845c43766)
++++ b/src/main/java/org/example/Engine.java	(date 1669110411616)
+@@ -5,6 +5,8 @@
+ public class Engine {
+     Scanner scan = new Scanner(System.in);
+ 
++    UI ui = new UI();
++
+     public void startMenu() {
+       /*  boolean isRunning = true;
+         while (isRunning){
+@@ -22,7 +24,9 @@
+                 case "9" ->
+                 case "0" ->
+ 
+-            }*/
++            }
++            default -> ui.invalidInput
++       */
+         int menu;
+         menu = scan.nextInt();
+         scan.nextLine();
+Index: src/main/java/org/example/UI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\npublic class UI {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/UI.java b/src/main/java/org/example/UI.java
+--- a/src/main/java/org/example/UI.java	(revision 71b70dd9296d67b78fed771472da800845c43766)
++++ b/src/main/java/org/example/UI.java	(date 1669110164835)
+@@ -1,4 +1,9 @@
+ package org.example;
+ 
+ public class UI {
++
++public void invalidInput() {
++  System.out.println("Ugyldigt input. Prøv igen!");
++}
++
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"19f0fc42-1649-40c3-b44e-0935957aae06\" name=\"Changes\" comment=\"First commit, project started\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Engine.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/UI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HtXWjpeeFAXWJIzY2BFFpVKGuU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"19f0fc42-1649-40c3-b44e-0935957aae06\" name=\"Changes\" comment=\"\" />\r\n      <created>1669105388666</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1669105388666</updated>\r\n      <workItem from=\"1669105391402\" duration=\"1370000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First commit, project started\">\r\n      <created>1669105845818</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669105845818</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First commit, project started\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"First commit, project started\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 71b70dd9296d67b78fed771472da800845c43766)
++++ b/.idea/workspace.xml	(date 1669110411631)
+@@ -4,10 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="First commit, project started">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
++    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Added engine and UI class">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -48,7 +48,7 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1669105388666</updated>
+-      <workItem from="1669105391402" duration="1370000" />
++      <workItem from="1669105391402" duration="3421000" />
+     </task>
+     <task id="LOCAL-00001" summary="First commit, project started">
+       <created>1669105845818</created>
+@@ -57,7 +57,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1669105845818</updated>
+     </task>
+-    <option name="localTasksCounter" value="2" />
++    <task id="LOCAL-00002" summary="Added engine and UI class">
++      <created>1669107274280</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1669107274280</updated>
++    </task>
++    <option name="localTasksCounter" value="3" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -76,6 +83,7 @@
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="First commit, project started" />
+-    <option name="LAST_COMMIT_MESSAGE" value="First commit, project started" />
++    <MESSAGE value="Added engine and UI class" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added engine and UI class" />
+   </component>
+ </project>
+\ No newline at end of file
