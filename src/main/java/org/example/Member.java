@@ -47,8 +47,16 @@ public class Member {
     }
 
     public int age(){
-        int age = 0;
-        //age = dateOfBirth - LocalDate.now();//TODO find metode
+
+        int age = dateOfBirth.getYear() - LocalDate.now().getYear();
+        if(dateOfBirth.getMonth().getValue()>LocalDate.now().getMonth().getValue()){
+            age -= 1;
+        }
+        if(dateOfBirth.getMonth().getValue()==LocalDate.now().getMonth().getValue()) {
+            if(dateOfBirth.getDayOfMonth()>LocalDate.now().getDayOfMonth()){
+                age -= 1;
+            }
+        }
         return age;
     }
 }
