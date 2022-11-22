@@ -1,0 +1,97 @@
+Index: src/main/java/org/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\npublic class Main {\r\n  public static void main(String[] args) {\r\n    System.out.println(\"Her er projektet!\");\r\n  }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Main.java b/src/main/java/org/example/Main.java
+--- a/src/main/java/org/example/Main.java	(revision 4260113e3eb7c742e81b9b17920a939712c9f2dd)
++++ b/src/main/java/org/example/Main.java	(date 1669109392023)
+@@ -3,5 +3,6 @@
+ public class Main {
+   public static void main(String[] args) {
+     System.out.println("Her er projektet!");
++
+   }
+ }
+\ No newline at end of file
+Index: src/main/java/org/example/Engine.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\npublic class Engine {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/Engine.java b/src/main/java/org/example/Engine.java
+--- a/src/main/java/org/example/Engine.java	(revision 4260113e3eb7c742e81b9b17920a939712c9f2dd)
++++ b/src/main/java/org/example/Engine.java	(date 1669109317339)
+@@ -1,4 +1,7 @@
+ package org.example;
+ 
+ public class Engine {
++
++
++
+ }
+Index: src/main/java/org/example/UI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example;\r\n\r\npublic class UI {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/org/example/UI.java b/src/main/java/org/example/UI.java
+--- a/src/main/java/org/example/UI.java	(revision 4260113e3eb7c742e81b9b17920a939712c9f2dd)
++++ b/src/main/java/org/example/UI.java	(date 1669109317257)
+@@ -1,4 +1,6 @@
+ package org.example;
+ 
+ public class UI {
++
++
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"19f0fc42-1649-40c3-b44e-0935957aae06\" name=\"Changes\" comment=\"First commit, project started\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/Engine.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/org/example/UI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HtXWjpeeFAXWJIzY2BFFpVKGuU\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\"\r\n  }\r\n}]]></component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"19f0fc42-1649-40c3-b44e-0935957aae06\" name=\"Changes\" comment=\"\" />\r\n      <created>1669105388666</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1669105388666</updated>\r\n      <workItem from=\"1669105391402\" duration=\"1370000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First commit, project started\">\r\n      <created>1669105845818</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1669105845818</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"2\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First commit, project started\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"First commit, project started\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4260113e3eb7c742e81b9b17920a939712c9f2dd)
++++ b/.idea/workspace.xml	(date 1669109318405)
+@@ -5,9 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="First commit, project started">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -37,7 +37,11 @@
+   "keyToString": {
+     "RunOnceActivity.OpenProjectViewOnStart": "true",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "WebServerToolWindowFactoryState": "false"
++    "WebServerToolWindowFactoryState": "false",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)"
+   }
+ }]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+@@ -49,6 +53,7 @@
+       <option name="presentableId" value="Default" />
+       <updated>1669105388666</updated>
+       <workItem from="1669105391402" duration="1370000" />
++      <workItem from="1669108722479" duration="596000" />
+     </task>
+     <task id="LOCAL-00001" summary="First commit, project started">
+       <created>1669105845818</created>

@@ -15,5 +15,5 @@ public class Member {
 
 
 
-    public Member()
+    public Member(){}
 }
