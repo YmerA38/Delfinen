@@ -34,16 +34,22 @@ public class Engine {
     private void addMember() {
         try {
             System.out.println();
+            System.out.println("Indtast dit fornavn: ");
             String surName = scan.next();
             scan.nextLine();
+            System.out.println("Indtast dit efternavn: ");
             String lastName = scan.next();
+            System.out.println("Indtast din fødselsdag: ");
             int date = scan.nextInt();
+            System.out.println("Indtast din fødsels måned: ");
             int month = scan.nextInt();
+            System.out.println("Indtast dit fødsels år: ");
             int year = scan.nextInt();
+            System.out.println("Er du konkurrence svømmer?: ");
             boolean competitionSwimmer = scan.hasNextBoolean();
             System.out.println(surName + lastName + date + month + year + competitionSwimmer);
         } catch (Exception e) {
-            System.out.println("There was a typo in the information");
+            System.out.println("Der gik noget galt med indtastningen af oplysninger");
         }
     }
 
