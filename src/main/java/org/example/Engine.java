@@ -7,7 +7,7 @@ public class Engine {
 
     UI ui = new UI();
 
-    public void startMenu() {
+    public void runProgram() {
       /*  boolean isRunning = true;
         while (isRunning){
             String command = scan.nextLine();
