@@ -50,7 +50,19 @@ public class Engine {
             System.out.println("Indtast dit fødsels år: ");
             int year = scan.nextInt();
             System.out.println("Er du konkurrence svømmer?: ");
-            boolean competitionSwimmer = scan.hasNextBoolean();
+            String competitionSwimmer = scan.nextLine();
+            boolean isCompetitionSwimmer;
+
+            while (!competitionSwimmer.equals("ja") && !competitionSwimmer.equals("nej")) {
+                System.out.println("Du skal indtaste ja eller nej");
+                competitionSwimmer = scan.nextLine();
+            }
+            if(competitionSwimmer.equals("ja")){
+                isCompetitionSwimmer = true;
+            }else {
+                isCompetitionSwimmer = false;
+            }
+
             System.out.println(surName + lastName + date + month + year + competitionSwimmer);
         } catch (Exception e) {
             System.out.println("Der gik noget galt med indtastningen af oplysninger");
