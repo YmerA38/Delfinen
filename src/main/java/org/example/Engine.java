@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Engine {
     Scanner scan = new Scanner(System.in);
 
-    public void startMenu() {
+    UI ui = new UI();
+
+    public void runProgram() {
       /*  boolean isRunning = true;
         while (isRunning){
             String command = scan.nextLine();
@@ -22,7 +24,9 @@ public class Engine {
                 case "9" ->
                 case "0" ->
 
-            }*/
+            }
+            default -> ui.invalidInput
+       */
         int menu;
         menu = scan.nextInt();
         scan.nextLine();
