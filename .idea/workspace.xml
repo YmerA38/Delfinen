@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Metode til tildeling af team, samt statet metode til udreg af alder." />
+    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Tilføjet age() metode, der udr alder.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Member.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669113583658</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Tilføjet age() metode, der udr alder.">
+      <created>1669118419823</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669118419823</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +115,7 @@
     <MESSAGE value="Added engine and UI class" />
     <MESSAGE value="First commit, project started" />
     <MESSAGE value="Metode til tildeling af team, samt statet metode til udreg af alder." />
-    <option name="LAST_COMMIT_MESSAGE" value="Metode til tildeling af team, samt statet metode til udreg af alder." />
+    <MESSAGE value="Tilføjet age() metode, der udr alder." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet age() metode, der udr alder." />
   </component>
 </project>
