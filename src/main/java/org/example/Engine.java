@@ -14,9 +14,9 @@ public class Engine {
 
             switch (command) {
                 case "1" -> addMember();
-                case "2" ->
-                case "3" ->
-                case "4" ->
+                case "2" -> editMember();
+                case "3" -> deleteMember();
+                case "4" -> viewMemberList();
                 case "5" ->
                 case "6" ->
                 case "7" ->
@@ -35,7 +35,7 @@ public class Engine {
         }
     }
 
-    private void addMember() {
+    public void addMember() {
         try {
             System.out.println();
             System.out.println("Indtast dit fornavn: ");
@@ -68,5 +68,16 @@ public class Engine {
             System.out.println("Der gik noget galt med indtastningen af oplysninger");
         }
     }
+    public void editMember(){
+        System.out.println("Her er starten på metoden til at redigere medlemmets oplysninger");
+    }
+    public void deleteMember(){
+        System.out.println("Her skal man kunne fjerne et medlem");
+    }
+    public void viewMemberList(){
+        System.out.println("Her skal man kunne se oversigten af medlemmer");
+    }
+
+
 
 }
