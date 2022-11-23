@@ -2,7 +2,10 @@ package org.example;
 
 public class Main {
   public static void main(String[] args) {
-    Engine engine = new Engine();
-    engine.runProgram();
+     UI ui = new UI();
+     ui.startMenu();
+    //Engine engine = new Engine();
+    //engine.runProgram();
+
   }
 }
