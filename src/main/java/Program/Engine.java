@@ -1,5 +1,7 @@
 package Program;
 
+import org.example.Database;
+
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
