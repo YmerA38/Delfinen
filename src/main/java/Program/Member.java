@@ -1,4 +1,6 @@
-package org.example;
+package Program;
+
+import org.example.Team;
 
 import java.time.LocalDate;
 
@@ -74,7 +76,7 @@ public class Member {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth(LocalDate dateOfBirth){
+    public LocalDate getDateOfBirth(){
         return dateOfBirth;
     }
     public void setDateOfBirth(LocalDate dateOfBirth){
@@ -90,7 +92,7 @@ public class Member {
         this.isActive = isActive;
     }
 
-    public boolean isCompeting() {
+    public boolean getIsCompeting() {
         return isCompeting;
     }
 
@@ -98,7 +100,7 @@ public class Member {
         isCompeting = competing;
     }
 
-    public boolean isHasPayed() {
+    public boolean getHasPayed() {
         return hasPayed;
     }
 
@@ -128,5 +130,10 @@ public class Member {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    @Override
+    public String toString(){
+        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+ "\nHold: " + team;
     }
 }
