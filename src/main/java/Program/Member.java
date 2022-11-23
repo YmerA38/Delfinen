@@ -1,7 +1,5 @@
 package Program;
 
-import org.example.Team;
-
 import java.time.LocalDate;
 
 public class Member {

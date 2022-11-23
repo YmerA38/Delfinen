@@ -1,4 +1,4 @@
-package org.example;
+package Program;
 
 public enum Team {
     SENIOR_FITNESS,

@@ -1,4 +1,4 @@
-package org.example;
+package Program;
 
 
 import Program.Member;
@@ -10,6 +10,10 @@ public class Database {
 
     public Database(){
         memberList = new ArrayList<>();
+    }
+
+    public ArrayList<Member> getMemberList() {
+        return memberList;
     }
 
     public void addMember(Member member){
@@ -35,6 +39,7 @@ public class Database {
         }
         return resultList;
     }
+
 
    /* public void sortMemberMethod() throws IOException{
         memberList.sort(new MemberComparator());

@@ -1,17 +1,18 @@
-package org.example;
+package Program;
 
-import Program.Member;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Engine {
-    Database database = new Database();
+    FileHandler fileHandler = new FileHandler();
+    Database database;
     Scanner scan = new Scanner(System.in);
 
     UI ui = new UI();
 
-    public void runProgram() {
+    public void runProgram() throws FileNotFoundException {
         int menu;
         menu = scan.nextInt();
         scan.nextLine();
@@ -25,9 +26,10 @@ public class Engine {
                 case "2" -> editMember();
                 case "3" -> deleteMember();
                 case "4" -> viewMemberList();
+
+                case "5" -> fileHandler.load();
+                case "6" -> fileHandler.save(database.getMemberList());
                 /*
-                case "5" ->
-                case "6" ->
                 case "7" ->
                 case "8" ->
                 case "9" ->

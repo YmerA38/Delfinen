@@ -1,16 +1,18 @@
-package org.example;
+package Program;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
     private Database database;
 
-    private final String FILE_DIRECTORY = "data/memberDatabase.csv";
+    private final String FILE_SAVE = "data/memberDatabase.csv";
     public boolean load() throws FileNotFoundException {
-        Scanner fileScanner = new Scanner(new File(FILE_DIRECTORY));
+        Scanner fileScanner = new Scanner(new File(FILE_SAVE));
         String line;
         String[] entity;
         String[] date1;
@@ -30,6 +32,21 @@ public class FileHandler {
                         Team.valueOf(entity[8])));
             }
         }while(fileScanner.hasNextLine()&&!line.isEmpty());
+
+        return true;
+    }
+
+    public boolean save(ArrayList<Member> memberList) throws FileNotFoundException {
+        PrintStream fileSaver = new PrintStream(FILE_SAVE);
+
+        for(Member member:memberList){
+            fileSaver.println(member.getFirstName()+","+member.getFirstName()+","+member.getDateOfBirth()+","+
+                    member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
+                    member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam());
+        }
+        fileSaver.flush();
+        fileSaver.close();
+
 
         return true;
     }
