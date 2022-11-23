@@ -1,5 +1,7 @@
 package Program;
 
+import Program.Member;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="metode der finder medlem i database">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="c4811345-9d32-42cd-8eaf-0c7949dfa4bf" name="Changes" comment="Merge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,8 +41,6 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
@@ -59,7 +53,6 @@
       <option name="presentableId" value="Default" />
       <updated>1669105388666</updated>
       <workItem from="1669105391402" duration="3421000" />
-      <workItem from="1669190210185" duration="5083000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, project started">
       <created>1669105845818</created>
@@ -103,21 +96,28 @@
       <option name="project" value="LOCAL" />
       <updated>1669118419823</updated>
     </task>
-    <task id="LOCAL-00007" summary="metode der finder medlem i database">
-      <created>1669121872280</created>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'origin/main'&#10;Push update">
+      <created>1669196080571</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1669121872280</updated>
+      <updated>1669196080571</updated>
     </task>
-    <task id="LOCAL-00008" summary="metode der finder medlem i database">
-      <created>1669121908570</created>
+    <task id="LOCAL-00008" summary="Comparator done">
+      <created>1669197364682</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1669121908570</updated>
+      <updated>1669197364682</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Merge">
+      <created>1669197398134</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669197398134</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,7 +139,9 @@
     <MESSAGE value="First commit, project started" />
     <MESSAGE value="Metode til tildeling af team, samt statet metode til udreg af alder." />
     <MESSAGE value="Tilføjet age() metode, der udr alder." />
-    <MESSAGE value="metode der finder medlem i database" />
-    <option name="LAST_COMMIT_MESSAGE" value="metode der finder medlem i database" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;Push update" />
+    <MESSAGE value="Comparator done" />
+    <MESSAGE value="Merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
   </component>
 </project>

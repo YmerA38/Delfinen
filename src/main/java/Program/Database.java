@@ -1,9 +1,11 @@
-package Program;
+package org.example;
 
 
 import Program.Member;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Database {
     private ArrayList<Member> memberList;
@@ -44,6 +46,7 @@ public class Database {
    /* public void sortMemberMethod() throws IOException{
         memberList.sort(new MemberComparator());
     }*/
+
 
 
 }
