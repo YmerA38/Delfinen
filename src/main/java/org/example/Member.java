@@ -23,6 +23,18 @@ public class Member {
         this.isCompeting = isCompeting;
         this.dateOfMembership = LocalDate.now();
     }
+    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,
+    boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.isActive = isActive;
+        this.isCompeting = isCompeting;
+        this.hasPayed = hasPayed;
+        this.dateOfMembership = dateOfMembership;
+        this.membershipNumber = membershipNumber;
+        this.team = team;
+    }
 
      public Team autoSetTeam(){
 

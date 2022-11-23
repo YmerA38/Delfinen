@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Tilføjet age() metode, der udr alder.">
+    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="metode der finder medlem i database">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/FileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Member.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,6 +40,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
@@ -51,6 +54,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669105388666</updated>
       <workItem from="1669105391402" duration="3421000" />
+      <workItem from="1669190210185" duration="5083000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, project started">
       <created>1669105845818</created>
@@ -94,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1669118419823</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="metode der finder medlem i database">
+      <created>1669121872280</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669121872280</updated>
+    </task>
+    <task id="LOCAL-00008" summary="metode der finder medlem i database">
+      <created>1669121908570</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669121908570</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +134,7 @@
     <MESSAGE value="First commit, project started" />
     <MESSAGE value="Metode til tildeling af team, samt statet metode til udreg af alder." />
     <MESSAGE value="Tilføjet age() metode, der udr alder." />
-    <option name="LAST_COMMIT_MESSAGE" value="Tilføjet age() metode, der udr alder." />
+    <MESSAGE value="metode der finder medlem i database" />
+    <option name="LAST_COMMIT_MESSAGE" value="metode der finder medlem i database" />
   </component>
 </project>
