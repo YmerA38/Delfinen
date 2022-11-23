@@ -63,8 +63,70 @@ public class Member {
     public String getFirstName() {
         return firstName;
     }
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
+    }
 
     public String getLastName() {
         return lastName;
+    }
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
+    public LocalDate getDateOfBirth(LocalDate dateOfBirth){
+        return dateOfBirth;
+    }
+    public void setDateOfBirth(LocalDate dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
+    public boolean getIsActive(){
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive){
+        this.isActive = isActive;
+    }
+
+    public boolean isCompeting() {
+        return isCompeting;
+    }
+
+    public void setCompeting(boolean competing) {
+        isCompeting = competing;
+    }
+
+    public boolean isHasPayed() {
+        return hasPayed;
+    }
+
+    public void setHasPayed(boolean hasPayed) {
+        this.hasPayed = hasPayed;
+    }
+
+    public LocalDate getDateOfMembership() {
+        return dateOfMembership;
+    }
+
+    public void setDateOfMembership(LocalDate dateOfMembership) {
+        this.dateOfMembership = dateOfMembership;
+    }
+
+    public int getMembershipNumber() {
+        return membershipNumber;
+    }
+
+    public void setMembershipNumber(int membershipNumber) {
+        this.membershipNumber = membershipNumber;
+    }
+
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
     }
 }
