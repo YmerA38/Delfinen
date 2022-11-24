@@ -16,6 +16,9 @@ public class UI {
 
     public void start() {
         System.out.println("Velkommen til Delfin svømmeklub");
+
+
+
         boolean menuError;
 
         do {
@@ -24,7 +27,7 @@ public class UI {
                 try {
                     int menuChoice = scan.nextInt();
                     if (menuChoice == 1)
-                        runProgram();
+                        runChiarman();
                     else if (menuChoice == 2) {
                         runKasser();
                     } else if (menuChoice == 3) {
@@ -51,21 +54,21 @@ public class UI {
 
     }
 
-    public void runProgram() throws FileNotFoundException {
+    public void runChiarman() throws FileNotFoundException {
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
             formandMenu();
-            String command = scan.nextLine();
+            int command =  returnInt(scan.nextLine()) ;
 
             switch (command) {
-                case "1" -> Controller.addMember();
-                case "2" -> Controller.editMember();
-                case "3" -> Controller.deleteMember();
-                case "4" -> Controller.viewMemberList();
-                case "5" -> Controller.fileHandler.load();
-                case "6" -> Controller.fileHandler.save(database.getMemberList());
-                case "0" -> System.exit(0);
+                case 1 -> Controller.addMember();
+                case 2 -> Controller.editMember();
+                case 3 -> Controller.deleteMember();
+                case 4 -> Controller.viewMemberList();
+                case 5 -> Controller.fileHandler.load();
+                case 6 -> Controller.fileHandler.save(database.getMemberList());
+                case 0 -> System.exit(0);
 
             /*    case "7" ->
                 case "8" ->
@@ -166,6 +169,15 @@ public class UI {
 
     public void invalidInput() {
         System.out.println("Ugyldigt input. Prøv igen!");
+    }
+
+    public int returnInt(String string){
+        try {
+           return Integer.parseInt(string);
+        }catch (NumberFormatException e){
+            System.out.println("fejl! indtast et tal");
+        }
+        return 100;
     }
 
 }
