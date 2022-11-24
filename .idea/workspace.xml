@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Refactored classes ind different packages. Add more later" />
+    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="git">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/DateOfBirthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/DateOfBirthComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/DateOfMemberShipComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/DateOfMemberShipComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/FirstNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/FirstNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/FlexibleComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/FlexibleComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/HasPayedComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/HasPayedComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/IsActiveComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/IsActiveComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/IsCompetingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/IsCompetingComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/LastNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/LastNameComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/MembershipsNumberComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/MembershipsNumberComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/TeamComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/TeamComparator.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,9 +53,22 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main.Main" />
+      <module name="DelfinenV2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="jdk.javadoc.internal.tool.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jdk.javadoc.internal.tool.Main" />
       <module name="DelfinenV2" />
       <extension name="coverage">
         <pattern>
@@ -55,9 +80,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.jdk.javadoc.internal.tool.Main" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.jdk.javadoc.internal.tool.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669276218762</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="git">
+      <created>1669278825702</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1669278825702</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +204,7 @@
     <MESSAGE value="Comparator done" />
     <MESSAGE value="Merge" />
     <MESSAGE value="Refactored classes ind different packages. Add more later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored classes ind different packages. Add more later" />
+    <MESSAGE value="git" />
+    <option name="LAST_COMMIT_MESSAGE" value="git" />
   </component>
 </project>

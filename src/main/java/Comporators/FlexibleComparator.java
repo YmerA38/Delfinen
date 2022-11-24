@@ -1,4 +1,4 @@
-package org.example.Comparator;
+package Comporators;
 
 import java.util.Comparator;
 import Program.Member;
