@@ -1,7 +1,10 @@
 package Main;
 
 
+import Program.CompeteSwimmer;
+import Program.FitnessSwimmer;
 import Program.Member;
+import Program.Team;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +22,11 @@ public class Database {
     }
 
     public void addMember(Member member){
-        memberList.add(member);
+        if(member.getIsCompeting()) {
+            memberList.add(new CompeteSwimmer(member));
+        }else {
+            memberList.add(new FitnessSwimmer(member));
+        }
         member.setMembershipNumber(memberList.indexOf(member));
         member.autoSetTeam();
     }

@@ -1,5 +1,10 @@
 package Program;
 
-public class CompeteSwimmer {
+import java.time.LocalDate;
 
+public class CompeteSwimmer extends Member{
+
+    public CompeteSwimmer(Member member) {
+        super(member);
+    }
 }
