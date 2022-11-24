@@ -60,7 +60,6 @@ public class UI {
         boolean isRunning = true;
         while (isRunning) {
             formandMenu();
-            //startMenu();
             String command = scan.nextLine();
 
             switch (command) {
@@ -70,6 +69,7 @@ public class UI {
                 case "4" -> Controller.viewMemberList();
                 case "5" -> Controller.fileHandler.load();
                 case "6" -> Controller.fileHandler.save(database.getMemberList());
+                case "0" -> System.exit(0);
 
             /*    case "7" ->
                 case "8" ->
@@ -96,7 +96,7 @@ public class UI {
                 case "1" -> System.out.println("fff");
                 case "2" -> System.out.println("ggg");
                 case "3" -> System.out.println("gggg");
-
+                case "0" -> System.exit(0);
 
             /*    case "7" ->
                 case "8" ->
@@ -123,11 +123,11 @@ public class UI {
                 case "1" -> System.out.println("kk");
                 case "2" -> System.out.println("fff");
                 case "3" -> System.out.println("ggg");
-
+                case "0" -> System.exit(0);
             /*    case "7" ->
                 case "8" ->
                 case "9" ->
-                case "0" ->
+
 */
 
 
