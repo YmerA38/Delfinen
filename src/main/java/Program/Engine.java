@@ -15,8 +15,7 @@ public class Engine {
     UI ui = new UI();
 
     public void runProgram() throws FileNotFoundException {
-        int menu;
-        menu = scan.nextInt();
+
         scan.nextLine();
 
         boolean isRunning = true;
@@ -85,13 +84,11 @@ public class Engine {
 
     public void editMember() {
         try {
-
-
             System.out.println("Her er starten på metoden til at redigere medlemmets oplysninger");
             String searchTerm = scan.next();
             scan.nextLine();
             ArrayList<Member> searchResult = new ArrayList<>();
-            for (Member member : database.findMemberByName(searchTerm)) {
+            for (Member member : database.findMemberByName(searchTerm)) { //TODO det giver ingen mening, da findMember by name allerede returnerer en liste
                 if (member.getFirstName().contains(member.getFirstName()) || member.getLastName().contains(member.getLastName())) {
                     searchResult.add(member);
                     System.out.println(member);
