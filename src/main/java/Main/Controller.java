@@ -52,16 +52,16 @@ public class Controller {
     public static void addMember() {
         try {
             System.out.println();
-            System.out.println("Indtast dit fornavn: ");
+            System.out.println("Indtast fornavn: ");
             String firstName = scan.next();
             scan.nextLine();
-            System.out.println("Indtast dit efternavn: ");
+            System.out.println("Indtast efternavn: ");
             String lastName = scan.next();
-            System.out.println("Indtast din fødselsdag: ");
+            System.out.println("Indtast fødselsdag: ");
             int date = scan.nextInt();
-            System.out.println("Indtast din fødsels måned: ");
+            System.out.println("Indtast fødsels måned: ");
             int month = scan.nextInt();
-            System.out.println("Indtast dit fødsels år: ");
+            System.out.println("Indtast fødsels år: ");
             int year = scan.nextInt();
             System.out.println("Er du konkurrence svømmer?: ");
             String competitionSwimmer = scan.nextLine();
@@ -89,7 +89,7 @@ public class Controller {
             String searchTerm = scan.next();
             scan.nextLine();
             ArrayList<Member> searchResult = new ArrayList<>();
-            for (Member member : database.findMemberByName(searchTerm)) { //TODO det giver ingen mening, da findMember by name allerede returnerer en liste
+            for (Member member : database.getMemberList()) { //TODO det giver ingen mening, da findMember by name allerede returnerer en liste
                 if (member.getFirstName().contains(member.getFirstName()) || member.getLastName().contains(member.getLastName())) {
                     searchResult.add(member);
                     System.out.println(member);
@@ -118,6 +118,7 @@ public class Controller {
                     if (!lastName.isEmpty()) {
                         member.setLastName(lastName);
                     }
+
                 }
 
 
@@ -131,10 +132,42 @@ public class Controller {
     }
 
     public static void deleteMember() {
-        System.out.println("Her skal man kunne fjerne et medlem");
-    }
 
-    public static void viewMemberList() {
+
+        System.out.println("Skriv fornavnet eller efternavnet på det medlem du vil slette");
+        String searchTerm = scan.next();
+        ArrayList<Member> searchResult = database.getMemberList();
+        if (!searchResult.isEmpty()) {
+            System.out.println("Ingen resultater fundet");
+        } else {
+            for (int i = 0; i < searchResult.size(); i++) {
+                System.out.println((i) + 1 + ")" + searchResult.get(i));
+            }
+            System.out.println("Vælg navnet på medlemmet du vil slette");
+            int number = scan.nextInt();
+            scan.nextLine();
+            Member member = searchResult.get(number - 1);
+
+            System.out.println("Do you want to erase this superhero? (True/False: " + member);
+            boolean delete = scan.nextBoolean();
+            if (delete == true) {
+                database.removeMember(member);
+                System.out.println("Erasing the superhero...");
+            } else if (delete == false) {
+                System.out.println("Doesnt erase the superhero" + member);
+
+                System.out.println("Her skal man kunne fjerne et medlem");
+            }
+
+
+        }
+        System.out.println("Her skal man kunne fjerne et medlem");
+
+
+
+
+    }
+    public static void viewMemberList () {
         System.out.println("Her skal man kunne se oversigten af medlemmer");
     }
 }
