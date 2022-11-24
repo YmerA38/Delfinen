@@ -2,6 +2,7 @@ package Main;
 
 import Program.FileHandler;
 import Program.Member;
+import Program.Users;
 import UI.UI;
 
 import java.io.FileNotFoundException;
@@ -139,6 +140,10 @@ public class Controller {
     }
     public static void viewMemberList () {
         System.out.println("Her skal man kunne se oversigten af medlemmer");
+    }
+
+    public Users login(String name,String code){
+        return database.login(name,code);
     }
 }
 

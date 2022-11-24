@@ -28,7 +28,7 @@ public class UI {
             do {
                 startPage();
                 try {
-                    int menuChoice = returnInt(scan.nextLine());
+                    int menuChoice = returnInt();
                     if (menuChoice == 1)
                         runChiarman();
                     else if (menuChoice == 2) {
@@ -62,11 +62,13 @@ public class UI {
 
 
     }
-    public void loginUser(){
+    public Users loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");
-
+        String userName = scan.nextLine();
         System.out.println("Indtast din kode:");
+        String passWord = scan.nextLine();
+        return controller.login(userName,passWord);
     }
 
     public void runChiarman(){
@@ -74,7 +76,7 @@ public class UI {
         boolean isRunning = true;
         while (isRunning) {
             formandMenu();
-            int command =  returnInt(scan.nextLine()) ;
+            int command =  returnInt() ;
 
             switch (command) {
                 case 1 -> addMember();

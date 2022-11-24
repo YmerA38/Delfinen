@@ -2,7 +2,7 @@ package Program;
 
 import java.time.LocalDate;
 
-public abstract class Member {
+public class Member {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
@@ -27,6 +27,15 @@ public abstract class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
+    }
+    public Member(Member member){
+        this.firstName = member.getFirstName();
+        this.lastName = member.getLastName();
+        this.dateOfBirth = member.getDateOfBirth();
+        this.isActive = member.getIsActive();
+        this.isCompeting = member.getIsCompeting();
+        this.dateOfMembership = member.getDateOfMembership();
+        this.userType = member.getUserType();
     }
 
 
@@ -150,8 +159,36 @@ public abstract class Member {
         return team;
     }
 
+    public Users getUserType() {
+        return userType;
+    }
+
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setUserType(Users userType) {
+        this.userType = userType;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override

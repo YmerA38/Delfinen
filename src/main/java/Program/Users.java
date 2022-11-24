@@ -4,5 +4,7 @@ public enum Users {
     CHAIRMAN,
     CASHIER,
     TRAINER,
-    MEMBER;
+    MEMBER,
+    NO_USER,
+    WRONG_CODE;
 }

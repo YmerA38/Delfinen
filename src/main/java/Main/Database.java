@@ -1,7 +1,7 @@
 package Main;
 
 
-import Program.Member;
+import Program.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,11 @@ public class Database {
     }
 
     public void addMember(Member member){
-        memberList.add(member);
+        if(member.getIsCompeting()) {
+            memberList.add(new CompeteSwimmer(member));
+        }else {
+            memberList.add(new FitnessSwimmer(member));
+        }
         member.setMembershipNumber(memberList.indexOf(member));
         member.autoSetTeam();
     }
@@ -42,6 +46,26 @@ public class Database {
             }
         }
         return resultList;
+    }
+    public Member searchUserName(String name){
+        for (Member member : memberList){
+            if (name.equals(member.getUsername())){
+                return member;
+            }
+        }
+        return null;
+    }
+    public Users login(String name,String code){
+        Member member = searchUserName(name);
+        if(member!=null){
+            if(member.getPassword().equals(code)){
+                 return member.getUserType();
+            }else {
+                return Users.WRONG_CODE;
+            }
+        } else {
+            return Users.NO_USER;
+        }
     }
 
 
