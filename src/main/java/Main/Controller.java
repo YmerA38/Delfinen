@@ -15,7 +15,7 @@ public class Controller {
     static Database database;
     static Scanner scan = new Scanner(System.in);
 
-    UI ui = new UI();
+    //UI ui = new UI(); // Kan ikke køre hvsi denne ikke er slået fra
 
    /* public void runProgram() throws FileNotFoundException {
         scan.nextLine();
