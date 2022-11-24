@@ -3,13 +3,16 @@ package UI;
 import Main.Controller;
 import Main.Database;
 import Program.FileHandler;
+import Program.Member;
+import Program.Users;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
-    private Controller engine = new Controller();
+    private Controller controller = new Controller();
     FileHandler fileHandler = new FileHandler();
     Database database;
     Scanner scan = new Scanner(System.in);
@@ -25,12 +28,12 @@ public class UI {
             do {
                 startPage();
                 try {
-                    int menuChoice = scan.nextInt();
+                    int menuChoice = returnInt(scan.nextLine());
                     if (menuChoice == 1)
                         runChiarman();
                     else if (menuChoice == 2) {
                         runKasser();
-                    } else if (menuChoice == 3) {
+                    }else if (menuChoice == 3) {
                         runTræner();
                     }
                     menuError = false;
@@ -53,12 +56,20 @@ public class UI {
                 │ Tast 2) Kasserer     │
                 ├──────────────────────┤
                 │ Tast 3) Træner       │
+                ├──────────────────────┤
+                │ Tast 4) Medlem       │
                 └──────────────────────┘""");
 
 
     }
+    public void loginUser(){
+        System.out.println("Dette er login menu for Delfinens medlemmer");
+        System.out.println("Indtast dit brugernavn: ");
 
-    public void runChiarman() throws FileNotFoundException {
+        System.out.println("Indtast din kode:");
+    }
+
+    public void runChiarman(){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
@@ -66,12 +77,24 @@ public class UI {
             int command =  returnInt(scan.nextLine()) ;
 
             switch (command) {
-                case 1 -> Controller.addMember();
-                case 2 -> Controller.editMember();
-                case 3 -> Controller.deleteMember();
-                case 4 -> Controller.viewMemberList();
-                case 5 -> Controller.fileHandler.load();
-                case 6 -> Controller.fileHandler.save(database.getMemberList());
+                case 1 -> addMember();
+                case 2 -> controller.editMember();
+                case 3 -> controller.deleteMember();
+                case 4 -> controller.viewMemberList();
+                case 5 -> {
+                    try{
+                    controller.fileHandler.load();
+                    }catch (FileNotFoundException e){
+                        System.out.println("file not found error");
+                    }
+                }
+                case 6 ->{
+                    try{
+                        controller.fileHandler.save(database.getMemberList());
+                    }catch (FileNotFoundException e){
+                        System.out.println("file not found error");
+                    }
+                }
                 case 0 -> System.exit(0);
 
             /*    case "7" ->
@@ -140,7 +163,44 @@ public class UI {
         }
 
     }
+    public void addMember() {
 
+        System.out.println();
+        System.out.println("Indtast fornavn: ");
+        String firstName = scan.next();
+        scan.nextLine();
+        System.out.println("Indtast efternavn: ");
+        String lastName = scan.next();
+        System.out.println("Fødselsdag: ");
+        System.out.println("Indtast dag:");
+        int day = returnInt();
+        System.out.println("Indtast fødsels måned: ");
+        int month = returnInt();
+        System.out.println("Indtast fødsels år: ");
+        int year = returnInt();
+        System.out.println("Er det et aktivt meslemskab:");
+        boolean active = returnBoolean();
+        System.out.println("Er du konkurrence svømmer?: ");
+        boolean isCompetitionSwimmer = returnBoolean();
+        System.out.println("Vælg Medlemstype:\nTast m for medlem\n Tast t for træner\nTast k for kasser\n Tast f for Formand");
+        Users userType = returnUserType();
+
+        controller.addMember(new Member(firstName,lastName, LocalDate.of(year,month,year),active,isCompetitionSwimmer,userType));
+
+    }
+
+    private Users returnUserType() {
+        char choice;
+        do {
+            choice = scan.nextLine().charAt(0);
+            switch (choice){
+                case 'm'-> {return Users.CHAIRMAN;}
+                case 't' -> {return Users.TRAINER;}
+                case 'k' -> {return Users.CASHIER;}
+                case 'f' -> {return Users.CHAIRMAN;}
+            }
+        }while(true);
+    }
 
 
     public void formandMenu() {
@@ -176,13 +236,40 @@ public class UI {
         System.out.println("Ugyldigt input. Prøv igen!");
     }
 
-    public int returnInt(String string){
-        try {
-           return Integer.parseInt(string);
-        }catch (NumberFormatException e){
-            System.out.println("fejl! indtast et tal");
-        }
-        return 100;
+    public int returnInt(){
+        boolean pass = false;
+        int returnInt = 0;
+        do {
+            try {
+                returnInt = Integer.parseInt(scan.nextLine());
+                pass = true;
+            } catch (NumberFormatException e) {
+                System.out.println("fejl! indtast et tal");
+            }
+        }while (!pass);
+        return returnInt;
     }
+    public boolean returnBoolean(){
+        String string;
+        do {
+            System.out.println("Du skal indtaste ja eller nej");
+            string = scan.nextLine();
+        }while (!string.equals("ja") && !string.equals("nej"));
+        if (string.equals("ja")) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+   /* public boolean catchFileException(FileHandler fileHandler){
+        {
+            try{
+                fileHandler
+            }catch (FileNotFoundException e){
+                System.out.println("file not found error");
+            }
+        }
+    }*/
 
 }

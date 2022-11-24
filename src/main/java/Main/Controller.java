@@ -49,38 +49,8 @@ public class Controller {
 
     }*/
 
-    public static void addMember() {
-        try {
-            System.out.println();
-            System.out.println("Indtast fornavn: ");
-            String firstName = scan.next();
-            scan.nextLine();
-            System.out.println("Indtast efternavn: ");
-            String lastName = scan.next();
-            System.out.println("Indtast fødselsdag: ");
-            int date = scan.nextInt();
-            System.out.println("Indtast fødsels måned: ");
-            int month = scan.nextInt();
-            System.out.println("Indtast fødsels år: ");
-            int year = scan.nextInt();
-            System.out.println("Er du konkurrence svømmer?: ");
-            String competitionSwimmer = scan.nextLine();
-            boolean isCompetitionSwimmer;
-
-            while (!competitionSwimmer.equals("ja") && !competitionSwimmer.equals("nej")) {
-                System.out.println("Du skal indtaste ja eller nej");
-                competitionSwimmer = scan.nextLine();
-            }
-            if (competitionSwimmer.equals("ja")) {
-                isCompetitionSwimmer = true;
-            } else {
-                isCompetitionSwimmer = false;
-            }
-
-            System.out.println(firstName + lastName + date + month + year + competitionSwimmer);
-        } catch (Exception e) {
-            System.out.println("Der gik noget galt med indtastningen af oplysninger");
-        }
+    public void addMember(Member member){
+        database.addMember(member);
     }
 
     public static void editMember() {

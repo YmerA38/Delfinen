@@ -2,7 +2,7 @@ package Program;
 
 import java.time.LocalDate;
 
-public class Member {
+public abstract class Member {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
@@ -12,17 +12,25 @@ public class Member {
     private LocalDate dateOfMembership;
     private int membershipNumber;
     private Team team;
+    private String username;
+    private String password;
+    private Users userType;
 
 
-
-    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting){
+    // denne constructer bruges af Formand
+    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,Users userType){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.isActive = isActive;
         this.isCompeting = isCompeting;
         this.dateOfMembership = LocalDate.now();
+        this.password = "1234";
+        this.userType = userType;
     }
+
+
+        // denne contrukter er til brug for fileHandler
     public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,
     boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team){
         this.firstName = firstName;
@@ -70,6 +78,10 @@ public class Member {
             }
         }
         return age;
+    }
+
+    public void autoSetUserName(){
+        this.username = ""+membershipNumber; // midlertidig username;
     }
 
     public String getFirstName() {

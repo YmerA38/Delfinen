@@ -20,6 +20,8 @@ public class Database {
 
     public void addMember(Member member){
         memberList.add(member);
+        member.setMembershipNumber(memberList.indexOf(member));
+        member.autoSetTeam();
     }
     public void removeMember(Member member){
         memberList.remove(member);
