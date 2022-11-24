@@ -6,7 +6,7 @@ public class Main {
   public static void main(String[] args) {
      UI ui = new UI();
      ui.startMenu();
-    //Engine engine = new Engine();
+    //Controller engine = new Controller();
     //engine.runProgram();
 
   }

@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Merge">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_30__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_51__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2022_10_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22_11_2022_10_46__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23-11-2022_10_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23-11-2022_10_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Program/FileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Program/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/UI/UI.java" afterDir="false" />
-    </list>
+    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Refactored classes ind different packages. Add more later" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1669105388666</updated>
       <workItem from="1669105391402" duration="3421000" />
-      <workItem from="1669275038008" duration="1143000" />
+      <workItem from="1669275038008" duration="1781000" />
     </task>
     <task id="LOCAL-00001" summary="First commit, project started">
       <created>1669105845818</created>
@@ -147,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669197398134</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Refactored classes ind different packages. Add more later">
+      <created>1669276218762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669276218762</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +167,7 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;Push update" />
     <MESSAGE value="Comparator done" />
     <MESSAGE value="Merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge" />
+    <MESSAGE value="Refactored classes ind different packages. Add more later" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored classes ind different packages. Add more later" />
   </component>
 </project>

@@ -3,21 +3,21 @@ package Main;
 import Program.FileHandler;
 import Program.Member;
 import UI.UI;
-import Main.Database;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Engine {
-    FileHandler fileHandler = new FileHandler();
-    Database database;
-    Scanner scan = new Scanner(System.in);
+public class Controller {
+    public static FileHandler fileHandler;
+    //FileHandler fileHandler = new FileHandler();
+    static Database database;
+    static Scanner scan = new Scanner(System.in);
 
     UI ui = new UI();
 
-    public void runProgram() throws FileNotFoundException {
+   /* public void runProgram() throws FileNotFoundException {
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
@@ -31,13 +31,13 @@ public class Engine {
                 case "4" -> viewMemberList();
                 case "5" -> fileHandler.load();
                 case "6" -> fileHandler.save(database.getMemberList());
-                /*
+                *//*
                 case "7" ->
                 case "8" ->
                 case "9" ->
                 case "0" ->
 
-                 */
+                 *//*
 
 
                 default -> ui.invalidInput();
@@ -47,9 +47,9 @@ public class Engine {
         }
 
 
-    }
+    }*/
 
-    public void addMember() {
+    public static void addMember() {
         try {
             System.out.println();
             System.out.println("Indtast dit fornavn: ");
@@ -83,7 +83,7 @@ public class Engine {
         }
     }
 
-    public void editMember() {
+    public static void editMember() {
         try {
             System.out.println("Her er starten på metoden til at redigere medlemmets oplysninger");
             String searchTerm = scan.next();
@@ -130,11 +130,11 @@ public class Engine {
 
     }
 
-    public void deleteMember() {
+    public static void deleteMember() {
         System.out.println("Her skal man kunne fjerne et medlem");
     }
 
-    public void viewMemberList() {
+    public static void viewMemberList() {
         System.out.println("Her skal man kunne se oversigten af medlemmer");
     }
 }
