@@ -85,7 +85,6 @@ public class UI {
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            formandMenu();
             kasserMenu();
             String command = scan.nextLine();
 
