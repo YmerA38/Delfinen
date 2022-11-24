@@ -1,6 +1,9 @@
-package Program;
+package Main;
 
-import org.example.Database;
+import Program.FileHandler;
+import Program.Member;
+import UI.UI;
+import Main.Database;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -15,11 +18,10 @@ public class Engine {
     UI ui = new UI();
 
     public void runProgram() throws FileNotFoundException {
-
         scan.nextLine();
-
         boolean isRunning = true;
         while (isRunning) {
+            ui.startMenu();
             String command = scan.nextLine();
 
             switch (command) {
@@ -27,7 +29,6 @@ public class Engine {
                 case "2" -> editMember();
                 case "3" -> deleteMember();
                 case "4" -> viewMemberList();
-
                 case "5" -> fileHandler.load();
                 case "6" -> fileHandler.save(database.getMemberList());
                 /*
