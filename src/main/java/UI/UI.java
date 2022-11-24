@@ -47,10 +47,14 @@ public class UI {
 
     public void startPage() {
         System.out.println("""
-                Tast 1) Formand
-                Tast 2) Kasserer
-                Tast 3) Træner
-                 """);
+                ┌──────────────────────┐	               
+                │ Tast 1) Formand      │  
+                ├──────────────────────┤
+                │ Tast 2) Kasserer     │
+                ├──────────────────────┤
+                │ Tast 3) Træner       │
+                └──────────────────────┘""");
+
 
     }
 
@@ -136,6 +140,7 @@ public class UI {
         }
 
     }
+
 
 
     public void formandMenu() {
