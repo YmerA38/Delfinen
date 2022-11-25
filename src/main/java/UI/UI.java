@@ -7,6 +7,7 @@ import Program.Member;
 import Program.Users;
 
 import java.io.FileNotFoundException;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,7 +15,7 @@ import java.util.Scanner;
 public class UI {
     private Controller controller = new Controller();
     FileHandler fileHandler = new FileHandler();
-    Database database;
+    Database database = new Database();
     Scanner scan = new Scanner(System.in);
 
     public void start() {
@@ -85,14 +86,14 @@ public class UI {
                 case 4 -> controller.viewMemberList();
                 case 5 -> {
                     try{
-                    controller.fileHandler.load();
+                    controller.load();
                     }catch (FileNotFoundException e){
                         System.out.println("file not found error");
                     }
                 }
                 case 6 ->{
                     try{
-                        controller.fileHandler.save(database.getMemberList());
+                        controller.save();
                     }catch (FileNotFoundException e){
                         System.out.println("file not found error");
                     }
@@ -173,21 +174,26 @@ public class UI {
         scan.nextLine();
         System.out.println("Indtast efternavn: ");
         String lastName = scan.next();
-        System.out.println("Fødselsdag: ");
-        System.out.println("Indtast dag:");
-        int day = returnInt();
-        System.out.println("Indtast fødsels måned: ");
-        int month = returnInt();
-        System.out.println("Indtast fødsels år: ");
-        int year = returnInt();
+        LocalDate dateOfBirth;
+        do {
+            System.out.println("Fødselsdag: ");
+            System.out.println("Indtast dag:");
+            int day = returnInt();
+            System.out.println("Indtast fødsels måned: ");
+            int month = returnInt();
+            System.out.println("Indtast fødsels år: ");
+            int year = returnInt();
+            dateOfBirth = returnDate(day,month,year);
+            System.out.println(day+" "+month+" "+year);
+        }while(dateOfBirth==null);
         System.out.println("Er det et aktivt meslemskab:");
         boolean active = returnBoolean();
         System.out.println("Er du konkurrence svømmer?: ");
         boolean isCompetitionSwimmer = returnBoolean();
-        System.out.println("Vælg Medlemstype:\nTast m for medlem\n Tast t for træner\nTast k for kasser\n Tast f for Formand");
+        System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
         Users userType = returnUserType();
 
-        controller.addMember(new Member(firstName,lastName, LocalDate.of(year,month,year),active,isCompetitionSwimmer,userType));
+        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
 
     }
 
@@ -263,6 +269,14 @@ public class UI {
             return false;
         }
 
+    }
+    public LocalDate returnDate(int day,int month,int year){
+        try{
+            return LocalDate.of(year,month,day);
+        }catch (DateTimeException e){
+            System.out.println("fejl i dato indtastning");
+            return null;
+        }
     }
    /* public boolean catchFileException(FileHandler fileHandler){
         {

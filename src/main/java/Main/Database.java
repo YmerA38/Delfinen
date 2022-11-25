@@ -24,6 +24,7 @@ public class Database {
         }else {
             memberList.add(new FitnessSwimmer(member));
         }
+        //memberList.add(member);
         member.setMembershipNumber(memberList.indexOf(member));
         member.autoSetTeam();
     }

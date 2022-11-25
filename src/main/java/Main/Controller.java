@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 
 public class Controller {
-    public static FileHandler fileHandler;
-    //FileHandler fileHandler = new FileHandler();
-    static Database database;
+
+    FileHandler fileHandler = new FileHandler();
+    static Database database = new Database();
     static Scanner scan = new Scanner(System.in);
 
     //UI ui = new UI(); // Kan ikke køre hvsi denne ikke er slået fra.
@@ -144,6 +144,13 @@ public class Controller {
 
     public Users login(String name,String code){
         return database.login(name,code);
+    }
+    public void save() throws FileNotFoundException {
+        fileHandler.save(database.getMemberList());
+    }
+
+    public void load() throws FileNotFoundException {
+        fileHandler.load();
     }
 }
 
