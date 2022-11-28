@@ -27,6 +27,7 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
+        hasPayed=true;
     }
     public Member(Member member){
         this.firstName = member.getFirstName();
@@ -36,6 +37,7 @@ public class Member {
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
         this.userType = member.getUserType();
+        this.hasPayed = true;
     }
 
 
