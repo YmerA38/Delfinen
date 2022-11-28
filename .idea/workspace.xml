@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="git">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/DateOfBirthComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/DateOfBirthComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/DateOfMemberShipComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/DateOfMemberShipComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/FirstNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/FirstNameComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/FlexibleComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/FlexibleComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/HasPayedComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/HasPayedComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/IsActiveComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/IsActiveComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/IsCompetingComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/IsCompetingComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/LastNameComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/LastNameComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/MembershipsNumberComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/MembershipsNumberComparator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Comparator/TeamComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Comporators/TeamComparator.java" afterDir="false" />
+    <list default="true" id="19f0fc42-1649-40c3-b44e-0935957aae06" name="Changes" comment="Renamed enu to runprogram, and added engine opbject to main so that main runs the program">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_30__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_30__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_51__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_22-11-2022_10_51__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23-11-2022_10_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23-11-2022_10_55__Changes_.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

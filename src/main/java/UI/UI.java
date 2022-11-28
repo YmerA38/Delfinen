@@ -10,6 +10,7 @@ import Program.Users;
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
@@ -44,7 +45,7 @@ public class UI {
                 try {
                     int menuChoice = returnInt();
                     if (menuChoice == 1)
-                        runChairman();
+                        runChiarman();
                     else if (menuChoice == 2) {
                         runKasser();
                     }else if (menuChoice == 3) {
@@ -121,6 +122,7 @@ public class UI {
             /*    case "7" ->
                 case "8" ->
                 case "9" ->
+                case "0" ->
 */
 
 
@@ -277,7 +279,7 @@ public class UI {
     }
 
 
-    
+
 
     public void cashierMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
