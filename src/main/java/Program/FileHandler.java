@@ -31,7 +31,7 @@ public class FileHandler {
                         Boolean.parseBoolean(entity[3]),Boolean.parseBoolean(entity[4]),
                         Boolean.parseBoolean(entity[5]),LocalDate.of(Integer.parseInt(date2[2]),
                         Integer.parseInt(date2[1]),Integer.parseInt(date2[0])),Integer.parseInt(entity[7]),
-                        Team.valueOf(entity[8])));
+                        Team.valueOf(entity[8]),entity[9],entity[10],Users.valueOf(entity[11])));
             }
         }while(fileScanner.hasNextLine()&&!line.isEmpty());
 

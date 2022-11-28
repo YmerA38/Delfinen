@@ -1,5 +1,6 @@
 package Main;
 
+import Program.Access;
 import Program.FileHandler;
 import Program.Member;
 import Program.Users;
@@ -102,7 +103,7 @@ public class Controller {
 
     }
 
-    public static void deleteMember() {
+    public void deleteMember() {
 
 
         System.out.println("Skriv fornavnet eller efternavnet på det medlem du vil slette");
@@ -138,12 +139,12 @@ public class Controller {
 
 
     }
-    public static void viewMemberList () {
-        System.out.println("Her skal man kunne se oversigten af medlemmer");
+    public ArrayList<Member> getMemberList () {
+        return database.getMemberList();
     }
 
-    public Users login(String name,String code){
-        return database.login(name,code);
+    public Access login(String name, String password){
+        return database.login(name,password);
     }
     public void save() throws FileNotFoundException {
         fileHandler.save(database.getMemberList());

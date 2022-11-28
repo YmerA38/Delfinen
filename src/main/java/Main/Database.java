@@ -24,7 +24,6 @@ public class Database {
         }else {
             memberList.add(new FitnessSwimmer(member));
         }
-        //memberList.add(member);
         member.setMembershipNumber(memberList.indexOf(member));
         member.autoSetTeam();
     }
@@ -56,17 +55,20 @@ public class Database {
         }
         return null;
     }
-    public Users login(String name,String code){
+    public Access login(String name,String code){
         Member member = searchUserName(name);
-        if(member!=null){
+        Access access = new Access();
+        access.setMember(member);
+       if(member!=null){
             if(member.getPassword().equals(code)){
-                 return member.getUserType();
+                 access.setUserType(member.getUserType());
             }else {
-                return Users.WRONG_CODE;
+                member.setUserType(Users.WRONG_PASSWORD);
             }
         } else {
-            return Users.NO_USER;
+            member.setUserType(Users.NO_USER);
         }
+        return access;
     }
 
 

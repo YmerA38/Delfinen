@@ -6,5 +6,5 @@ public enum Users {
     TRAINER,
     MEMBER,
     NO_USER,
-    WRONG_CODE;
+    WRONG_PASSWORD;
 }

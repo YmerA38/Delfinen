@@ -2,6 +2,7 @@ package UI;
 
 import Main.Controller;
 import Main.Database;
+import Program.Access;
 import Program.FileHandler;
 import Program.Member;
 import Program.Users;
@@ -9,10 +10,10 @@ import Program.Users;
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
+    private final String CLUB_NAME = "Svømmeklub Delfinen";
     private Controller controller = new Controller();
     FileHandler fileHandler = new FileHandler();
     Database database = new Database();
@@ -22,16 +23,28 @@ public class UI {
         System.out.println("Velkommen til Delfin svømmeklub");
 
 
+        Access access;
+        do {
+            access = loginUser();
+            switch (access.getUserType()){
+                case NO_USER -> System.out.println("User does not exist");
+                case WRONG_PASSWORD -> System.out.println("The password is incorrect");
+                case MEMBER -> runMember(access.getMember());
+                case TRAINER -> runTrainer(access.getMember());
+                case CASHIER -> runCashier(access.getMember());
+                case CHAIRMAN -> runChairman(access.getMember());
+            }
 
-        boolean menuError;
+        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
+/*      boolean menuError;
         do {
             do {
                 startPage();
                 try {
                     int menuChoice = returnInt();
                     if (menuChoice == 1)
-                        runChiarman();
+                        runChairman();
                     else if (menuChoice == 2) {
                         runKasser();
                     }else if (menuChoice == 3) {
@@ -47,6 +60,7 @@ public class UI {
                 }
             } while (menuError == true);
         } while (true);
+        */
     }
 
     public void startPage() {
@@ -63,7 +77,7 @@ public class UI {
 
 
     }
-    public Users loginUser(){
+    public Access loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");
         String userName = scan.nextLine();
@@ -72,18 +86,19 @@ public class UI {
         return controller.login(userName,passWord);
     }
 
-    public void runChiarman(){
+    public void runChairman(Member member){
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"");
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            formandMenu();
+            chairmanMenu(member);
             int command =  returnInt() ;
 
             switch (command) {
                 case 1 -> addMember();
                 case 2 -> controller.editMember();
                 case 3 -> controller.deleteMember();
-                case 4 -> controller.viewMemberList();
+                case 4 -> viewMemberList();
                 case 5 -> {
                     try{
                     controller.load();
@@ -98,12 +113,14 @@ public class UI {
                         System.out.println("file not found error");
                     }
                 }
+                case 7 ->{
+
+                }
                 case 0 -> System.exit(0);
 
             /*    case "7" ->
                 case "8" ->
                 case "9" ->
-                case "0" ->
 */
 
 
@@ -113,12 +130,30 @@ public class UI {
         }
 
     }
+    public void chairmanMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
+                "Som formand af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
+                "\n1. Tilføj medlem " +
+                "\n2. Rediger medlem " +
+                "\n3. Slet medlem " +
+                "\n4. Se medlemmer " +
+                "\n5. Save " +
+                "\n6. Load " +
+                "\n9. Din profil" +
+                "\n0. Afslut");
+    }
 
-    public void runKasser() throws FileNotFoundException {
+    private void viewMemberList() {
+        for(Member member: controller.getMemberList()){
+            System.out.println(member);
+        }
+    }
+
+    public void runCashier(Member member){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            kasserMenu();
+            cashierMenu(member);
             String command = scan.nextLine();
 
             switch (command) {
@@ -141,11 +176,11 @@ public class UI {
 
     }
 
-    public void runTræner() throws FileNotFoundException {
+    public void runTrainer(Member member){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            trænerMenu();
+            trainerMenu(member);
             String command = scan.nextLine();
 
             switch (command) {
@@ -165,6 +200,37 @@ public class UI {
 
         }
 
+    }
+    public void runMember(Member member){
+        scan.nextLine();
+        boolean isRunning = true;
+        while (isRunning) {
+            memberMenu(member);
+            String command = scan.nextLine();
+
+            switch (command) {
+                case "1" -> System.out.println("kk");
+                case "2" -> System.out.println("fff");
+                case "3" -> System.out.println("ggg");
+                case "0" -> System.exit(0);
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+
+*/
+
+
+                default -> invalidInput();
+            }
+
+        }
+
+    }
+    public void memberMenu(Member member){
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
+                "Som medlem af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
+                "\n9. Din profil" +
+                "\n0. Afslut");
     }
     public void addMember() {
 
@@ -211,32 +277,27 @@ public class UI {
     }
 
 
-    public void formandMenu() {
-        System.out.println("Velkommen\n" + "-".repeat(35) +
-                "\n1. Tilføj medlem " +
-                "\n2. Rediger medlem " +
-                "\n3. Slet medlem " +
-                "\n4. Se medlemmer " +
-                "\n5. Save " +
-                "\n4. Load " +
-                "\n0. Afslut");
-    }
+    
 
-    public void kasserMenu() {
-        System.out.println("Velkommen\n" + "-".repeat(35) +
+    public void cashierMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
+                "Som kasser af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n1. Se indbetalinger " +
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
+                "\n9. Din profil" +
                 "\n0. Afslut");
     }
 
-    public void trænerMenu() {
-        System.out.println("Velkommen\n" + "-".repeat(35) +
+    public void trainerMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
+                "Som træner af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n1. Top 5 " +
                 "\n2. Se resultater " +
                 "\n3. Ret resultater " +
                 "\n4. Registring til konkurrencer " +
+                "\n9. Din profil" +
                 "\n0. Afslut");
     }
 

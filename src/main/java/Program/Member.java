@@ -41,7 +41,7 @@ public class Member {
 
         // denne contrukter er til brug for fileHandler
     public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,
-    boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team){
+    boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team,String username,String password,Users userType){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -51,6 +51,9 @@ public class Member {
         this.dateOfMembership = dateOfMembership;
         this.membershipNumber = membershipNumber;
         this.team = team;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
     }
 
      public Team autoSetTeam(){
