@@ -16,6 +16,7 @@ public class Member {
     private String password;
     private Users userType;
 
+    private int subscribtionRate;
 
     // denne constructer bruges af Formand
     public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,Users userType){
@@ -54,9 +55,13 @@ public class Member {
         this.username = username;
         this.password = password;
         this.userType = userType;
+
+        this.subscribtionRate = subscribtionRate;
     }
 
-     public Team autoSetTeam(){
+
+
+    public Team autoSetTeam(){
 
         if(isActive) {
             if (age() > 17) {
@@ -78,6 +83,9 @@ public class Member {
 
     }
 
+
+
+
     public int age(){
 
         int age = dateOfBirth.getYear() - LocalDate.now().getYear();
@@ -91,6 +99,20 @@ public class Member {
         }
         return age;
     }
+
+
+
+
+    public int getSubscribtionRate() {
+        return subscribtionRate;
+    }
+
+    public void setSubscribtionRate(){
+        int age = age();
+        this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
+    }
+
+
 
     public void autoSetUserName(){
         this.username = ""+membershipNumber; // midlertidig username;
@@ -193,6 +215,7 @@ public class Member {
     public String getPassword() {
         return password;
     }
+
 
     @Override
     public String toString(){
