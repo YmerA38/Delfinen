@@ -24,8 +24,8 @@ public class FileHandler {
             line = fileScanner.nextLine();
             if(!line.isEmpty()){
                 entity = line.split(",");
-                date1 = entity[2].split("/");
-                date2 = entity[6].split("/");
+                date1 = entity[2].split("-");
+                date2 = entity[6].split("-");
                 database.addMember(new Member(entity[0],entity[1], LocalDate.of(Integer.parseInt(date1[2]),
                         Integer.parseInt(date1[1]),Integer.parseInt(date1[0])),
                         Boolean.parseBoolean(entity[3]),Boolean.parseBoolean(entity[4]),
@@ -42,9 +42,10 @@ public class FileHandler {
         PrintStream fileSaver = new PrintStream(FILE_SAVE);
 
         for(Member member:memberList){
-            fileSaver.println(member.getFirstName()+","+member.getFirstName()+","+member.getDateOfBirth()+","+
+            fileSaver.println(member.getFirstName()+","+member.getLastName()+","+member.getDateOfBirth()+","+
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
-                    member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam());
+                    member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam()+","+
+                    member.getUsername()+","+member.getPassword()+","+member.getUserType());
         }
         fileSaver.flush();
         fileSaver.close();

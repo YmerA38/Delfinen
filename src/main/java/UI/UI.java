@@ -16,12 +16,16 @@ import java.util.Scanner;
 public class UI {
     private final String CLUB_NAME = "Svømmeklub Delfinen";
     private Controller controller = new Controller();
-    FileHandler fileHandler = new FileHandler();
-    Database database = new Database();
     Scanner scan = new Scanner(System.in);
 
     public void start() {
-        System.out.println("Velkommen til Delfin svømmeklub");
+        try{ //todo remove
+            controller.save();
+        }catch (FileNotFoundException e){
+            System.out.println("file..@0");
+        }
+
+        System.out.println("Velkommen til "+CLUB_NAME);
 
 
         Access access;

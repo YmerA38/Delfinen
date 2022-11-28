@@ -4,6 +4,7 @@ package Main;
 import Program.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -12,6 +13,8 @@ public class Database {
 
     public Database(){
         memberList = new ArrayList<>();
+        addMember(new Member("Stinus","Helweg Andersen", LocalDate.of(1975,1,21),true,true,true,LocalDate.now(),1,Team.SENIOR_COMPETE,"Stinus","1234",Users.CHAIRMAN));  // TODO midlertidig
+
     }
 
     public ArrayList<Member> getMemberList() {
@@ -63,10 +66,10 @@ public class Database {
             if(member.getPassword().equals(code)){
                  access.setUserType(member.getUserType());
             }else {
-                member.setUserType(Users.WRONG_PASSWORD);
+                access.setUserType(Users.WRONG_PASSWORD);
             }
         } else {
-            member.setUserType(Users.NO_USER);
+            access.setUserType(Users.NO_USER);
         }
         return access;
     }

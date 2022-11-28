@@ -15,6 +15,7 @@ public class Controller {
 
     FileHandler fileHandler = new FileHandler();
     static Database database = new Database();
+
     static Scanner scan = new Scanner(System.in);
 
     //UI ui = new UI(); // Kan ikke køre hvsi denne ikke er slået fra.
