@@ -31,7 +31,7 @@ public class UI {
                 try {
                     int menuChoice = returnInt();
                     if (menuChoice == 1)
-                        runChiarman();
+                        runChairman();
                     else if (menuChoice == 2) {
                         runKasser();
                     }else if (menuChoice == 3) {
@@ -72,7 +72,7 @@ public class UI {
         return controller.login(userName,passWord);
     }
 
-    public void runChiarman(){
+    public void runChairman(){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
