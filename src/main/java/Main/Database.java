@@ -22,13 +22,17 @@ public class Database {
     }
 
     public void addMember(Member member){
-        if(member.getIsCompeting()) {
-            memberList.add(new CompeteSwimmer(member));
+        /*if(member.getIsCompeting()) {
+            memberList.add(((CompeteSwimmer)member));
+            //memberList.add(new CompeteSwimmer(member));
         }else {
-            memberList.add(new FitnessSwimmer(member));
-        }
+            memberList.add(((FitnessSwimmer)member));
+            //memberList.add(new FitnessSwimmer(member));
+        }  */
+        memberList.add(member);
         member.setMembershipNumber(memberList.indexOf(member));
         member.autoSetTeam();
+        member.autoSetUserName();
     }
     public void removeMember(Member member){
         memberList.remove(member);

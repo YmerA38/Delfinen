@@ -141,8 +141,8 @@ public class UI {
                 "\n2. Rediger medlem " +
                 "\n3. Slet medlem " +
                 "\n4. Se medlemmer " +
-                "\n5. Save " +
-                "\n6. Load " +
+                "\n5. Load " +
+                "\n6. Save " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }

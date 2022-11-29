@@ -14,49 +14,17 @@ import java.util.Scanner;
 public class Controller {
 
     FileHandler fileHandler = new FileHandler();
-    static Database database = new Database();
+    Database database = new Database();
 
-    static Scanner scan = new Scanner(System.in);
-
-    //UI ui = new UI(); // Kan ikke køre hvsi denne ikke er slået fra.
-
-   /* public void runProgram() throws FileNotFoundException {
-        scan.nextLine();
-        boolean isRunning = true;
-        while (isRunning) {
-            ui.startMenu();
-            String command = scan.nextLine();
-
-            switch (command) {
-                case "1" -> addMember();
-                case "2" -> editMember();
-                case "3" -> deleteMember();
-                case "4" -> viewMemberList();
-                case "5" -> fileHandler.load();
-                case "6" -> fileHandler.save(database.getMemberList());
-                *//*
-                case "7" ->
-                case "8" ->
-                case "9" ->
-                case "0" ->
-
-                 *//*
+    Scanner scan = new Scanner(System.in);
 
 
-                default -> ui.invalidInput();
-            }
-
-
-        }
-
-
-    }*/
 
     public void addMember(Member member){
         database.addMember(member);
     }
 
-    public static void editMember() {
+    public void editMember() {
         try {
             System.out.println("Her er starten på metoden til at redigere medlemmets oplysninger");
             String searchTerm = scan.next();
@@ -152,7 +120,7 @@ public class Controller {
     }
 
     public void load() throws FileNotFoundException {
-        fileHandler.load();
+        fileHandler.load(database);
     }
 }
 
