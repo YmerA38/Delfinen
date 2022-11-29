@@ -6,10 +6,12 @@ import Program.Access;
 import Program.FileHandler;
 import Program.Member;
 import Program.Users;
+import Sort.Sort;
 
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,6 +19,8 @@ public class UI {
     private final String CLUB_NAME = "Svømmeklub Delfinen";
     private Controller controller = new Controller();
     Scanner scan = new Scanner(System.in);
+
+    private Sort sort = new Sort();
 
     public void start() {
         try{ //todo remove
@@ -116,9 +120,7 @@ public class UI {
                         System.out.println("file not found error");
                     }
                 }
-                case 7 ->{
-
-                }
+                case 7 -> sortMenu();
                 case 0 -> System.exit(0);
 
             /*    case "7" ->
@@ -141,8 +143,9 @@ public class UI {
                 "\n2. Rediger medlem " +
                 "\n3. Slet medlem " +
                 "\n4. Se medlemmer " +
-                "\n5. Load " +
-                "\n6. Save " +
+                "\n5. Save " +
+                "\n6. Load " +
+                "\n7. Sorter liste " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
@@ -229,6 +232,24 @@ public class UI {
 
         }
 
+    }
+
+    public void sortMenu (){
+        boolean run = true;
+        while (run) {
+            run = false;
+            sortMenuPrint();
+            switch (scan.nextLine()) {
+                case "1" -> sort.sortByFirstname(controller.getMemberList());
+                case "2" -> sort.sortByLastname(controller.getMemberList());
+                case "3" -> sort.sortByAge(controller.getMemberList());
+                default -> {
+                    invalidInput();
+                    run = true;
+                }
+            }
+        }
+        viewMemberList();
     }
     public void memberMenu(Member member){
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
@@ -334,6 +355,10 @@ public class UI {
             return false;
         }
 
+    }
+
+    public void sortMenuPrint(){
+        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n 2:Efternavn\n 3: Alder");
     }
     public LocalDate returnDate(int day,int month,int year){
         try{
