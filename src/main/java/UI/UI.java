@@ -92,8 +92,6 @@ public class UI {
     }
 
     public void runChairman(Member member){
-        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"");
-        scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
             chairmanMenu(member);
