@@ -243,6 +243,13 @@ public class UI {
                 case "1" -> sort.sortByFirstname(controller.getMemberList());
                 case "2" -> sort.sortByLastname(controller.getMemberList());
                 case "3" -> sort.sortByAge(controller.getMemberList());
+                case "4" -> sort.sortByActive(controller.getMemberList());
+                case "5" -> sort.sortByCompetitive(controller.getMemberList());
+                case "6" -> sort.sortByPayed(controller.getMemberList());
+                case "7" -> sort.sortByDateOfMembership(controller.getMemberList());
+                case "8" -> sort.sortByMembership(controller.getMemberList());
+                case "9" -> sort.sortByTeam(controller.getMemberList());
+                case "10" -> sort.sortByUsertype(controller.getMemberList());
                 default -> {
                     invalidInput();
                     run = true;
@@ -358,7 +365,7 @@ public class UI {
     }
 
     public void sortMenuPrint(){
-        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n 2:Efternavn\n 3: Alder");
+        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt\n7: Dato for medlemsskab\n8: Medlemsnummer\n9: Hold\n10: Medlemstype\n ");
     }
     public LocalDate returnDate(int day,int month,int year){
         try{
