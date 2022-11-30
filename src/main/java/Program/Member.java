@@ -2,6 +2,8 @@ package Program;
 
 import java.time.LocalDate;
 
+import static Program.Subscription.database;
+
 public class Member {
     private String firstName;
     private String lastName;
@@ -16,6 +18,7 @@ public class Member {
     private String password;
     private Users userType;
 
+    private int payment;
     private int subscribtionRate;
 
     // denne constructer bruges af Formand
@@ -37,6 +40,7 @@ public class Member {
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
         this.userType = member.getUserType();
+
     }
 
 
@@ -56,8 +60,10 @@ public class Member {
         this.password = password;
         this.userType = userType;
 
-        this.subscribtionRate = subscribtionRate;
+       this.payment = payment;
+       this.subscribtionRate = getSubscribtionRate();
     }
+
 
 
 
@@ -101,8 +107,21 @@ public class Member {
     }
 
 
-
-
+    public void getSubscriptions() {
+        for (Member member : database.getMemberList()) {
+            if (isActive == true) {
+                if (member.age() < 18) {
+                    payment = 1000;
+                } else if (member.age() <= 60) {
+                    payment = 1600;
+                } else if (member.age() > 60) {
+                    payment = 1200;
+                }
+            } else {
+                payment = 500;
+            }
+        }
+    }
     public int getSubscribtionRate() {
         return subscribtionRate;
     }

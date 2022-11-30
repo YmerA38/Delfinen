@@ -10,6 +10,7 @@ import java.util.Comparator;
 public class Database {
     private ArrayList<Member> memberList;
 
+
     public Database(){
         memberList = new ArrayList<>();
     }

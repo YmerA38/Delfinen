@@ -6,7 +6,7 @@ import Program.Access;
 import Program.FileHandler;
 import Program.Member;
 import Program.Users;
-import Program.Payment;
+import Program.Subscription;
 
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
@@ -21,6 +21,8 @@ public class UI {
     Database database = new Database();
 
     Scanner scan = new Scanner(System.in);
+
+
 
     public void start() {
         System.out.println("Velkommen til Delfin svømmeklub");
@@ -150,7 +152,7 @@ public class UI {
             String command = scan.nextLine();
 
             switch (command) {
-                case "1" -> System.out.println(Payment.checkIncomeEstimate());
+                case "1" -> System.out.println(Subscription.checkIncomeEstimate());
                 case "2" -> System.out.println("ggg");
                 case "3" -> System.out.println("gggg");
                 case "0" -> System.exit(0);

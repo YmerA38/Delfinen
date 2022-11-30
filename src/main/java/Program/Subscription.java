@@ -1,11 +1,11 @@
 package Program;
 
 import Main.Database;
-import Program.Member;
 
 
-public class Payment {
+public class Subscription {
     static Database database = new Database();
+
 
     public static double checkIncomeEstimate() {
         double incomeEstimate = 0;
@@ -16,3 +16,4 @@ public class Payment {
         return incomeEstimate;
     }
 }
+
