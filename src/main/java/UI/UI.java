@@ -167,7 +167,7 @@ public class UI {
             String command = scan.nextLine();
 
             switch (command) {
-                case "1" -> System.out.println("fff");
+                case "1" -> priceList();
                 case "2" -> sort.sortByPayed(controller.getMemberList());
                 case "3" -> Subscription.checkIncomeEstimate();
                 case "0" -> System.exit(0);
@@ -319,7 +319,7 @@ public class UI {
     public void cashierMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som kasser af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
-                "\n1. Se indbetalinger " +
+                "\n1. Se prisliste" +
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
@@ -379,6 +379,11 @@ public class UI {
             System.out.println("fejl i dato indtastning");
             return null;
         }
+    }
+
+    public void priceList(){
+        System.out.println("Junior (under 18): 1000 kr." + "\nSenior (18 år og over): 1600 kr."
+        + "\nMedlemmer over 60: 1200 kr." + "\nPassivt medlemskab: 500 kr.");
     }
    /* public boolean catchFileException(FileHandler fileHandler){
         {
