@@ -107,7 +107,13 @@ public class UI {
             int command =  returnInt() ;
 
             switch (command) {
-                case 1 -> addMember();
+                case 1 -> {addMember();
+                    try{// ønsker at gemme med det samme
+                        controller.save();
+                    }catch (FileNotFoundException e){
+                        System.out.println("file not found error");
+                    }
+                }
                 case 2 -> controller.editMember();
                 case 3 -> controller.deleteMember();
                 case 4 -> viewMemberList();

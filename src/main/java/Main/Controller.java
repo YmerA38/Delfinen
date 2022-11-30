@@ -21,7 +21,6 @@ public class Controller {
 
     public void addMember(Member member){
         database.addMember(member,true);
-        database.autoSet(member);
     }
 
     public void editMember() {
