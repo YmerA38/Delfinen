@@ -39,6 +39,10 @@ public class Member {
         this.isActive = member.getIsActive();
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
+        this.membershipNumber = member.getMembershipNumber();
+        this.team = member.getTeam();
+        this.username = member.getUsername();
+        this.password = member.getPassword();
         this.userType = member.getUserType();
     }
 
@@ -59,8 +63,8 @@ public class Member {
         this.password = password;
         this.userType = userType;
 
-       this.payment = payment;
-       this.subscribtionRate = getSubscribtionRate();
+       //this.payment = payment;
+       //this.subscribtionRate = getSubscribtionRate();
     }
 
      public Team autoSetTeam(){
@@ -230,6 +234,9 @@ public class Member {
 
     @Override
     public String toString(){
-        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+ "\nHold: " + team;
+        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth +
+                "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed +
+                "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+
+                "\nHold: " + team + "\nBrugernavn "+ username + "\nKode " + password;
     }
 }
