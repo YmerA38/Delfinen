@@ -18,11 +18,11 @@ public class Member {
     private String password;
     private Users userType;
 
-   private int payment;
+    private int payment;
     private int subscribtionRate;
 
     // denne constructer bruges af Formand
-    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,Users userType){
+    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -32,17 +32,14 @@ public class Member {
         this.password = "1234";
         this.userType = userType;
     }
-    public Member(Member member){
+
+    public Member(Member member) {
         this.firstName = member.getFirstName();
         this.lastName = member.getLastName();
         this.dateOfBirth = member.getDateOfBirth();
         this.isActive = member.getIsActive();
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
-        this.membershipNumber = member.getMembershipNumber();
-        this.team = member.getTeam();
-        this.username = member.getUsername();
-        this.password = member.getPassword();
         this.userType = member.getUserType();
     }
 
@@ -63,8 +60,8 @@ public class Member {
         this.password = password;
         this.userType = userType;
 
-       //this.payment = payment;
-       //this.subscribtionRate = getSubscribtionRate();
+       this.payment = payment;
+       this.subscribtionRate = getSubscribtionRate();
     }
 
      public Team autoSetTeam(){
@@ -234,9 +231,6 @@ public class Member {
 
     @Override
     public String toString(){
-        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth +
-                "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed +
-                "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+
-                "\nHold: " + team + "\nBrugernavn "+ username + "\nKode " + password;
+        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+ "\nHold: " + team;
     }
 }
