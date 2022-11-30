@@ -19,7 +19,6 @@ import java.util.Scanner;
 public class UI {
     private final String CLUB_NAME = "Svømmeklub Delfinen";
     private Controller controller = new Controller();
-    FileHandler fileHandler = new FileHandler();
     Database database = new Database();
     Scanner scan = new Scanner(System.in);
 
@@ -126,6 +125,7 @@ public class UI {
                 }
                 case 7 -> sortMenu();
                 case 8 -> search();
+                case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
 
             /*    case "7" ->
@@ -141,6 +141,26 @@ public class UI {
         }
 
     }
+
+    private void dinProfil(Member member) {
+        boolean run = true;
+        do {
+            System.out.println("\n1. Se profildata\n2. Ret brugernavn og kodeord\n0. Vend tilbage til hovedmenu ");
+            switch (returnInt()){
+                case 1 -> System.out.println(member);
+                case 2 -> {
+                    System.out.println("Indtast nyt brugernavn" );
+                    member.setPassword(scan.nextLine());
+                    System.out.println("Indtast nyt kodeord");
+                    member.setUsername(scan.nextLine());
+                }
+                case 0 -> run = false;
+                default -> System.out.println("type 1, 2 or 0");
+            }
+
+        }while(run);
+    }
+
     public void chairmanMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som formand af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
