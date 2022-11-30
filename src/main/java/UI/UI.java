@@ -28,6 +28,8 @@ public class UI {
     public void start() {
         try {
             controller.load();
+            viewMemberList();
+
             System.out.println("Fil indlæst");
         }catch (FileNotFoundException e){
             System.out.println("Manglende datafil fejl!! ");
