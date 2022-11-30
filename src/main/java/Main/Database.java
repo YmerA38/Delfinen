@@ -47,6 +47,8 @@ public class Database {
         memberList.remove(member);
     }
     public ArrayList<Member> findMemberByName(String search){
+        ArrayList<Member> searchResult = new ArrayList<>();
+
         String[] searchPart = search.split(" ");
         ArrayList<Member> resultList = new ArrayList<>();
         boolean found;
@@ -61,7 +63,7 @@ public class Database {
                 resultList.add(member);
             }
         }
-        return resultList;
+        return searchResult;
     }
     public Member searchUserName(String name){
         for (Member member : memberList){
