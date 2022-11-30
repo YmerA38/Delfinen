@@ -33,7 +33,7 @@ public class FileHandler {
                         Boolean.parseBoolean(entity[3]),Boolean.parseBoolean(entity[4]),
                         Boolean.parseBoolean(entity[5]),LocalDate.of(Integer.parseInt(date2[0]),
                         Integer.parseInt(date2[1]),Integer.parseInt(date2[2])),Integer.parseInt(entity[7]),
-                        Team.valueOf(entity[8]),entity[9],entity[10],Users.valueOf(entity[11])));
+                        Team.valueOf(entity[8]),entity[9],entity[10],Users.valueOf(entity[11])),false);
             }
         }while(fileScanner.hasNextLine()&&!line.isEmpty());
 
@@ -42,7 +42,7 @@ public class FileHandler {
 
     public boolean save(ArrayList<Member> memberList) throws FileNotFoundException {
         PrintStream fileSaver = new PrintStream(FILE_SAVE);
-        fileSaver.println();// spring linje over
+        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
         for(Member member:memberList){
             fileSaver.println(member.getFirstName()+","+member.getLastName()+","+member.getDateOfBirth()+","+
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+

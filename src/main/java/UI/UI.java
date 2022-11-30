@@ -294,8 +294,7 @@ public class UI {
         System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
         Users userType = returnUserType();
 
-        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
-
+        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,hasPayed,userType));
     }
 
     private Users returnUserType() {
@@ -303,7 +302,7 @@ public class UI {
         do {
             choice = scan.nextLine().charAt(0);
             switch (choice){
-                case 'm'-> {return Users.CHAIRMAN;}
+                case 'm'-> {return Users.MEMBER;}
                 case 't' -> {return Users.TRAINER;}
                 case 'k' -> {return Users.CASHIER;}
                 case 'f' -> {return Users.CHAIRMAN;}

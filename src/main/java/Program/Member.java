@@ -22,12 +22,14 @@ public class Member {
     private int subscribtionRate;
 
     // denne constructer bruges af Formand
-    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType) {
+    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
+                  boolean hasPayed, Users userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.isActive = isActive;
         this.isCompeting = isCompeting;
+        this.hasPayed = hasPayed;
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
@@ -69,31 +71,31 @@ public class Member {
        this.subscribtionRate = getSubscribtionRate();
     }
 
-     public Team autoSetTeam(){
+     public void autoSetTeam(){
 
         if(isActive) {
             if (age() > 17) {
                 if (isCompeting) {
-                    return Team.SENIOR_COMPETE;
+                    this.team = Team.SENIOR_COMPETE;
                 } else {
-                    return Team.SENIOR_FITNESS;
+                    this.team = Team.SENIOR_FITNESS;
                 }
             } else {
                 if (isCompeting) {
-                    return Team.JUNIOR_COMPETE;
+                    this.team = Team.JUNIOR_COMPETE;
                 } else {
-                    return Team.JUNIOR_FITNESS;
+                    this.team = Team.JUNIOR_FITNESS;
                 }
             }
         }else {
-            return Team.NO_TEAM;
+            this.team = Team.NO_TEAM;
         }
 
     }
 
     public int age(){
 
-        int age = dateOfBirth.getYear() - LocalDate.now().getYear();
+        int age = LocalDate.now().getYear() - dateOfBirth.getYear();
         if(dateOfBirth.getMonth().getValue()>LocalDate.now().getMonth().getValue()){
             age -= 1;
         }
@@ -133,7 +135,7 @@ public class Member {
 
 
     public void autoSetUserName(){
-        this.username = ""+membershipNumber; // midlertidig username;
+        this.username = firstName; // midlertidig username;
     }
 
     public String getFirstName() {

@@ -22,22 +22,22 @@ public class Database {
         return memberList;
     }
 
-    public void addMember(Member member){
+    public void addMember(Member member, boolean isNew){
         if(member.getIsCompeting()) {
            member = new CompeteSwimmer(member);
         }else {
             member = new FitnessSwimmer(member);
         }
-
         memberList.add(member);
-
-
+        member.autoSetTeam();
+        if(isNew){
+            autoSet(member);
+        }
 
     }
     public void autoSet(Member member){
-        member.autoSetTeam();
-        member.autoSetUserName();
 
+        member.autoSetUserName();
         member.setMembershipNumber(memberList.indexOf(member));
     }
 
