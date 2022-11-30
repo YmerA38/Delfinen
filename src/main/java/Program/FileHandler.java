@@ -21,8 +21,11 @@ public class FileHandler {
         String[] date2;
         //fileScanner.nextLine();//spring linje over
         do{
+            System.out.println("1");
             line = fileScanner.nextLine();
+            System.out.println(line);
             if(!line.isEmpty()){
+                System.out.println("2");
                 entity = line.split(",");
                 date1 = entity[2].split("-");
                 System.out.println(date1[0]+" "+date1[1]+" "+date1[2]);
