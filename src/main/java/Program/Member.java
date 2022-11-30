@@ -2,6 +2,8 @@ package Program;
 
 import java.time.LocalDate;
 
+import static Program.Subscription.database;
+
 public class Member {
     private String firstName;
     private String lastName;
@@ -16,6 +18,8 @@ public class Member {
     private String password;
     private Users userType;
 
+   private int payment;
+    private int subscribtionRate;
 
     // denne constructer bruges af Formand
     public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,Users userType){
@@ -27,7 +31,6 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
-        hasPayed=true;
     }
     public Member(Member member){
         this.firstName = member.getFirstName();
@@ -37,7 +40,6 @@ public class Member {
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
         this.userType = member.getUserType();
-        this.hasPayed = true;
     }
 
 
@@ -56,26 +58,29 @@ public class Member {
         this.username = username;
         this.password = password;
         this.userType = userType;
+
+       this.payment = payment;
+       this.subscribtionRate = getSubscribtionRate();
     }
 
-     public void autoSetTeam(){
+     public Team autoSetTeam(){
 
         if(isActive) {
             if (age() > 17) {
                 if (isCompeting) {
-                    team = Team.SENIOR_COMPETE;
+                    return Team.SENIOR_COMPETE;
                 } else {
-                    team = Team.SENIOR_FITNESS;
+                    return Team.SENIOR_FITNESS;
                 }
             } else {
                 if (isCompeting) {
-                    team = Team.JUNIOR_COMPETE;
+                    return Team.JUNIOR_COMPETE;
                 } else {
-                    team = Team.JUNIOR_FITNESS;
+                    return Team.JUNIOR_FITNESS;
                 }
             }
         }else {
-            team = Team.NO_TEAM;
+            return Team.NO_TEAM;
         }
 
     }
@@ -93,6 +98,33 @@ public class Member {
         }
         return age;
     }
+
+
+    public void getSubscriptions() {
+        for (Member member : database.getMemberList()) {
+            if (isActive == true) {
+                if (member.age() < 18) {
+                    payment = 1000;
+                } else if (member.age() <= 60) {
+                    payment = 1600;
+                } else if (member.age() > 60) {
+                    payment = 1200;
+                }
+            } else {
+                payment = 500;
+            }
+        }
+    }
+    public int getSubscribtionRate() {
+        return subscribtionRate;
+    }
+
+    public void setSubscribtionRate(){
+        int age = age();
+        this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
+    }
+
+
 
     public void autoSetUserName(){
         this.username = ""+membershipNumber; // midlertidig username;
