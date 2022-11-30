@@ -51,7 +51,7 @@ public class UI {
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-/*      boolean menuError;
+    /* boolean menuError;
         do {
             do {
                 startPage();
@@ -73,8 +73,8 @@ public class UI {
                     throw new RuntimeException(e);
                 }
             } while (menuError == true);
-        } while (true);
-        */
+        } while (true);*/
+
     }
 
     public void startPage() {
@@ -126,6 +126,7 @@ public class UI {
                     }
                 }
                 case 7 -> sortMenu();
+                case 8 -> search();
                 case 0 -> System.exit(0);
 
             /*    case "7" ->
@@ -151,6 +152,7 @@ public class UI {
                 "\n5. Save " +
                 "\n6. Load " +
                 "\n7. Sorter liste " +
+                "\n8. Søg medlem " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
@@ -172,6 +174,7 @@ public class UI {
                 case "1" -> priceList();
                 case "2" -> sort.sortByPayed(controller.getMemberList());
                 case "3" -> Subscription.checkIncomeEstimate();
+                case "4" -> search();
                 case "0" -> System.exit(0);
 
             /*    case "7" ->
@@ -386,6 +389,22 @@ public class UI {
     public void priceList(){
         System.out.println("Junior (under 18): 1000 kr." + "\nSenior (18 år og over): 1600 kr."
         + "\nMedlemmer over 60: 1200 kr." + "\nPassivt medlemskab: 500 kr.");
+    }
+
+    public void search(){
+        System.out.println("Indtast navn på det medlem du ønsker at finde");
+        String searchTerm = scan.nextLine();
+        ArrayList<Member> searchResult = database.findMemberByName(searchTerm);
+
+        if(searchResult.isEmpty()){
+            System.out.println("ingen medlemmer fundet");
+
+        }else {
+            System.out.println("Medlemmer fundet");
+            for (Member member : searchResult){
+                System.out.println(member);
+            }
+        }
     }
    /* public boolean catchFileException(FileHandler fileHandler){
         {
