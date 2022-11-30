@@ -1,9 +1,7 @@
 package UI;
 
 import Main.Controller;
-import Main.Database;
 import Program.Access;
-import Program.FileHandler;
 import Program.Member;
 import Program.Users;
 import Sort.Sort;
@@ -23,12 +21,12 @@ public class UI {
     private Sort sort = new Sort();
 
     public void start() {
-        try{ //todo remove
-            controller.save();
+        try {
+            controller.load();
+            System.out.println("Fil indlæst");
         }catch (FileNotFoundException e){
-            System.out.println("file..@0");
+            System.out.println("Manglende datafil fejl!! ");
         }
-
         System.out.println("Velkommen til "+CLUB_NAME);
 
 
@@ -46,46 +44,9 @@ public class UI {
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-/*      boolean menuError;
-        do {
-            do {
-                startPage();
-                try {
-                    int menuChoice = returnInt();
-                    if (menuChoice == 1)
-                        runChiarman();
-                    else if (menuChoice == 2) {
-                        runKasser();
-                    }else if (menuChoice == 3) {
-                        runTræner();
-                    }
-                    menuError = false;
-                } catch (InputMismatchException ime) {
-                    System.out.println("Skriv kun tal");
-                    scan.nextLine();
-                    menuError = true;
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            } while (menuError == true);
-        } while (true);
-        */
-    }
-
-    public void startPage() {
-        System.out.println("""
-                ┌──────────────────────┐	               
-                │ Tast 1) Formand      │  
-                ├──────────────────────┤
-                │ Tast 2) Kasserer     │
-                ├──────────────────────┤
-                │ Tast 3) Træner       │
-                ├──────────────────────┤
-                │ Tast 4) Medlem       │
-                └──────────────────────┘""");
-
 
     }
+
     public Access loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");

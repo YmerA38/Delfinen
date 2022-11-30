@@ -58,24 +58,24 @@ public class Member {
         this.userType = userType;
     }
 
-     public Team autoSetTeam(){
+     public void autoSetTeam(){
 
         if(isActive) {
             if (age() > 17) {
                 if (isCompeting) {
-                    return Team.SENIOR_COMPETE;
+                    team = Team.SENIOR_COMPETE;
                 } else {
-                    return Team.SENIOR_FITNESS;
+                    team = Team.SENIOR_FITNESS;
                 }
             } else {
                 if (isCompeting) {
-                    return Team.JUNIOR_COMPETE;
+                    team = Team.JUNIOR_COMPETE;
                 } else {
-                    return Team.JUNIOR_FITNESS;
+                    team = Team.JUNIOR_FITNESS;
                 }
             }
         }else {
-            return Team.NO_TEAM;
+            team = Team.NO_TEAM;
         }
 
     }

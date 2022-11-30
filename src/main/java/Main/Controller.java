@@ -15,7 +15,6 @@ public class Controller {
 
     FileHandler fileHandler = new FileHandler();
     Database database = new Database();
-
     Scanner scan = new Scanner(System.in);
 
 

@@ -19,9 +19,8 @@ public class FileHandler {
         String[] entity;
         String[] date1;
         String[] date2;
-
+        //fileScanner.nextLine();//spring linje over
         do{
-            fileScanner.nextLine();//spring linje over
             line = fileScanner.nextLine();
             if(!line.isEmpty()){
                 entity = line.split(",");
@@ -43,9 +42,8 @@ public class FileHandler {
 
     public boolean save(ArrayList<Member> memberList) throws FileNotFoundException {
         PrintStream fileSaver = new PrintStream(FILE_SAVE);
-
+        fileSaver.println();// spring linje over
         for(Member member:memberList){
-            fileSaver.println();// spring linje over
             fileSaver.println(member.getFirstName()+","+member.getLastName()+","+member.getDateOfBirth()+","+
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
                     member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam()+","+

@@ -13,7 +13,7 @@ public class Database {
 
     public Database(){
         memberList = new ArrayList<>();
-        memberList.add(new Member("Stinus","Helweg Andersen", LocalDate.of(1975,1,21),true,true,true,LocalDate.now(),2,Team.SENIOR_COMPETE,"Stinus","1234",Users.CHAIRMAN));  // TODO midlertidig
+        //memberList.add(new Member("Stinus","Helweg Andersen", LocalDate.of(1975,1,21),true,true,true,LocalDate.now(),2,Team.SENIOR_COMPETE,"Stinus","1234",Users.CHAIRMAN));  // TODO midlertidig
 
     }
 
@@ -22,17 +22,19 @@ public class Database {
     }
 
     public void addMember(Member member){
-        /*if(member.getIsCompeting()) {
-            memberList.add(((CompeteSwimmer)member));
-            //memberList.add(new CompeteSwimmer(member));
+        if(member.getIsCompeting()) {
+           member = new CompeteSwimmer(member);
         }else {
-            memberList.add(((FitnessSwimmer)member));
-            //memberList.add(new FitnessSwimmer(member));
-        }  */
+            member = new FitnessSwimmer(member);
+        }
+
         memberList.add(member);
-        member.setMembershipNumber(memberList.indexOf(member));
+
         member.autoSetTeam();
         member.autoSetUserName();
+        memberList.add(member);
+        member.setMembershipNumber(memberList.indexOf(member));
+
     }
     public void removeMember(Member member){
         memberList.remove(member);
