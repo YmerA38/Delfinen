@@ -1,16 +1,16 @@
 package UI;
 
 import Main.Controller;
-import Main.Database;
 import Program.Access;
-import Program.FileHandler;
 import Program.Member;
 import Program.Users;
 import Program.Subscription;
+import Sort.Sort;
 
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -19,16 +19,21 @@ public class UI {
     private Controller controller = new Controller();
     FileHandler fileHandler = new FileHandler();
     Database database = new Database();
-
     Scanner scan = new Scanner(System.in);
 
-
+    private Sort sort = new Sort();
 
     public void start() {
-        System.out.println("Velkommen til Delfin svømmeklub");
+        try {
+            controller.load();
+            System.out.println("Fil indlæst");
+        }catch (FileNotFoundException e){
+            System.out.println("Manglende datafil fejl!! ");
+        }
+        System.out.println("Velkommen til "+CLUB_NAME);
 
 
-     /*   Access access;
+        Access access;
         do {
             access = loginUser();
             switch (access.getUserType()){
@@ -40,30 +45,32 @@ public class UI {
                 case CHAIRMAN -> runChairman(access.getMember());
             }
 
-        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);*/
+        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-    boolean menuError;
+/*      boolean menuError;
         do {
             do {
                 startPage();
                 try {
                     int menuChoice = returnInt();
                     if (menuChoice == 1)
-                        runChairman();
+                        runChiarman();
                     else if (menuChoice == 2) {
-                        runCashier();
+                        runKasser();
                     }else if (menuChoice == 3) {
-                        runTrainer();
+                        runTræner();
                     }
                     menuError = false;
                 } catch (InputMismatchException ime) {
                     System.out.println("Skriv kun tal");
                     scan.nextLine();
                     menuError = true;
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
                 }
             } while (menuError == true);
         } while (true);
-
+        */
     }
 
     public void startPage() {
@@ -89,12 +96,10 @@ public class UI {
         return controller.login(userName,passWord);
     }
 
-    public void runChairman(){
-        System.out.println("Velkommen");
-        scan.nextLine();
+    public void runChairman(Member member){
         boolean isRunning = true;
         while (isRunning) {
-            chairmanMenu();
+            chairmanMenu(member);
             int command =  returnInt() ;
 
             switch (command) {
@@ -115,9 +120,16 @@ public class UI {
                     }catch (FileNotFoundException e){
                         System.out.println("file not found error");
                     }
-
                 }
+                case 7 -> sortMenu();
                 case 0 -> System.exit(0);
+
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+                case "0" ->
+*/
+
 
                 default -> invalidInput();
             }
@@ -125,8 +137,8 @@ public class UI {
         }
 
     }
-    public void chairmanMenu() {
-        System.out.println("Velkommen" +
+    public void chairmanMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som formand af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n1. Tilføj medlem " +
                 "\n2. Rediger medlem " +
@@ -134,6 +146,7 @@ public class UI {
                 "\n4. Se medlemmer " +
                 "\n5. Save " +
                 "\n6. Load " +
+                "\n7. Sorter liste " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
@@ -144,18 +157,24 @@ public class UI {
         }
     }
 
-    public void runCashier(){
+    public void runCashier(Member member){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            cashierMenu();
+            cashierMenu(member);
             String command = scan.nextLine();
 
             switch (command) {
-                case "1" -> System.out.println(Subscription.checkIncomeEstimate());
+                case "1" -> System.out.println("fff");
                 case "2" -> System.out.println("ggg");
                 case "3" -> System.out.println("gggg");
                 case "0" -> System.exit(0);
+
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+                case "0" ->
+*/
 
 
                 default -> invalidInput();
@@ -165,11 +184,11 @@ public class UI {
 
     }
 
-    public void runTrainer(){
+    public void runTrainer(Member member){
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            trainerMenu();
+            trainerMenu(member);
             String command = scan.nextLine();
 
             switch (command) {
@@ -177,6 +196,11 @@ public class UI {
                 case "2" -> System.out.println("fff");
                 case "3" -> System.out.println("ggg");
                 case "0" -> System.exit(0);
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+
+*/
 
 
                 default -> invalidInput();
@@ -189,14 +213,20 @@ public class UI {
         scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
-            memberMenu();
+            memberMenu(member);
             String command = scan.nextLine();
 
             switch (command) {
-                case "1" -> System.out.println();
+                case "1" -> System.out.println("kk");
                 case "2" -> System.out.println("fff");
                 case "3" -> System.out.println("ggg");
                 case "0" -> System.exit(0);
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+
+*/
+
 
                 default -> invalidInput();
             }
@@ -204,8 +234,33 @@ public class UI {
         }
 
     }
-    public void memberMenu(){
-        System.out.println("Velkommen "+"\n" +
+
+    public void sortMenu (){
+        boolean run = true;
+        while (run) {
+            run = false;
+            sortMenuPrint();
+            switch (scan.nextLine()) {
+                case "1" -> sort.sortByFirstname(controller.getMemberList());
+                case "2" -> sort.sortByLastname(controller.getMemberList());
+                case "3" -> sort.sortByAge(controller.getMemberList());
+                case "4" -> sort.sortByActive(controller.getMemberList());
+                case "5" -> sort.sortByCompetitive(controller.getMemberList());
+                case "6" -> sort.sortByPayed(controller.getMemberList());
+                case "7" -> sort.sortByDateOfMembership(controller.getMemberList());
+                case "8" -> sort.sortByMembership(controller.getMemberList());
+                case "9" -> sort.sortByTeam(controller.getMemberList());
+                case "10" -> sort.sortByUsertype(controller.getMemberList());
+                default -> {
+                    invalidInput();
+                    run = true;
+                }
+            }
+        }
+        viewMemberList();
+    }
+    public void memberMenu(Member member){
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som medlem af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n9. Din profil" +
                 "\n0. Afslut");
@@ -257,8 +312,8 @@ public class UI {
 
 
 
-    public void cashierMenu() {
-        System.out.println("Velkommen " + "\n" +
+    public void cashierMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som kasser af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n1. Se indbetalinger " +
                 "\n2. Restance " +
@@ -268,8 +323,8 @@ public class UI {
                 "\n0. Afslut");
     }
 
-    public void trainerMenu() {
-        System.out.println("Velkommen "+"\n" +
+    public void trainerMenu(Member member) {
+        System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som træner af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
                 "\n1. Top 5 " +
                 "\n2. Se resultater " +
@@ -309,6 +364,10 @@ public class UI {
         }
 
     }
+
+    public void sortMenuPrint(){
+        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt\n7: Dato for medlemsskab\n8: Medlemsnummer\n9: Hold\n10: Medlemstype\n ");
+    }
     public LocalDate returnDate(int day,int month,int year){
         try{
             return LocalDate.of(year,month,day);
@@ -317,5 +376,14 @@ public class UI {
             return null;
         }
     }
+   /* public boolean catchFileException(FileHandler fileHandler){
+        {
+            try{
+                fileHandler
+            }catch (FileNotFoundException e){
+                System.out.println("file not found error");
+            }
+        }
+    }*/
 
 }

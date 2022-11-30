@@ -40,7 +40,6 @@ public class Member {
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
         this.userType = member.getUserType();
-
     }
 
 
@@ -64,10 +63,7 @@ public class Member {
        this.subscribtionRate = getSubscribtionRate();
     }
 
-
-
-
-    public Team autoSetTeam(){
+     public Team autoSetTeam(){
 
         if(isActive) {
             if (age() > 17) {
@@ -88,9 +84,6 @@ public class Member {
         }
 
     }
-
-
-
 
     public int age(){
 
@@ -234,7 +227,6 @@ public class Member {
     public String getPassword() {
         return password;
     }
-
 
     @Override
     public String toString(){

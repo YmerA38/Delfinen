@@ -4,6 +4,7 @@ package Main;
 import Program.*;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -13,6 +14,8 @@ public class Database {
 
     public Database(){
         memberList = new ArrayList<>();
+        //memberList.add(new Member("Stinus","Helweg Andersen", LocalDate.of(1975,1,21),true,true,true,LocalDate.now(),2,Team.SENIOR_COMPETE,"Stinus","1234",Users.CHAIRMAN));  // TODO midlertidig
+
     }
 
     public ArrayList<Member> getMemberList() {
@@ -21,12 +24,18 @@ public class Database {
 
     public void addMember(Member member){
         if(member.getIsCompeting()) {
-            memberList.add(new CompeteSwimmer(member));
+           member = new CompeteSwimmer(member);
         }else {
-            memberList.add(new FitnessSwimmer(member));
+            member = new FitnessSwimmer(member);
         }
-        member.setMembershipNumber(memberList.indexOf(member));
+
+        memberList.add(member);
+
         member.autoSetTeam();
+        member.autoSetUserName();
+        memberList.add(member);
+        member.setMembershipNumber(memberList.indexOf(member));
+
     }
     public void removeMember(Member member){
         memberList.remove(member);
@@ -64,10 +73,10 @@ public class Database {
             if(member.getPassword().equals(code)){
                  access.setUserType(member.getUserType());
             }else {
-                member.setUserType(Users.WRONG_PASSWORD);
+                access.setUserType(Users.WRONG_PASSWORD);
             }
         } else {
-            member.setUserType(Users.NO_USER);
+            access.setUserType(Users.NO_USER);
         }
         return access;
     }

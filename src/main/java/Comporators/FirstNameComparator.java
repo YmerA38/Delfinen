@@ -1,3 +1,4 @@
+/*
 package Comporators;
 
 import Program.Member;
@@ -10,3 +11,4 @@ public class FirstNameComparator implements Comparator<Member> {
         return o1.getFirstName().toLowerCase().compareTo(o2.getFirstName());
     }
 }
+*/
