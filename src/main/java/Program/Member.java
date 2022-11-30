@@ -40,6 +40,10 @@ public class Member {
         this.isActive = member.getIsActive();
         this.isCompeting = member.getIsCompeting();
         this.dateOfMembership = member.getDateOfMembership();
+        this.membershipNumber = member.getMembershipNumber();
+        this.team = member.getTeam();
+        this.username = member.getUsername();
+        this.password = member.getPassword();
         this.userType = member.getUserType();
     }
 
