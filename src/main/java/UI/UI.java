@@ -111,14 +111,7 @@ public class UI {
                 case 2 -> controller.editMember();
                 case 3 -> controller.deleteMember();
                 case 4 -> viewMemberList();
-                case 5 -> {
-                    try{
-                    controller.load();
-                    }catch (FileNotFoundException e){
-                        System.out.println("file not found error");
-                    }
-                }
-                case 6 ->{
+                case 5 ->{
                     try{
                         controller.save();
                     }catch (FileNotFoundException e){
@@ -150,7 +143,7 @@ public class UI {
                 "\n3. Slet medlem " +
                 "\n4. Se medlemmer " +
                 "\n5. Save " +
-                "\n6. Load " +
+
                 "\n7. Sorter liste " +
                 "\n8. Søg medlem " +
                 "\n9. Din profil" +

@@ -39,6 +39,7 @@ public class Member {
         this.dateOfBirth = member.getDateOfBirth();
         this.isActive = member.getIsActive();
         this.isCompeting = member.getIsCompeting();
+        this.hasPayed = member.getHasPayed();
         this.dateOfMembership = member.getDateOfMembership();
         this.membershipNumber = member.getMembershipNumber();
         this.team = member.getTeam();

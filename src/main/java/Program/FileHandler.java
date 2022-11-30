@@ -19,7 +19,7 @@ public class FileHandler {
         String[] entity;
         String[] date1;
         String[] date2;
-        //fileScanner.nextLine();//spring linje over
+        fileScanner.nextLine();//spring linje over
         do{
             line = fileScanner.nextLine();
             if(!line.isEmpty()){
