@@ -10,7 +10,7 @@ public class Subscription {
     public static double checkIncomeEstimate() {
         double incomeEstimate = 0;
         for (int i = 0; i < database.getMemberList().size(); i++) {
-            incomeEstimate += database.getMemberList().get(i).getSubscriptionRate();
+            incomeEstimate += database.getMemberList().get(i).getSubscribtionRate();
         }
 
         return incomeEstimate;

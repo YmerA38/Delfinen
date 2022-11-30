@@ -101,7 +101,7 @@ public class Member {
     }
 
 
-    public void getSubscriptions() {
+    public int getSubscribtionRate() {
         for (Member member : database.getMemberList()) {
             if (isActive == true) {
                 if (member.age() < 18) {
@@ -114,11 +114,11 @@ public class Member {
             } else {
                 payment = 500;
             }
-        }
+        } return subscribtionRate;
     }
-    public int getSubscribtionRate() {
+   /* public int getSubscribtionRate() {
         return subscribtionRate;
-    }
+    }*/
 
     public void setSubscribtionRate(){
         int age = age();
