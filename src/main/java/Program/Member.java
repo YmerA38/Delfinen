@@ -231,6 +231,9 @@ public class Member {
 
     @Override
     public String toString(){
-        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+ "\nHold: " + team;
+        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth +
+                "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed +
+                "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+
+                "\nHold: " + team+ "\nBrugernavn "+username+ "\nKode "+password;
     }
 }

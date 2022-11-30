@@ -31,12 +31,18 @@ public class Database {
 
         memberList.add(member);
 
-        member.autoSetTeam();
-        member.autoSetUserName();
-        memberList.add(member);
-        member.setMembershipNumber(memberList.indexOf(member));
+
 
     }
+    public void autoSet(Member member){
+        member.autoSetTeam();
+        member.autoSetUserName();
+
+        member.setMembershipNumber(memberList.indexOf(member));
+    }
+
+
+
     public void removeMember(Member member){
         memberList.remove(member);
     }
