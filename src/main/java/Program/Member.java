@@ -44,9 +44,9 @@ public class Member {
     }
 
 
-    // denne contrukter er til brug for fileHandler
-    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
-                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username, String password, Users userType) {
+        // denne contrukter er til brug for fileHandler
+    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,
+    boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team,String username,String password,Users userType){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -60,13 +60,13 @@ public class Member {
         this.password = password;
         this.userType = userType;
 
-        this.payment = payment;
-        this.subscribtionRate = getSubscriptionRate();
+       this.payment = payment;
+       this.subscribtionRate = getSubscribtionRate();
     }
 
-    public Team autoSetTeam() {
+     public Team autoSetTeam(){
 
-        if (isActive) {
+        if(isActive) {
             if (age() > 17) {
                 if (isCompeting) {
                     return Team.SENIOR_COMPETE;
@@ -80,20 +80,20 @@ public class Member {
                     return Team.JUNIOR_FITNESS;
                 }
             }
-        } else {
+        }else {
             return Team.NO_TEAM;
         }
 
     }
 
-    public int age() {
+    public int age(){
 
         int age = dateOfBirth.getYear() - LocalDate.now().getYear();
-        if (dateOfBirth.getMonth().getValue() > LocalDate.now().getMonth().getValue()) {
+        if(dateOfBirth.getMonth().getValue()>LocalDate.now().getMonth().getValue()){
             age -= 1;
         }
-        if (dateOfBirth.getMonth().getValue() == LocalDate.now().getMonth().getValue()) {
-            if (dateOfBirth.getDayOfMonth() > LocalDate.now().getDayOfMonth()) {
+        if(dateOfBirth.getMonth().getValue()==LocalDate.now().getMonth().getValue()) {
+            if(dateOfBirth.getDayOfMonth()>LocalDate.now().getDayOfMonth()){
                 age -= 1;
             }
         }
@@ -101,7 +101,7 @@ public class Member {
     }
 
 
-    public int getSubscriptionRate() {
+    public void getSubscriptions() {
         for (Member member : database.getMemberList()) {
             if (isActive == true) {
                 if (member.age() < 18) {
@@ -114,53 +114,50 @@ public class Member {
             } else {
                 payment = 500;
             }
-        } return subscribtionRate;
+        }
+    }
+    public int getSubscribtionRate() {
+        return subscribtionRate;
     }
 
-   /* public int getSubscribtionRate() {
-        return subscribtionRate;
-    }*/
-
-    public void setSubscribtionRate() {
+    public void setSubscribtionRate(){
         int age = age();
         this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
     }
 
 
-    public void autoSetUserName() {
-        this.username = "" + membershipNumber; // midlertidig username;
+
+    public void autoSetUserName(){
+        this.username = ""+membershipNumber; // midlertidig username;
     }
 
     public String getFirstName() {
         return firstName;
     }
-
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName){
         this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
-
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName){
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
+    public LocalDate getDateOfBirth(){
         return dateOfBirth;
     }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth){
         this.dateOfBirth = dateOfBirth;
     }
 
 
-    public boolean getIsActive() {
+    public boolean getIsActive(){
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
+    public void setIsActive(boolean isActive){
         this.isActive = isActive;
     }
 
@@ -233,7 +230,7 @@ public class Member {
     }
 
     @Override
-    public String toString() {
-        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber + "\nHold: " + team;
+    public String toString(){
+        return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth + "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed + "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+ "\nHold: " + team;
     }
 }
