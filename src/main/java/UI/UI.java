@@ -145,7 +145,7 @@ public class UI {
                 "\n5. Save " +
 
                 "\n7. Sorter liste " +
-                "\n8. Søg medlem " +
+                "\n8. Søg efter medlem " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
