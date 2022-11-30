@@ -18,7 +18,7 @@ public class Member {
     private String password;
     private Users userType;
 
-    private int payment;
+   private int payment;
     private int subscribtionRate;
 
     // denne constructer bruges af Formand
