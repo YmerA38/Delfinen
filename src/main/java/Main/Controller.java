@@ -1,9 +1,6 @@
 package Main;
 
-import Program.Access;
-import Program.FileHandler;
-import Program.Member;
-import Program.Users;
+import Program.*;
 import UI.UI;
 
 import java.io.FileNotFoundException;
@@ -107,6 +104,10 @@ public class Controller {
 
 
     }
+    public ArrayList<Results> getResultList(){
+        return database.getResultList();
+    }
+
     public ArrayList<Member> getMemberList () {
         return database.getMemberList();
     }
@@ -114,6 +115,8 @@ public class Controller {
     public Access login(String name, String password){
         return database.login(name,password);
     }
+
+
     public void save() throws FileNotFoundException {
         fileHandler.save(database.getMemberList());
     }

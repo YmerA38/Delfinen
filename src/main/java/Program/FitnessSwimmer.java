@@ -9,8 +9,8 @@ public class FitnessSwimmer extends Member {
         super(member);
         resultList = new ArrayList<>();
     }
-    public void addResult(Discipline discipline,double time,int distance){
-        resultList.add(new Results(discipline,time,distance));
+    public void addResult(Discipline discipline,double time,int distance, String competitionName){
+        resultList.add(new Results(discipline,time,distance,competitionName));
     }
 
 }

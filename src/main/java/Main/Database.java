@@ -10,6 +10,7 @@ import java.util.Comparator;
 
 public class Database {
     private ArrayList<Member> memberList;
+    private ArrayList<Results> resultList;
 
 
     public Database(){
@@ -20,6 +21,9 @@ public class Database {
 
     public ArrayList<Member> getMemberList() {
         return memberList;
+    }
+    public ArrayList<Results> getResultList(){
+        return resultList;
     }
 
     public void addMember(Member member, boolean isNew){

@@ -2,12 +2,8 @@ package UI;
 
 import Main.Controller;
 import Main.Database;
-import Program.Access;
-import Program.Member;
-import Program.Users;
-import Program.Subscription;
+import Program.*;
 import Sort.Sort;
-import Program.FileHandler;
 
 import java.io.FileNotFoundException;
 import java.time.DateTimeException;
@@ -33,6 +29,7 @@ public class UI {
         }catch (FileNotFoundException e){
             System.out.println("Manglende datafil fejl!! ");
         }
+
         System.out.println("Velkommen til "+CLUB_NAME);
 
 
@@ -50,7 +47,7 @@ public class UI {
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-    /* boolean menuError;
+/*      boolean menuError;
         do {
             do {
                 startPage();
@@ -72,8 +69,8 @@ public class UI {
                     throw new RuntimeException(e);
                 }
             } while (menuError == true);
-        } while (true);*/
-
+        } while (true);
+        */
     }
 
     public void startPage() {
@@ -218,8 +215,8 @@ public class UI {
             String command = scan.nextLine();
 
             switch (command) {
-                case "1" -> System.out.println("kk");
-                case "2" -> System.out.println("fff");
+                case "1" -> System.out.println("fff");
+                case "2" -> viewMemberResults();
                 case "3" -> System.out.println("ggg");
                 case "0" -> System.exit(0);
             /*    case "7" ->
@@ -235,6 +232,13 @@ public class UI {
         }
 
     }
+    private void viewMemberResults() {
+            for (Results member : controller.getResultList()) {
+                System.out.println(member.resultList);
+            }
+    }
+
+
     public void runMember(Member member){
         scan.nextLine();
         boolean isRunning = true;
