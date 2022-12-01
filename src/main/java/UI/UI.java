@@ -45,9 +45,47 @@ public class UI {
             }
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
+
+/*      boolean menuError;
+        do {
+            do {
+                startPage();
+                try {
+                    int menuChoice = returnInt();
+                    if (menuChoice == 1)
+                        runChiarman();
+                    else if (menuChoice == 2) {
+                        runKasser();
+                    }else if (menuChoice == 3) {
+                        runTræner();
+                    }
+                    menuError = false;
+                } catch (InputMismatchException ime) {
+                    System.out.println("Skriv kun tal");
+                    scan.nextLine();
+                    menuError = true;
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+            } while (menuError == true);
+        } while (true);
+        */
     }
 
+    public void startPage() {
+        System.out.println("""
+                ┌──────────────────────┐	               
+                │ Tast 1) Formand      │  
+                ├──────────────────────┤
+                │ Tast 2) Kasserer     │
+                ├──────────────────────┤
+                │ Tast 3) Træner       │
+                ├──────────────────────┤
+                │ Tast 4) Medlem       │
+                └──────────────────────┘""");
 
+
+    }
     public Access loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");
@@ -92,9 +130,19 @@ public class UI {
                 case 8 -> search();
                 case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
+
+            /*    case "7" ->
+                case "8" ->
+                case "9" ->
+                case "0" ->
+*/
+
+
                 default -> invalidInput();
             }
+
         }
+
     }
     public void cashierMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
@@ -107,6 +155,8 @@ public class UI {
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
+
+
     public void runCashier(Member member){
         scan.nextLine();
         boolean isRunning = true;
@@ -123,7 +173,9 @@ public class UI {
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
+
         }
+
     }
     public void trainerMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
@@ -150,7 +202,9 @@ public class UI {
                 case 9 -> dinProfil(member);
                 default -> invalidInput();
             }
+
         }
+
     }
     public void memberMenu(Member member){
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
@@ -158,6 +212,7 @@ public class UI {
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
+
 
     public void runMember(Member member){
         scan.nextLine();

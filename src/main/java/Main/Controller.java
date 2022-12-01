@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Controller {
 
     FileHandler fileHandler = new FileHandler();
-    Database database = new Database();
+    static Database database = new Database();
     Scanner scan = new Scanner(System.in);
 
 
@@ -128,6 +128,8 @@ public class Controller {
     public ArrayList<Member> findMemberByName(String searchTerm) {
         return database.findMemberByName(searchTerm);
     }
+
+
 }
 
 

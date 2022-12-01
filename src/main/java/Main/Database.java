@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import Program.Subscription;
 
+
 public class Database {
-    private ArrayList<Member> memberList;
+    private static ArrayList<Member> memberList;
     private ArrayList<Results> resultList;
 
 
@@ -18,7 +19,7 @@ public class Database {
 
     }
 
-    public ArrayList<Member> getMemberList() {
+    public static ArrayList<Member> getMemberList() {
         return memberList;
     }
     public ArrayList<Results> getResultList(){
@@ -117,6 +118,22 @@ public class Database {
         return access;
     }
 
+   public void autoSetPayments(){
+        for (Member member : memberList){
+            member.autoSetPayment();
+        }
+   }
+
+   public double totalIncome(){
+        double total = 0;
+        for (Member member : memberList){
+            total +=member.getSubscriptionRate();
+        }
+        return total;
+   }
+
+
+}
 
    /* public void sortMemberMethod() throws IOException{
         memberList.sort(new MemberComparator());
@@ -124,4 +141,4 @@ public class Database {
 
 
 
-}
+

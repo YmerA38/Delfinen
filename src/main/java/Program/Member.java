@@ -2,6 +2,8 @@ package Program;
 
 import java.time.LocalDate;
 
+import static Program.Subscription.database;
+
 //import static Program.Subscription.database;
 
 public class Member {
@@ -18,8 +20,7 @@ public class Member {
     private String password;
     private Users userType;
 
-    private int payment;
-    private int subscribtionRate;
+    private double subscriptionRate;
 
 
     // denne constructer bruges af Formand
@@ -34,7 +35,6 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
-
 
     }
 
@@ -51,6 +51,8 @@ public class Member {
         this.username = member.getUsername();
         this.password = member.getPassword();
         this.userType = member.getUserType();
+
+
 
 
     }
@@ -112,33 +114,6 @@ public class Member {
     }
 
 
-   /* public int getSubscribtionRate() {
-        for (Member member : database.getMemberList()) {
-            if (isActive == true) {
-                if (member.age() < 18) {
-                    payment = 1000;
-                } else if (member.age() <= 60) {
-                    payment = 1600;
-                } else if (member.age() > 60) {
-                    payment = 1200;
-                }
-            } else {
-                payment = 500;
-            }
-        } return subscribtionRate;
-    }
-*/
-
-    /* public int getSubscribtionRate() {
-         return subscribtionRate;
-     }
-
-     public void setSubscribtionRate(){
-         int age = age();
-         this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
-     }
-
-     }*/
 
 
 
@@ -247,6 +222,30 @@ public class Member {
         return password;
     }
 
+    public void autoSetPayment() {
+        double payment = 0;
+            if (getIsActive() == true) {
+                if (age() < 18) {
+                    payment = 1000;
+                } else if (age() <= 60) {
+                    payment = 1600;
+                } else if (age() > 60) {
+                    payment = 1200;
+                }
+            } else {
+                payment = 500;
+            }
+        this.subscriptionRate = payment;
+    }
+
+    public void setSubscriptionRate(double subscriptionRate) {
+        this.subscriptionRate = subscriptionRate;
+    }
+
+    public double getSubscriptionRate() {
+        return subscriptionRate;
+    }
+
     @Override
     public String toString() {
         return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth +
@@ -254,6 +253,7 @@ public class Member {
                 "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber +
                 "\nHold: " + team + "\nBrugernavn " + username + "\nKode " + password;
     }
+
 
 
 }
