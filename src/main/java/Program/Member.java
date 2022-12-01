@@ -1,7 +1,5 @@
 package Program;
 
-import Program.AgeEnums;
-
 import java.time.LocalDate;
 
 //import static Program.Subscription.database;
