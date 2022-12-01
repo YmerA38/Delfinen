@@ -1,6 +1,7 @@
 package Program;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import static Program.Subscription.database;
 
@@ -19,8 +20,10 @@ public class Member {
     private String username;
     private String password;
     private Users userType;
+    private LocalDate nextPayment;
 
     private double subscriptionRate;
+    private ArrayList<AccountTransaction> paymentBalances;
 
 
     // denne constructer bruges af Formand
@@ -35,6 +38,7 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
+        this.paymentBalances = new ArrayList<>();
 
     }
 
@@ -255,5 +259,34 @@ public class Member {
     }
 
 
+    public void payment(double payment){
+        AccountTransaction payAccount = new AccountTransaction();
+        payAccount.setPayment(payment);
+        paymentBalances.add(payAccount);
+    }
+    public void putSubscription(){
+        AccountTransaction debtAccount = new AccountTransaction();
+        debtAccount.setSubscription(subscriptionRate,LocalDate.of(LocalDate.now().getYear(),dateOfMembership.getMonth(),
+                dateOfMembership.getDayOfMonth()));
+        paymentBalances.add(debtAccount);
+    }
 
+
+    public double getBallance() {
+        double balance = 0;
+        if(!paymentBalances.isEmpty()){
+            for(AccountTransaction transaction: paymentBalances){
+                balance += transaction.getPayment()-transaction.getSubscription();
+            }
+        }
+        return balance;
+    }
+
+    public void setNextPayment(LocalDate nextPayment) {
+        this.nextPayment = nextPayment;
+    }
+
+    public LocalDate getNextPayment() {
+        return nextPayment;
+    }
 }

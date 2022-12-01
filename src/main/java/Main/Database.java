@@ -3,6 +3,7 @@ package Main;
 
 import Program.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import Program.Subscription;
@@ -133,6 +134,20 @@ public class Database {
    }
 
 
+    public void updatePaymets() {
+        for(Member member: memberList){
+            if(LocalDate.now().isAfter(member.getNextPayment())){
+                member.putSubscription();
+                member.setNextPayment(LocalDate.of(LocalDate.now().getYear()+1,member.getDateOfMembership().getMonth(),
+                        member.getDateOfMembership().getDayOfMonth()));
+            }
+            if(member.getBallance()>=0){
+                member.setHasPayed(true);
+            }else{
+                member.setHasPayed(false);
+            }
+        }
+    }
 }
 
    /* public void sortMemberMethod() throws IOException{

@@ -151,7 +151,7 @@ public class UI {
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
-                "\n8. indtægt " +
+                "\n8. Opdater betalinger " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
@@ -167,8 +167,9 @@ public class UI {
             switch (command) {
                 case 1 -> priceList();
                 case 2 -> sort.sortByPayed(controller.getMemberList());
-                case 3 -> System.out.println("in progess");//controller.getTotalPayment();
+                case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> System.out.println(search());
+                case 8 -> controller.updatePayments();
                 case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
                 default -> invalidInput();
@@ -222,11 +223,9 @@ public class UI {
             int command = returnInt();
 
             switch (command) {
-                case 1 -> System.out.println("kk");
-                case 2 -> System.out.println("fff");
-                case 3 -> System.out.println("ggg");
-                case 4 -> System.exit(0);
+
                 case 9 -> dinProfil(member);
+                case 0 -> System.exit(0);
                 default -> invalidInput();
             }
         }
@@ -235,7 +234,7 @@ public class UI {
     private void dinProfil(Member member) {
         boolean run = true;
         do {
-            System.out.println("\n1. Se profildata\n2. Ret brugernavn og kodeord\n0. Vend tilbage til hovedmenu ");
+            System.out.println("\n1. Se profildata\n2. Ret brugernavn og kodeord\n3. Betal for medlemsskab\n0. Vend tilbage til hovedmenu ");
             switch (returnInt()){
                 case 1 -> System.out.println(member);
                 case 2 -> {
@@ -244,12 +243,27 @@ public class UI {
                     System.out.println("Indtast nyt kodeord");
                     member.setUsername(scan.nextLine());
                 }
+                case 3 -> {
+                    double balance = member.getBallance();
+                    if (balance<=0) {
+                        System.out.println("Du skylder " + -balance + "kr.");
+
+                    }else {
+                        System.out.println("Du har " + balance + "kr i overskud");
+                    }
+                    System.out.println("Indtast beløb du ønsker at betale");
+                    double amount = returnDouble();
+                    if(amount>0) {
+                        member.payment(amount);
+                    }
+                }
                 case 0 -> run = false;
                 default -> System.out.println("type 1, 2 or 0");
             }
 
         }while(run);
     }
+
 
 
 
@@ -369,6 +383,19 @@ public class UI {
             }
         }while (!pass);
         return returnInt;
+    }
+    private double returnDouble() {
+        boolean pass = false;
+        double returnDouble = 0;
+        do {
+            try {
+                returnDouble = Integer.parseInt(scan.nextLine());
+                pass = true;
+            } catch (NumberFormatException e) {
+                System.out.println("fejl! indtast et tal");
+            }
+        }while (!pass);
+        return returnDouble;
     }
     public boolean returnBoolean(){
         String string;

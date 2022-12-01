@@ -130,6 +130,14 @@ public class Controller {
     }
 
 
+    public double getTotalPayment() {
+        database.autoSetPayments();
+        return database.totalIncome();
+    }
+
+    public void updatePayments() {
+        database.updatePaymets();
+    }
 }
 
 
