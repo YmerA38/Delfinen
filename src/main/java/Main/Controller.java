@@ -15,7 +15,6 @@ public class Controller {
     Scanner scan = new Scanner(System.in);
 
 
-
     public void addMember(Member member){
         database.addMember(member,true);
     }
@@ -124,6 +123,7 @@ public class Controller {
     public void load() throws FileNotFoundException {
         fileHandler.load(database);
     }
+
 
 
 }

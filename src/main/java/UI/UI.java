@@ -189,7 +189,7 @@ public class UI {
             switch (command) {
                 case "1" -> priceList();
                 case "2" -> sort.sortByPayed(controller.getMemberList());
-                case "3" -> Subscription.checkIncomeEstimate();
+                case "3" -> controller.getTotalPayment();
                 case "4" -> search();
                 case "0" -> System.exit(0);
 
@@ -353,6 +353,7 @@ public class UI {
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
+                "\n8. indtægt " +
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
@@ -429,6 +430,7 @@ public class UI {
             }
         }
     }
+
    /* public boolean catchFileException(FileHandler fileHandler){
         {
             try{

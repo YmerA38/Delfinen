@@ -1,8 +1,10 @@
 package Program;
 
+import Program.AgeEnums;
+
 import java.time.LocalDate;
 
-import static Program.Subscription.database;
+//import static Program.Subscription.database;
 
 public class Member {
     private String firstName;
@@ -21,6 +23,7 @@ public class Member {
     private int payment;
     private int subscribtionRate;
 
+
     // denne constructer bruges af Formand
     public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
                   boolean hasPayed, Users userType) {
@@ -33,6 +36,8 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
+
+
     }
 
     public Member(Member member) {
@@ -48,12 +53,14 @@ public class Member {
         this.username = member.getUsername();
         this.password = member.getPassword();
         this.userType = member.getUserType();
+
+
     }
 
 
-        // denne contrukter er til brug for fileHandler
-    public Member(String firstName, String lastName, LocalDate dateOfBirth,boolean isActive,boolean isCompeting,
-    boolean hasPayed,LocalDate dateOfMembership,int membershipNumber,Team team,String username,String password,Users userType){
+    // denne contrukter er til brug for fileHandler
+    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
+                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username, String password, Users userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -67,13 +74,11 @@ public class Member {
         this.password = password;
         this.userType = userType;
 
-       this.payment = payment;
-       this.subscribtionRate = getSubscribtionRate();
     }
 
-     public void autoSetTeam(){
+    public void autoSetTeam() {
 
-        if(isActive) {
+        if (isActive) {
             if (age() > 17) {
                 if (isCompeting) {
                     this.team = Team.SENIOR_COMPETE;
@@ -87,20 +92,21 @@ public class Member {
                     this.team = Team.JUNIOR_FITNESS;
                 }
             }
-        }else {
+        } else {
             this.team = Team.NO_TEAM;
         }
 
     }
 
-    public int age(){
+
+    public int age() {
 
         int age = LocalDate.now().getYear() - dateOfBirth.getYear();
-        if(dateOfBirth.getMonth().getValue()>LocalDate.now().getMonth().getValue()){
+        if (dateOfBirth.getMonth().getValue() > LocalDate.now().getMonth().getValue()) {
             age -= 1;
         }
-        if(dateOfBirth.getMonth().getValue()==LocalDate.now().getMonth().getValue()) {
-            if(dateOfBirth.getDayOfMonth()>LocalDate.now().getDayOfMonth()){
+        if (dateOfBirth.getMonth().getValue() == LocalDate.now().getMonth().getValue()) {
+            if (dateOfBirth.getDayOfMonth() > LocalDate.now().getDayOfMonth()) {
                 age -= 1;
             }
         }
@@ -108,7 +114,7 @@ public class Member {
     }
 
 
-    public int getSubscribtionRate() {
+   /* public int getSubscribtionRate() {
         for (Member member : database.getMemberList()) {
             if (isActive == true) {
                 if (member.age() < 18) {
@@ -123,48 +129,55 @@ public class Member {
             }
         } return subscribtionRate;
     }
-   /* public int getSubscribtionRate() {
-        return subscribtionRate;
-    }*/
+*/
 
-    public void setSubscribtionRate(){
-        int age = age();
-        this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
-    }
+    /* public int getSubscribtionRate() {
+         return subscribtionRate;
+     }
+
+     public void setSubscribtionRate(){
+         int age = age();
+         this.subscribtionRate = this.isActive == false ? 500 : age < 18 ? 1000 : age > 60 ? 1200 : 1600; //skal rettes
+     }
+
+     }*/
 
 
 
-    public void autoSetUserName(){
+    public void autoSetUserName() {
         this.username = firstName; // midlertidig username;
     }
 
     public String getFirstName() {
         return firstName;
     }
-    public void setFirstName(String firstName){
+
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
     }
-    public void setLastName(String lastName){
+
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth(){
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setDateOfBirth(LocalDate dateOfBirth){
+
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
 
-    public boolean getIsActive(){
+    public boolean getIsActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive){
+    public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
 
@@ -237,10 +250,12 @@ public class Member {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Medlem: " + "\nFornavn: " + firstName + "\nEfternavn: " + lastName + "\nAlder: " + dateOfBirth +
                 "\nStatus: " + isActive + "\nKonkurrence: " + isCompeting + "\nBetaling status: " + hasPayed +
-                "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber+
-                "\nHold: " + team+ "\nBrugernavn "+username+ "\nKode "+password;
+                "\nDato for indmeldelse: " + dateOfMembership + "\nMedlemsnummer: " + membershipNumber +
+                "\nHold: " + team + "\nBrugernavn " + username + "\nKode " + password;
     }
+
+
 }
