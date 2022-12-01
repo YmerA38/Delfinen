@@ -3,10 +3,7 @@ package Main;
 
 import Program.*;
 
-import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class Database {
     private ArrayList<Member> memberList;
@@ -54,7 +51,8 @@ public class Database {
         ArrayList<Member> searchResult = new ArrayList<>();
 
         String[] searchPart = search.split(" ");
-        ArrayList<Member> resultList = new ArrayList<>();
+        //ArrayList<Member> resultList = new ArrayList<>();
+        ArrayList<RateMember> ratingList = new ArrayList<>();
         boolean found;
         for(Member member : memberList){
             found = false;
@@ -64,7 +62,31 @@ public class Database {
                     }
             }
             if(found){
-                resultList.add(member);
+                RateMember rateMember = new RateMember(member,1);
+                ratingList.add(rateMember);
+                if(member.getFirstName().equals(searchPart[0])){
+                    rateMember.addToRating(1);
+                }
+                String[] lastNamePart = member.getLastName().split(" ");
+                for(int i = 1; i > searchPart.length; i++){
+                    if(member.getLastName().contains(searchPart[i])){
+                        rateMember.addToRating(1);
+                    }
+                    if(lastNamePart[i-1].equals(searchPart[i])){
+                        rateMember.addToRating(1);
+                    }
+                }
+            }
+        }
+        int highestScore = 0;
+        for(RateMember rateMember : ratingList){
+            if(rateMember.getRating()>highestScore){
+                highestScore = rateMember.getRating();
+            }
+        }
+        for(RateMember rateMember : ratingList){
+            if(rateMember.getRating()==highestScore){
+                searchResult.add(rateMember.getMember());
             }
         }
         return searchResult;

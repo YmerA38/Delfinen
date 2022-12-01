@@ -270,6 +270,9 @@ public class UI {
                 "\n9. Din profil" +
                 "\n0. Afslut");
     }
+    public void sortMenuPrint(){
+        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt\n7: Dato for medlemsskab\n8: Medlemsnummer\n9: Hold\n10: Medlemstype\n ");
+    }
     public void sortMenu (){
         boolean run = true;
         while (run) {
@@ -396,9 +399,7 @@ public class UI {
 
     }
 
-    public void sortMenuPrint(){
-        System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt\n7: Dato for medlemsskab\n8: Medlemsnummer\n9: Hold\n10: Medlemstype\n ");
-    }
+
     public LocalDate returnDate(int day,int month,int year){
         try{
             return LocalDate.of(year,month,day);
