@@ -1,14 +1,32 @@
 package Program;
 
+import java.util.ArrayList;
+
 public class Results {
     private Discipline discipline;
     private double time;
     private int distance;
+    private String competitionName;
 
-    public Results(Discipline discipline, double time, int distance) {
+    public ArrayList<Results> resultList;
+
+
+    public Results(Discipline discipline, double time, int distance, String competitionName) {
+        resultList.add(new Results(Discipline.CRAWL,12.6,20,"DM"));
+        resultList.add(new Results(Discipline.BUTTERFLY,5,50,"DM"));
+        this.competitionName = competitionName;
         this.discipline = discipline;
         this.time = time;
         this.distance = distance;
+    }
+
+
+    public String getCompetitionName() {
+        return competitionName;
+    }
+
+    public void setCompetitionName(String competitionName) {
+        this.competitionName = competitionName;
     }
 
     public Discipline getDiscipline() {
