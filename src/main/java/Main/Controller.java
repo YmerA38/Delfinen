@@ -125,7 +125,9 @@ public class Controller {
     }
 
 
-
+    public ArrayList<Member> findMemberByName(String searchTerm) {
+        return database.findMemberByName(searchTerm);
+    }
 }
 
 
