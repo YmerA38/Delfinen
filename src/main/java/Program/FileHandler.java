@@ -13,6 +13,7 @@ public class FileHandler {
 
 
     private final String FILE_SAVE = "data/memberDatabase.csv";
+    private final String RESULT_SAVE = "data/resultDatabase";
     public boolean load(Database database) throws FileNotFoundException {
         Scanner fileScanner = new Scanner(new File(FILE_SAVE));
         String line;
@@ -48,6 +49,19 @@ public class FileHandler {
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
                     member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam()+","+
                     member.getUsername()+","+member.getPassword()+","+member.getUserType());
+        }
+        fileSaver.flush();
+        fileSaver.close();
+
+
+        return true;
+    }
+    public boolean saveResult(ArrayList<Results> resultsList) throws FileNotFoundException {
+        PrintStream fileSaver = new PrintStream(RESULT_SAVE);
+        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
+        for(Results results:resultsList){
+            fileSaver.println(results.getDiscipline()+","+results.getTime()+","+results.getDistance()+","+
+                    results.getCompetitionName());
         }
         fileSaver.flush();
         fileSaver.close();

@@ -16,6 +16,7 @@ public class Database {
 
     public Database(){
         memberList = new ArrayList<>();
+        resultList = new ArrayList<>();
         //memberList.add(new Member("Stinus","Helweg Andersen", LocalDate.of(1975,1,21),true,true,true,LocalDate.now(),2,Team.SENIOR_COMPETE,"Stinus","1234",Users.CHAIRMAN));  // TODO midlertidig
 
     }

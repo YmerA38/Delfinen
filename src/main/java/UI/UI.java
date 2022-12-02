@@ -277,8 +277,8 @@ public class UI {
 
 
     private void viewMemberResults() {
-            for (Results member : controller.getResultList()) {
-                System.out.println(member.resultList);
+            for (Results results : controller.getResultList()) {
+                System.out.println(results.resultList);
             }
     }
 
