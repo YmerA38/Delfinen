@@ -107,8 +107,8 @@ public class UI {
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
-                "\n8. Opdater betalinger " +
-                "\n9. Din profil" +
+                "\n5. Opdater betalinger " +
+                "\n6. Din profil" +
                 "\n0. Afslut");
     }
 
@@ -122,11 +122,11 @@ public class UI {
 
             switch (command) {
                 case 1 -> priceList();
-                case 2 -> sort.sortByPayed(controller.getMemberList());
+                case 2 -> sort.sortByPayed(controller.getMemberList()); // viser intet
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> System.out.println(search());
-                case 8 -> controller.updatePayments(); // virker ikke
-                case 9 -> dinProfil(member);
+                case 5 -> controller.updatePayments(); // virker ikke
+                case 6 -> dinProfil(member);
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -155,8 +155,9 @@ public class UI {
                 case 1 -> System.out.println("fff");
                 case 2 -> viewMemberResults();
                 case 3 -> System.out.println("ggg");
-                case 4 -> System.exit(0);
+                case 4 -> System.out.println("ooo");
                 case 9 -> dinProfil(member);
+                case 0 -> System.exit(0);
                 default -> invalidInput();
             }
 
@@ -314,10 +315,6 @@ public class UI {
             }
         }while(true);
     }
-
-
-
-
 
 
 

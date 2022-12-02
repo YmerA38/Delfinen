@@ -9,6 +9,7 @@ import java.util.Comparator;
 
 
 
+
 public class Database {
     private static ArrayList<Member> memberList;
     private ArrayList<Results> resultList;
