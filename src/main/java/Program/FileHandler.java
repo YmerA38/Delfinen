@@ -12,9 +12,12 @@ import java.util.Scanner;
 public class FileHandler {
 
 
-    private final String FILE_SAVE = "data/memberDatabase.csv";
+    private final String FILE_MEMBER = "data/memberDatabase.csv";
+    private final String FILE_PAYMENT = "data/payments/paymentMember_";
+    private final String FILE_PAYMENT_EXT = ".csv";
+    private final String FILE_LETTER = "autoText/paymentLetter.txt";
     public boolean load(Database database) throws FileNotFoundException {
-        Scanner fileScanner = new Scanner(new File(FILE_SAVE));
+        Scanner fileScanner = new Scanner(new File(FILE_MEMBER));
         String line;
         String[] entity;
         String[] date1;
@@ -41,18 +44,39 @@ public class FileHandler {
     }
 
     public boolean save(ArrayList<Member> memberList) throws FileNotFoundException {
-        PrintStream fileSaver = new PrintStream(FILE_SAVE);
-        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
+        PrintStream fileSaver = new PrintStream(FILE_MEMBER);
+        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype,Beatal.Dato");
         for(Member member:memberList){
             fileSaver.println(member.getFirstName()+","+member.getLastName()+","+member.getDateOfBirth()+","+
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
                     member.getDateOfMembership()+","+member.getMembershipNumber()+","+member.getTeam()+","+
-                    member.getUsername()+","+member.getPassword()+","+member.getUserType());
+                    member.getUsername()+","+member.getPassword()+","+member.getUserType()+","+member.getNextPayment());
         }
         fileSaver.flush();
         fileSaver.close();
+        return true;
+    }
 
+
+    public boolean savePayment(Member member){
+        try {
+            PrintStream fileSaver = new PrintStream(FILE_PAYMENT + member.getMembershipNumber() + FILE_PAYMENT_EXT);
+            for (AccountTransaction transaction : member.getPaymentList()) {
+                fileSaver.println(transaction.getDate() + "," + transaction.getSubscription() + "," + transaction.getPayment());
+            }
+            fileSaver.flush();
+            fileSaver.close();
+
+        }catch (FileNotFoundException e){
+            return false;
+        }
+        return  true;
+    }
+    public boolean loadPayment(Member member){
 
         return true;
     }
+
 }
+
+

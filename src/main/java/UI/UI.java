@@ -169,7 +169,7 @@ public class UI {
                 case 2 -> sort.sortByPayed(controller.getMemberList());
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> System.out.println(search());
-                case 8 -> controller.updatePayments();
+                case 8 -> System.out.println(controller.updatePayments());
                 case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
                 default -> invalidInput();
