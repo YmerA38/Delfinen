@@ -5,6 +5,7 @@ import Main.Database;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.nio.file.FileAlreadyExistsException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -36,7 +37,7 @@ public class FileHandler {
                         Boolean.parseBoolean(entity[3]),Boolean.parseBoolean(entity[4]),
                         Boolean.parseBoolean(entity[5]),LocalDate.of(Integer.parseInt(date2[0]),
                         Integer.parseInt(date2[1]),Integer.parseInt(date2[2])),Integer.parseInt(entity[7]),
-                        Team.valueOf(entity[8]),entity[9],entity[10],Users.valueOf(entity[11])),false);
+                        Team.valueOf(entity[8]),entity[9],entity[10],Users.valueOf(entity[11]),LocalDate.parse(entity[12])),false);
             }
         }while(fileScanner.hasNextLine()&&!line.isEmpty());
 
@@ -45,7 +46,8 @@ public class FileHandler {
 
     public boolean save(ArrayList<Member> memberList) throws FileNotFoundException {
         PrintStream fileSaver = new PrintStream(FILE_MEMBER);
-        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype,Beatal.Dato");
+        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn," +
+                "kode,Adgangstype,Betal.Dato");
         for(Member member:memberList){
             fileSaver.println(member.getFirstName()+","+member.getLastName()+","+member.getDateOfBirth()+","+
                     member.getIsActive()+","+member.getIsCompeting()+","+member.getHasPayed()+","+
@@ -59,23 +61,43 @@ public class FileHandler {
 
 
     public boolean savePayment(Member member){
+
+        File file = new File(FILE_PAYMENT + member.getMembershipNumber() + FILE_PAYMENT_EXT);
+
         try {
-            PrintStream fileSaver = new PrintStream(FILE_PAYMENT + member.getMembershipNumber() + FILE_PAYMENT_EXT);
+            PrintStream fileSaver = new PrintStream(file);
+            fileSaver.println("Dato,Kontingent,Betaling");
             for (AccountTransaction transaction : member.getPaymentList()) {
                 fileSaver.println(transaction.getDate() + "," + transaction.getSubscription() + "," + transaction.getPayment());
             }
             fileSaver.flush();
             fileSaver.close();
+            return true;
+        }catch (FileNotFoundException e){
+           return false;
+        }
 
+    }
+    public boolean loadPayment(Member member){
+        try {
+            Scanner fileScanner = new Scanner(new File(FILE_PAYMENT + member.getMembershipNumber() + FILE_PAYMENT_EXT));
+            String line;
+            String[] part;
+            fileScanner.nextLine();
+            do{
+                line = fileScanner.nextLine();
+                if(!line.isEmpty()) {
+                    part = line.split(",");
+                    member.getPaymentList().add(new AccountTransaction(LocalDate.parse(part[0]), Double.parseDouble(part[1]),
+                            Double.parseDouble(part[2])));
+                }
+            }while(fileScanner.hasNextLine()&&!line.isEmpty());
+            return true;
         }catch (FileNotFoundException e){
             return false;
         }
-        return  true;
     }
-    public boolean loadPayment(Member member){
 
-        return true;
-    }
 
 }
 

@@ -441,6 +441,7 @@ public class UI {
                 int i = 1;
                 for (Member member : searchResult) {
                     System.out.println(i+": "+member.getFirstName()+" "+member.getLastName());
+                    i++;
                 }
                 memberChoice = searchResult.get(returnInt()-1);
             }else {

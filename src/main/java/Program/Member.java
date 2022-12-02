@@ -21,7 +21,7 @@ public class Member {
     private LocalDate nextPayment;
 
     private double subscriptionRate;
-    private ArrayList<AccountTransaction> paymentList;
+    private ArrayList<AccountTransaction> paymentList = new ArrayList<>();
 
 
     // denne constructer bruges af Formand
@@ -36,7 +36,7 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
-        this.paymentList = new ArrayList<>();
+
 
 
     }
@@ -54,8 +54,7 @@ public class Member {
         this.username = member.getUsername();
         this.password = member.getPassword();
         this.userType = member.getUserType();
-
-
+        this.nextPayment = member.getNextPayment();
 
 
     }
@@ -63,7 +62,8 @@ public class Member {
 
     // denne contrukter er til brug for fileHandler
     public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
-                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username, String password, Users userType) {
+                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username,
+                  String password, Users userType,LocalDate nextPayment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -76,6 +76,8 @@ public class Member {
         this.username = username;
         this.password = password;
         this.userType = userType;
+        this.nextPayment = nextPayment;
+
 
     }
 

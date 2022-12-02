@@ -7,6 +7,15 @@ public class AccountTransaction {
     private double payment;
     private LocalDate date;
 
+    public AccountTransaction() {
+    }
+
+    public AccountTransaction( LocalDate date,double subscription, double payment) {
+        this.subscription = subscription;
+        this.payment = payment;
+        this.date = date;
+    }
+
     public void setPayment(double payment){
         this.payment = payment;
         this.subscription = 0;
