@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
@@ -22,7 +21,6 @@ public class UI {
     public void start() {
         try {
             controller.load();
-            //viewMemberList();
 
             System.out.println("Fil indlæst");
         }catch (FileNotFoundException e){
@@ -46,46 +44,9 @@ public class UI {
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-/*      boolean menuError;
-        do {
-            do {
-                startPage();
-                try {
-                    int menuChoice = returnInt();
-                    if (menuChoice == 1)
-                        runChiarman();
-                    else if (menuChoice == 2) {
-                        runKasser();
-                    }else if (menuChoice == 3) {
-                        runTræner();
-                    }
-                    menuError = false;
-                } catch (InputMismatchException ime) {
-                    System.out.println("Skriv kun tal");
-                    scan.nextLine();
-                    menuError = true;
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            } while (menuError == true);
-        } while (true);
-        */
-    }
-
-    public void startPage() {
-        System.out.println("""
-                ┌──────────────────────┐	               
-                │ Tast 1) Formand      │  
-                ├──────────────────────┤
-                │ Tast 2) Kasserer     │
-                ├──────────────────────┤
-                │ Tast 3) Træner       │
-                ├──────────────────────┤
-                │ Tast 4) Medlem       │
-                └──────────────────────┘""");
-
 
     }
+
     public Access loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");
@@ -131,11 +92,6 @@ public class UI {
                 case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
 
-            /*    case "7" ->
-                case "8" ->
-                case "9" ->
-                case "0" ->
-*/
 
 
                 default -> invalidInput();
@@ -151,8 +107,8 @@ public class UI {
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
-                "\n8. Opdater betalinger " +
-                "\n9. Din profil" +
+                "\n5. Opdater betalinger " +
+                "\n6. Din profil" +
                 "\n0. Afslut");
     }
 
@@ -166,11 +122,11 @@ public class UI {
 
             switch (command) {
                 case 1 -> priceList();
-                case 2 -> sort.sortByPayed(controller.getMemberList());
+                case 2 -> sort.sortByPayed(controller.getMemberList()); // viser intet
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> System.out.println(search());
-                case 8 -> controller.updatePayments();
-                case 9 -> dinProfil(member);
+                case 5 -> controller.updatePayments(); // virker ikke
+                case 6 -> dinProfil(member);
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -199,8 +155,9 @@ public class UI {
                 case 1 -> System.out.println("fff");
                 case 2 -> viewMemberResults();
                 case 3 -> System.out.println("ggg");
-                case 4 -> System.exit(0);
+                case 4 -> System.out.println("ooo");
                 case 9 -> dinProfil(member);
+                case 0 -> System.exit(0);
                 default -> invalidInput();
             }
 
@@ -284,7 +241,6 @@ public class UI {
 
 
 
-
     public void sortMenuPrint(){
         System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn" +
                 "\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt" +
@@ -359,10 +315,6 @@ public class UI {
             }
         }while(true);
     }
-
-
-
-
 
 
 

@@ -3,9 +3,6 @@ package Program;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static Program.Subscription.database;
-
-//import static Program.Subscription.database;
 
 public class Member {
     private String firstName;
