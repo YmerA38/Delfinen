@@ -22,7 +22,7 @@ public class Database {
 
     }
 
-    public static ArrayList<Member> getMemberList() {
+    public ArrayList<Member> getMemberList() {
         return memberList;
     }
     public ArrayList<Results> getResultList(){
@@ -46,6 +46,7 @@ public class Database {
 
         member.autoSetUserName();
         member.setMembershipNumber(memberList.indexOf(member));
+        member.setNextPayment(member.getDateOfMembership());
     }
 
 
@@ -136,19 +137,19 @@ public class Database {
    }
 
 
-    public void updatePaymets() {
-        for(Member member: memberList){
-            if(LocalDate.now().isAfter(member.getNextPayment())){
-                member.putSubscription();
-                member.setNextPayment(LocalDate.of(LocalDate.now().getYear()+1,member.getDateOfMembership().getMonth(),
-                        member.getDateOfMembership().getDayOfMonth()));
-            }
+    public void updatePaymets(Member member) {
+
+        if(LocalDate.now().isAfter(member.getNextPayment())){
+            member.putSubscription();
+            member.setNextPayment(LocalDate.of(LocalDate.now().getYear()+1,member.getDateOfMembership().getMonth(),
+                                    member.getDateOfMembership().getDayOfMonth()));
+        }
             if(member.getBallance()>=0){
                 member.setHasPayed(true);
             }else{
                 member.setHasPayed(false);
             }
-        }
+
     }
 }
 

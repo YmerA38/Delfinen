@@ -3,6 +3,7 @@ package Program;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+//import static Program.Subscription.database;
 
 public class Member {
     private String firstName;
@@ -20,7 +21,7 @@ public class Member {
     private LocalDate nextPayment;
 
     private double subscriptionRate;
-    private ArrayList<AccountTransaction> paymentBalances;
+    private ArrayList<AccountTransaction> paymentList = new ArrayList<>();
 
 
     // denne constructer bruges af Formand
@@ -35,7 +36,8 @@ public class Member {
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
-        this.paymentBalances = new ArrayList<>();
+
+
 
     }
 
@@ -52,8 +54,7 @@ public class Member {
         this.username = member.getUsername();
         this.password = member.getPassword();
         this.userType = member.getUserType();
-
-
+        this.nextPayment = member.getNextPayment();
 
 
     }
@@ -61,7 +62,8 @@ public class Member {
 
     // denne contrukter er til brug for fileHandler
     public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
-                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username, String password, Users userType) {
+                  boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username,
+                  String password, Users userType,LocalDate nextPayment) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -74,6 +76,8 @@ public class Member {
         this.username = username;
         this.password = password;
         this.userType = userType;
+        this.nextPayment = nextPayment;
+
 
     }
 
@@ -259,20 +263,20 @@ public class Member {
     public void payment(double payment){
         AccountTransaction payAccount = new AccountTransaction();
         payAccount.setPayment(payment);
-        paymentBalances.add(payAccount);
+        paymentList.add(payAccount);
     }
     public void putSubscription(){
         AccountTransaction debtAccount = new AccountTransaction();
         debtAccount.setSubscription(subscriptionRate,LocalDate.of(LocalDate.now().getYear(),dateOfMembership.getMonth(),
                 dateOfMembership.getDayOfMonth()));
-        paymentBalances.add(debtAccount);
+        paymentList.add(debtAccount);
     }
 
 
     public double getBallance() {
         double balance = 0;
-        if(!paymentBalances.isEmpty()){
-            for(AccountTransaction transaction: paymentBalances){
+        if(!paymentList.isEmpty()){
+            for(AccountTransaction transaction: paymentList){
                 balance += transaction.getPayment()-transaction.getSubscription();
             }
         }
@@ -285,5 +289,9 @@ public class Member {
 
     public LocalDate getNextPayment() {
         return nextPayment;
+    }
+
+    public ArrayList<AccountTransaction> getPaymentList() {
+        return paymentList;
     }
 }

@@ -137,8 +137,17 @@ public class Controller {
         return database.totalIncome();
     }
 
-    public void updatePayments() {
-        database.updatePaymets();
+    public String updatePayments() {
+        String message = "";
+        for (Member member: database.getMemberList()) {
+            database.updatePaymets(member);
+            if(fileHandler.savePayment(member)){
+                message += "Payment for "+member.getFirstName()+" "+member.getLastName()+ " SAVED to file\n";
+            }else{
+                message += "No payment file for "+member.getFirstName()+" "+member.getLastName()+ " ----\n";
+            }
+        }
+       return message;
     }
 }
 
