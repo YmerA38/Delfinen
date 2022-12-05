@@ -136,6 +136,7 @@ public class Controller {
     }
 
     public String updatePayments() {
+        database.autoSetPayments();
         String message = "";
         for (Member member: database.getMemberList()) {
             database.updatePaymets(member);
@@ -145,7 +146,26 @@ public class Controller {
                 message += "No payment file for "+member.getFirstName()+" "+member.getLastName()+ " ----\n";
             }
         }
+        try {
+            save();
+        }catch (FileNotFoundException e){
+
+        }
+
        return message;
+    }
+
+    public void loadAllpaymentFiles() {
+        for(Member member: database.getMemberList())
+        fileHandler.loadPayment(member);
+    }
+
+    public void lodPayment(Member member) {
+        fileHandler.loadPayment(member);
+    }
+
+    public void savePayment(Member member) {
+        fileHandler.savePayment(member);
     }
 }
 

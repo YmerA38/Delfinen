@@ -137,18 +137,20 @@ public class Database {
 
     public void updatePaymets(Member member) {
 
-        if(LocalDate.now().isAfter(member.getNextPayment())){
-            member.putSubscription();
+        if(LocalDate.now().isAfter(member.getNextPayment())){ // If date has passed payment date
+            member.putSubscription(); // add bill to account
             member.setNextPayment(LocalDate.of(LocalDate.now().getYear()+1,member.getDateOfMembership().getMonth(),
-                                    member.getDateOfMembership().getDayOfMonth()));
+                                    member.getDateOfMembership().getDayOfMonth())); // set next paymen to one year later
         }
-            if(member.getBallance()>=0){
-                member.setHasPayed(true);
-            }else{
-                member.setHasPayed(false);
-            }
+        if(member.getBallance()>=0){
+            member.setHasPayed(true);
+        }else{
+            member.setHasPayed(false);
+        }
 
     }
+
+
 }
 
    /* public void sortMemberMethod() throws IOException{

@@ -159,11 +159,11 @@ public class UI {
 
     public void runCashier(Member member){
         scan.nextLine();
+        controller.loadAllpaymentFiles();
         boolean isRunning = true;
         while (isRunning) {
             cashierMenu(member);
             int command = returnInt();
-
             switch (command) {
                 case 1 -> priceList();
                 case 2 -> sort.sortByPayed(controller.getMemberList());
@@ -244,6 +244,7 @@ public class UI {
                     member.setUsername(scan.nextLine());
                 }
                 case 3 -> {
+                    controller.lodPayment(member);
                     double balance = member.getBallance();
                     if (balance<=0) {
                         System.out.println("Du skylder " + -balance + "kr.");
@@ -255,6 +256,7 @@ public class UI {
                     double amount = returnDouble();
                     if(amount>0) {
                         member.payment(amount);
+                        controller.savePayment(member);
                     }
                 }
                 case 0 -> run = false;
