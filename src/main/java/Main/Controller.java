@@ -104,7 +104,7 @@ public class Controller {
 
     }
     public ArrayList<Results> getResultList(){
-        return database.getResultList();
+        return CompeteSwimmer.getResultList;
     }
 
     public ArrayList<Member> getMemberList () {
@@ -118,7 +118,9 @@ public class Controller {
 
     public void save() throws FileNotFoundException {
         fileHandler.save(database.getMemberList());
+        fileHandler.saveResult(database.getResultList());
     }
+
 
     public void load() throws FileNotFoundException {
         fileHandler.load(database);
