@@ -29,9 +29,9 @@ public class FileHandler {
             if(!line.isEmpty()){
                 entity = line.split(",");
                 date1 = entity[2].split("-");
-                System.out.println(date1[0]+" "+date1[1]+" "+date1[2]);
+                //System.out.println(date1[0]+" "+date1[1]+" "+date1[2]);
                 date2 = entity[6].split("-");
-                System.out.println(date2[0]+" "+date2[1]+" "+date2[2]);
+                //System.out.println(date2[0]+" "+date2[1]+" "+date2[2]);
                 database.addMember(new Member(entity[0],entity[1], LocalDate.of(Integer.parseInt(date1[0]),
                         Integer.parseInt(date1[1]),Integer.parseInt(date1[2])),
                         Boolean.parseBoolean(entity[3]),Boolean.parseBoolean(entity[4]),
