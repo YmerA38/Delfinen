@@ -258,7 +258,7 @@ public class UI {
                     }else {
                         System.out.println("Du har " + balance + "kr i overskud");
                     }
-                    System.out.println("Indtast beløb du ønsker at betale");
+                    System.out.println("Indtast beløb du ønsker at betale, eller tast 0 for at skippe");
                     double amount = returnDouble();
                     if(amount>0) {
                         member.payment(amount);
@@ -334,8 +334,11 @@ public class UI {
         LocalDate dateOfBirth;
         do {
             System.out.println("Fødselsdag: ");
-            System.out.println("Indtast dag:");
-            int day = returnInt();
+            int day;
+            do {
+                System.out.println("Indtast dag:");
+                day = returnInt();
+            }while(day<32);
             System.out.println("Indtast fødsels måned: ");
             int month = returnInt();
             System.out.println("Indtast fødsels år: ");

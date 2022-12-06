@@ -1,5 +1,5 @@
 Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype,Betal.Dato
-Stinus,Helweg Andersen,1975-01-21,true,true,true,2022-11-29,0,SENIOR_COMPETE,Stinus,1234,CHAIRMAN,2023-11-29
+Stinus,Helweg Andersen,1975-01-21,true,true,true,2022-11-29,0,SENIOR_COMPETE,Kode,Ymer,CHAIRMAN,2023-11-29
 p,p,2001-01-01,true,true,false,2022-11-30,1,SENIOR_COMPETE,Carl,1234,TRAINER,2023-11-30
 Cecilie,efternavn,2000-01-01,true,true,true,2022-11-30,2,SENIOR_COMPETE,Cecilie,1234,CASHIER,2023-11-30
 Theodor,Hans,0000-12-12,true,true,false,2022-11-30,3,SENIOR_COMPETE,null,1234,CHAIRMAN,2023-11-30
@@ -8,3 +8,4 @@ q,q,0003-03-03,true,true,false,2022-11-30,5,SENIOR_COMPETE,q,1234,MEMBER,2023-11
 lille,per,2012-01-01,true,true,false,2022-11-30,6,JUNIOR_COMPETE,lille,1234,MEMBER,2023-11-30
 Peter,Anderse,1997-12-01,false,false,false,2022-12-02,7,NO_TEAM,Peter,1234,MEMBER,2023-12-02
 Stinus,Helweg,1966-02-22,true,false,false,2022-12-02,8,SENIOR_FITNESS,Stinus,1234,MEMBER,2023-12-02
+Johannes,PETER,2010-12-21,true,true,false,2022-12-06,9,JUNIOR_COMPETE,Johannes,1234,MEMBER,2022-12-06
