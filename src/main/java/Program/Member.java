@@ -25,19 +25,16 @@ public class Member {
 
 
     // denne constructer bruges af Formand
-    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
-                  boolean hasPayed, Users userType) {
+    public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.isActive = isActive;
         this.isCompeting = isCompeting;
-        this.hasPayed = hasPayed;
         this.dateOfMembership = LocalDate.now();
         this.password = "1234";
         this.userType = userType;
-
-
+        this.hasPayed = false;
 
     }
 
@@ -122,8 +119,8 @@ public class Member {
 
 
 
-    public void autoSetUserName() {
-        this.username = firstName; // midlertidig username;
+    public void autoSetUserName(String add) {
+        this.username =  firstName+add; // midlertidig username;
     }
 
     public String getFirstName() {

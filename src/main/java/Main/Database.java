@@ -35,17 +35,19 @@ public class Database {
         }else {
             member = new FitnessSwimmer(member);
         }
-        memberList.add(member);
         member.autoSetTeam();
         if(isNew){
             autoSet(member);
         }
-
+        memberList.add(member);
     }
     public void autoSet(Member member){
-
-        member.autoSetUserName();
-        member.setMembershipNumber(memberList.indexOf(member));
+        if(evalUsername(member.getFirstName())) {
+            member.autoSetUserName("");
+        }else{
+            member.autoSetUserName("1");
+        }
+        member.setMembershipNumber(memberList.get(memberList.size()-1).getMembershipNumber()+1);//Nummeret fra den sidste på liste plus 1
         member.setNextPayment(member.getDateOfMembership());
     }
 
@@ -139,17 +141,27 @@ public class Database {
 
     public void updatePaymets(Member member) {
 
-        if(LocalDate.now().isAfter(member.getNextPayment())){
-            member.putSubscription();
+        if(LocalDate.now().isAfter(member.getNextPayment())){ // If date has passed payment date
+            member.putSubscription(); // add bill to account
             member.setNextPayment(LocalDate.of(LocalDate.now().getYear()+1,member.getDateOfMembership().getMonth(),
-                                    member.getDateOfMembership().getDayOfMonth()));
+                                    member.getDateOfMembership().getDayOfMonth())); // set next paymen to one year later
         }
-            if(member.getBallance()>=0){
-                member.setHasPayed(true);
-            }else{
-                member.setHasPayed(false);
-            }
+        if(member.getBallance()>=0){
+            member.setHasPayed(true);
+        }else{
+            member.setHasPayed(false);
+        }
 
+    }
+
+
+    public boolean evalUsername(String newUseName) {
+        for (Member member: memberList){
+            if(member.getUsername().equals(newUseName)){
+                return false;
+            }
+        }
+        return true; // when the whole list is passed
     }
 }
 

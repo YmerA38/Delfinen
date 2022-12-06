@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class UI {
@@ -22,7 +21,6 @@ public class UI {
     public void start() {
         try {
             controller.load();
-            //viewMemberList();
 
             System.out.println("Fil indlæst");
         }catch (FileNotFoundException e){
@@ -46,46 +44,9 @@ public class UI {
 
         }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
 
-/*      boolean menuError;
-        do {
-            do {
-                startPage();
-                try {
-                    int menuChoice = returnInt();
-                    if (menuChoice == 1)
-                        runChiarman();
-                    else if (menuChoice == 2) {
-                        runKasser();
-                    }else if (menuChoice == 3) {
-                        runTræner();
-                    }
-                    menuError = false;
-                } catch (InputMismatchException ime) {
-                    System.out.println("Skriv kun tal");
-                    scan.nextLine();
-                    menuError = true;
-                } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-            } while (menuError == true);
-        } while (true);
-        */
-    }
-
-    public void startPage() {
-        System.out.println("""
-                ┌──────────────────────┐	               
-                │ Tast 1) Formand      │  
-                ├──────────────────────┤
-                │ Tast 2) Kasserer     │
-                ├──────────────────────┤
-                │ Tast 3) Træner       │
-                ├──────────────────────┤
-                │ Tast 4) Medlem       │
-                └──────────────────────┘""");
-
 
     }
+
     public Access loginUser(){
         System.out.println("Dette er login menu for Delfinens medlemmer");
         System.out.println("Indtast dit brugernavn: ");
@@ -115,7 +76,8 @@ public class UI {
             int command =  returnInt() ;
 
             switch (command) {
-                case 1 -> {addMember();
+                case 1 -> {
+                    addMember();
                     try{// ønsker at gemme med det samme
                         controller.save();
                     }catch (FileNotFoundException e){
@@ -131,11 +93,6 @@ public class UI {
                 case 9 -> dinProfil(member);
                 case 0 -> System.exit(0);
 
-            /*    case "7" ->
-                case "8" ->
-                case "9" ->
-                case "0" ->
-*/
 
 
                 default -> invalidInput();
@@ -151,14 +108,13 @@ public class UI {
                 "\n2. Restance " +
                 "\n3. Samlede indtægt " +
                 "\n4. Søg efter medlem " +
-                "\n8. Opdater betalinger " +
-                "\n9. Din profil" +
+                "\n5. Opdater betalinger " +
+                "\n6. Din profil" +
                 "\n0. Afslut");
     }
 
 
     public void runCashier(Member member){
-        scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
             cashierMenu(member);
@@ -166,11 +122,11 @@ public class UI {
 
             switch (command) {
                 case 1 -> priceList();
-                case 2 -> sort.sortByPayed(controller.getMemberList());
+                case 2 -> sort.sortByPayed(controller.getMemberList()); // viser intet
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> System.out.println(search());
-                case 8 -> System.out.println(controller.updatePayments());
-                case 9 -> dinProfil(member);
+                case 5 -> controller.updatePayments(); // virker ikke
+                case 6 -> dinProfil(member);
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -189,7 +145,6 @@ public class UI {
                 "\n0. Afslut");
     }
     public void runTrainer(Member member){
-        scan.nextLine();
         boolean isRunning = true;
         while (isRunning) {
             trainerMenu(member);
@@ -199,8 +154,9 @@ public class UI {
                 case 1 -> System.out.println("fff");
                 case 2 -> viewMemberResults();
                 case 3 -> System.out.println("ggg");
-                case 4 -> System.exit(0);
+                case 4 -> System.out.println("ooo");
                 case 9 -> dinProfil(member);
+                case 0 -> System.exit(0);
                 default -> invalidInput();
             }
 
@@ -225,6 +181,7 @@ public class UI {
             switch (command) {
 
                 case 9 -> dinProfil(member);
+
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -238,10 +195,28 @@ public class UI {
             switch (returnInt()){
                 case 1 -> System.out.println(member);
                 case 2 -> {
-                    System.out.println("Indtast nyt brugernavn" );
-                    member.setPassword(scan.nextLine());
+                    boolean pass = false;
+                    do {
+                        System.out.println("Indtast nyt brugernavn");
+                        String newUseName = scan.nextLine();
+                        if (controller.evalUsername(newUseName)){ //method that tells if the desired username is vacant
+                            member.setUsername(newUseName);
+                            pass = true;
+                        }else {
+                            System.out.println("username already exist");
+                        }
+
+                    }while (!pass);
                     System.out.println("Indtast nyt kodeord");
-                    member.setUsername(scan.nextLine());
+                    member.setPassword(scan.nextLine());
+                    try {
+                        controller.save();
+                        System.out.println("Du kan nu bruge dit nye login, Brugernav: "+member.getUsername()+" Kode: "+
+                                member.getPassword());
+                    }catch (FileNotFoundException e){
+                        System.out.println("fej kunne ikke gemme endring");
+                    }
+
                 }
                 case 3 -> {
                     double balance = member.getBallance();
@@ -284,7 +259,6 @@ public class UI {
 
 
 
-
     public void sortMenuPrint(){
         System.out.println("Du kan nu vælge at sortere medlemslisten efter følgende:\n1: Fornavn\n2:Efternavn" +
                 "\n3: Alder\n4: Aktivitetsniveau\n5: Konkurrencesvømmer\n6: Betalt/Ikke betalt" +
@@ -317,12 +291,13 @@ public class UI {
 
     public void addMember() {
 
+        sort.sortByMembership(controller.getMemberList());// sikre at der bliver sorteret efter medlemsnummer.
         System.out.println();
         System.out.println("Indtast fornavn: ");
-        String firstName = scan.next();
-        scan.nextLine();
+        String firstName = scan.nextLine();
+        //scan.nextLine();
         System.out.println("Indtast efternavn: ");
-        String lastName = scan.next();
+        String lastName = scan.nextLine();
         LocalDate dateOfBirth;
         do {
             System.out.println("Fødselsdag: ");
@@ -339,12 +314,18 @@ public class UI {
         boolean active = returnBoolean();
         System.out.println("Er personen konkurrence svømmer?: ");
         boolean isCompetitionSwimmer = returnBoolean();
-        System.out.println("Har personen betalt medlemsskab?");
-        boolean hasPayed = returnBoolean();
-        System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
-        Users userType = returnUserType();
+        //System.out.println("Har personen betalt medlemsskab?");
+        //boolean hasPayed = returnBoolean();
+        System.out.println("Er det en bruger med adminitrativ adgang?");
+        Users userType;
+        if(returnBoolean()) {
+            System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
+            userType = returnUserType();
+        }else{
+            userType = Users.MEMBER;
+        }
 
-        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,hasPayed,userType));
+        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
     }
 
     private Users returnUserType() {
@@ -359,10 +340,6 @@ public class UI {
             }
         }while(true);
     }
-
-
-
-
 
 
 
@@ -441,7 +418,6 @@ public class UI {
                 int i = 1;
                 for (Member member : searchResult) {
                     System.out.println(i+": "+member.getFirstName()+" "+member.getLastName());
-                    i++;
                 }
                 memberChoice = searchResult.get(returnInt()-1);
             }else {
