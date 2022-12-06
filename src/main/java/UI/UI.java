@@ -76,7 +76,8 @@ public class UI {
             int command =  returnInt() ;
 
             switch (command) {
-                case 1 -> {addMember();
+                case 1 -> {
+                    addMember();
                     try{// ønsker at gemme med det samme
                         controller.save();
                     }catch (FileNotFoundException e){
@@ -303,12 +304,18 @@ public class UI {
         boolean active = returnBoolean();
         System.out.println("Er personen konkurrence svømmer?: ");
         boolean isCompetitionSwimmer = returnBoolean();
-        System.out.println("Har personen betalt medlemsskab?");
-        boolean hasPayed = returnBoolean();
-        System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
-        Users userType = returnUserType();
+        //System.out.println("Har personen betalt medlemsskab?");
+        //boolean hasPayed = returnBoolean();
+        System.out.println("Er det en bruger med adminitrativ adgang?");
+        Users userType;
+        if(returnBoolean()) {
+            System.out.println("Vælg Medlemstype:\nTast m for medlem\nTast t for træner\nTast k for kasser\nTast f for Formand");
+            userType = returnUserType();
+        }else{
+            userType = Users.MEMBER;
+        }
 
-        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,hasPayed,userType));
+        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
     }
 
     private Users returnUserType() {
