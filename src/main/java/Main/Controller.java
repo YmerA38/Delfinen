@@ -169,6 +169,10 @@ public class Controller {
     public void savePayment(Member member) {
         fileHandler.savePayment(member);
     }
+
+    public boolean evalUsername(String newUseName) {
+        return database.evalUsername(newUseName);
+    }
 }
 
 

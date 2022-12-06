@@ -193,10 +193,19 @@ public class UI {
             switch (returnInt()){
                 case 1 -> System.out.println(member);
                 case 2 -> {
-                    System.out.println("Indtast nyt brugernavn" );
-                    member.setPassword(scan.nextLine());
+                    boolean pass = false;
+                    do {
+                        System.out.println("Indtast nyt brugernavn");
+                        String newUseName = scan.nextLine();
+                        if (controller.evalUsername(newUseName)){ //method that tells if the desired username is vacant
+                            member.setUsername(newUseName);
+                        }else {
+                            System.out.println("username already exist");
+                        }
+
+                    }while (!pass);
                     System.out.println("Indtast nyt kodeord");
-                    member.setUsername(scan.nextLine());
+                    member.setPassword(scan.nextLine());
                 }
                 case 3 -> {
                     double balance = member.getBallance();

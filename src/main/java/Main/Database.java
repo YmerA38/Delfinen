@@ -44,8 +44,11 @@ public class Database {
 
     }
     public void autoSet(Member member){
-
-        member.autoSetUserName();
+        if(evalUsername(member.getFirstName())) {
+            member.autoSetUserName("");
+        }else{
+            member.autoSetUserName("1");
+        }
         member.setMembershipNumber(memberList.get(memberList.size()-1).getMembershipNumber()+1);//Nummeret fra den sidste på liste plus 1
         member.setNextPayment(member.getDateOfMembership());
     }
@@ -154,6 +157,14 @@ public class Database {
     }
 
 
+    public boolean evalUsername(String newUseName) {
+        for (Member member: memberList){
+            if(member.getUsername().equals(newUseName)){
+                return false;
+            }
+        }
+        return true; // when the whole list is passed
+    }
 }
 
    /* public void sortMemberMethod() throws IOException{

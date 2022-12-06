@@ -122,8 +122,8 @@ public class Member {
 
 
 
-    public void autoSetUserName() {
-        this.username = firstName; // midlertidig username;
+    public void autoSetUserName(String add) {
+        this.username =  firstName+add; // midlertidig username;
     }
 
     public String getFirstName() {
