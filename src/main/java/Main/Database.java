@@ -36,12 +36,10 @@ public class Database {
             member = new FitnessSwimmer(member);
         }
         member.autoSetTeam();
-        memberList.add(member);
-
         if(isNew){
             autoSet(member);
         }
-
+        memberList.add(member);
     }
     public void autoSet(Member member){
         if(evalUsername(member.getFirstName())) {

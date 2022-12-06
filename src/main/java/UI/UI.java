@@ -181,6 +181,7 @@ public class UI {
             switch (command) {
 
                 case 9 -> dinProfil(member);
+
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -200,6 +201,7 @@ public class UI {
                         String newUseName = scan.nextLine();
                         if (controller.evalUsername(newUseName)){ //method that tells if the desired username is vacant
                             member.setUsername(newUseName);
+                            pass = true;
                         }else {
                             System.out.println("username already exist");
                         }
@@ -207,6 +209,14 @@ public class UI {
                     }while (!pass);
                     System.out.println("Indtast nyt kodeord");
                     member.setPassword(scan.nextLine());
+                    try {
+                        controller.save();
+                        System.out.println("Du kan nu bruge dit nye login, Brugernav: "+member.getUsername()+" Kode: "+
+                                member.getPassword());
+                    }catch (FileNotFoundException e){
+                        System.out.println("fej kunne ikke gemme endring");
+                    }
+
                 }
                 case 3 -> {
                     double balance = member.getBallance();
@@ -284,10 +294,10 @@ public class UI {
         sort.sortByMembership(controller.getMemberList());// sikre at der bliver sorteret efter medlemsnummer.
         System.out.println();
         System.out.println("Indtast fornavn: ");
-        String firstName = scan.next();
-        scan.nextLine();
+        String firstName = scan.nextLine();
+        //scan.nextLine();
         System.out.println("Indtast efternavn: ");
-        String lastName = scan.next();
+        String lastName = scan.nextLine();
         LocalDate dateOfBirth;
         do {
             System.out.println("Fødselsdag: ");
