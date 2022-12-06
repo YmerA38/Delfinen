@@ -242,6 +242,12 @@ public class UI {
                     member.setPassword(scan.nextLine());
                     System.out.println("Indtast nyt kodeord");
                     member.setUsername(scan.nextLine());
+                    try {
+                        controller.save();
+                    }catch (FileNotFoundException e){
+                        System.out.println("Fejl! Kunne ikke gemme");
+                    }
+
                 }
                 case 3 -> {
                     controller.lodPayment(member);
