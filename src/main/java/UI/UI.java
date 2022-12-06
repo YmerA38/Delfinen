@@ -271,6 +271,7 @@ public class UI {
 
     public void addMember() {
 
+        sort.sortByMembership(controller.getMemberList());// sikre at der bliver sorteret efter medlemsnummer.
         System.out.println();
         System.out.println("Indtast fornavn: ");
         String firstName = scan.next();

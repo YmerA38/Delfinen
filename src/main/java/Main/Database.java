@@ -35,8 +35,9 @@ public class Database {
         }else {
             member = new FitnessSwimmer(member);
         }
-        memberList.add(member);
         member.autoSetTeam();
+        memberList.add(member);
+
         if(isNew){
             autoSet(member);
         }
@@ -45,7 +46,7 @@ public class Database {
     public void autoSet(Member member){
 
         member.autoSetUserName();
-        member.setMembershipNumber(memberList.indexOf(member));
+        member.setMembershipNumber(memberList.get(memberList.size()-1).getMembershipNumber()+1);//Nummeret fra den sidste på liste plus 1
         member.setNextPayment(member.getDateOfMembership());
     }
 
