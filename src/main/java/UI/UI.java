@@ -16,9 +16,13 @@ public class UI {
     private Controller controller = new Controller();
     Scanner scan = new Scanner(System.in);
 
+    FileHandler fileHandler = new FileHandler();
+
+    Database database = new Database();
+
     private Sort sort = new Sort();
 
-    public void start() {
+    public void start() throws FileNotFoundException {
         try {
             controller.load();
 
@@ -61,14 +65,15 @@ public class UI {
                 "\n 1. Tilføj medlem " +
                 "\n 2. Rediger medlem " +
                 "\n 3. Slet medlem " +
-                "\n 4. Søg medlemmer " +
+                "\n 4. Se medlemsliste " +
+                "\n 6. Søg efter medlem " +
                 "\n 5. Save " +
                 "\n 7. Sorter liste " +
                 "\n 9. Din profil" +
                 "\n10. Log ud"+
                 "\n 0. Afslut");
     }
-    public void runChairman(Member member){
+    public void runChairman(Member member) throws FileNotFoundException {
         boolean isRunning = true;
         while (isRunning) {
             chairmanMenu(member);
@@ -85,8 +90,9 @@ public class UI {
                 }
                 case 2 -> controller.editMember();
                 case 3 -> controller.deleteMember();
-                case 4 -> System.out.println(search());
-                case 5 -> viewMemberList();
+                case 4 -> viewMemberList();
+                case 5 -> fileHandler.save(database.getMemberList());
+                case 6 -> System.out.println(search());
                 case 7 -> sortMenu();
                 case 9 -> dinProfil(member);
                 case 10-> isRunning = false;
