@@ -7,10 +7,20 @@ import java.util.ArrayList;
 public class CompeteSwimmer extends Member{
     public static ArrayList<Results> getResultList;
     private AbstractList<Results> resultList;
-    public CompeteSwimmer(Member member) {
-        super(member);
+    public CompeteSwimmer(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
+                          Users userType) {
+        super(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
         resultList = new ArrayList<>();
     }
+
+    public CompeteSwimmer(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
+                          Users userType, boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team,
+                          String username, String password, LocalDate nextPayment) {
+        super(firstName,lastName,dateOfBirth,isActive,isCompeting,hasPayed,dateOfMembership,membershipNumber,team,
+                username,password,userType,nextPayment);
+        resultList = new ArrayList<>();
+    }
+
 
     public AbstractList<Results> getResultList() {
         return resultList;

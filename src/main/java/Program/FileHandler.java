@@ -30,15 +30,13 @@ public class FileHandler {
             if (!line.isEmpty()) {
                 entity = line.split(",");
                 date1 = entity[2].split("-");
-                System.out.println(date1[0] + " " + date1[1] + " " + date1[2]);
                 date2 = entity[6].split("-");
-                System.out.println(date2[0] + " " + date2[1] + " " + date2[2]);
-                database.addMember(new Member(entity[0], entity[1], LocalDate.of(Integer.parseInt(date1[0]),
+                database.addMember(entity[0], entity[1], LocalDate.of(Integer.parseInt(date1[0]),
                         Integer.parseInt(date1[1]), Integer.parseInt(date1[2])),
                         Boolean.parseBoolean(entity[3]), Boolean.parseBoolean(entity[4]),
                         Boolean.parseBoolean(entity[5]), LocalDate.of(Integer.parseInt(date2[0]),
                         Integer.parseInt(date2[1]), Integer.parseInt(date2[2])), Integer.parseInt(entity[7]),
-                        Team.valueOf(entity[8]), entity[9], entity[10], Users.valueOf(entity[11]), LocalDate.parse(entity[12])), false);
+                        Team.valueOf(entity[8]), entity[9], entity[10], Users.valueOf(entity[11]), LocalDate.parse(entity[12]));
             }
         } while (fileScanner.hasNextLine() && !line.isEmpty());
 

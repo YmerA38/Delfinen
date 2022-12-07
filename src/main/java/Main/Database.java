@@ -5,9 +5,6 @@ import Program.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
-
-
 
 
 public class Database {
@@ -29,7 +26,7 @@ public class Database {
         return resultList;
     }
 
-    public void addMember(Member member, boolean isNew){
+    /*public void addMember(Member member, boolean isNew){
         if(member.getIsCompeting()) {
            member = new CompeteSwimmer(member);
         }else {
@@ -40,8 +37,42 @@ public class Database {
             autoSet(member);
         }
         memberList.add(member);
+    }*/
+    //THIS METHOD IS USES WHEN ADDING NEW MEMBERS
+    public void addMember(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType){
+        Member member;
+        if(isCompeting) {
+            member = new CompeteSwimmer(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
+        }else {
+            member = new FitnessSwimmer(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
+        }
+        member.autoSetTeam();
+
+        autoSetsForNewMembers(member);
+
+        memberList.add(member);
     }
-    public void autoSet(Member member){
+    //THIS METHOD IS USED BY THE FILE_HANDLER
+    public void addMember(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
+                          boolean hasPayed, LocalDate dateOfMembership, int membershipNumber, Team team, String username,
+                          String password, Users userType,LocalDate nextPayment){
+        Member member;
+        if(isCompeting) {
+            member = new CompeteSwimmer(firstName,lastName,dateOfBirth,isActive,isCompeting,userType,hasPayed,
+                    dateOfMembership,membershipNumber,team,username,password,nextPayment);
+        }else {
+            member = new FitnessSwimmer(firstName,lastName,dateOfBirth,isActive,isCompeting,userType,hasPayed,
+                    dateOfMembership,membershipNumber,team,username,password,nextPayment);
+        }
+        member.autoSetTeam();
+
+
+        memberList.add(member);
+    }
+
+
+
+    public void autoSetsForNewMembers(Member member){
         if(evalUsername(member.getFirstName())) {
             member.autoSetUserName("");
         }else{

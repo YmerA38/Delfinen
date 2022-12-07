@@ -4,6 +4,7 @@ import Program.*;
 import UI.UI;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,8 +16,11 @@ public class Controller {
     Scanner scan = new Scanner(System.in);
 
 
-    public void addMember(Member member){
-        database.addMember(member,true);
+    //public void addMember(Member member){
+    //    database.addMember(member,true);
+    //}
+    public void addMember(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType){
+        database.addMember(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
     }
 
     public void editMember() {
