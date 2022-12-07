@@ -42,7 +42,7 @@ public class UI {
                 case CHAIRMAN -> runChairman(access.getMember());
             }
 
-        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD);
+        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD||true);
 
 
     }
@@ -58,16 +58,15 @@ public class UI {
     public void chairmanMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som formand af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
-                "\n1. Tilføj medlem " +
-                "\n2. Rediger medlem " +
-                "\n3. Slet medlem " +
-                "\n4. Se medlemmer " +
-                "\n5. Save " +
-
-                "\n7. Sorter liste " +
-                "\n8. Søg efter medlem " +
-                "\n9. Din profil" +
-                "\n0. Afslut");
+                "\n 1. Tilføj medlem " +
+                "\n 2. Rediger medlem " +
+                "\n 3. Slet medlem " +
+                "\n 4. Søg medlemmer " +
+                "\n 5. Save " +
+                "\n 7. Sorter liste " +
+                "\n 9. Din profil" +
+                "\n10. Log ud"+
+                "\n 0. Afslut");
     }
     public void runChairman(Member member){
         boolean isRunning = true;
@@ -89,8 +88,8 @@ public class UI {
                 case 4 -> System.out.println(search());
                 case 5 -> viewMemberList();
                 case 7 -> sortMenu();
-                case 8 -> search();
                 case 9 -> dinProfil(member);
+                case 10-> isRunning = false;
                 case 0 -> System.exit(0);
 
 
@@ -104,13 +103,14 @@ public class UI {
     public void cashierMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som kasser af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
-                "\n1. Se prisliste" +
-                "\n2. Restance " +
-                "\n3. Samlede indtægt " +
-                "\n4. Søg efter medlem " +
-                "\n5. Opdater betalinger " +
-                "\n6. Din profil" +
-                "\n0. Afslut");
+                "\n 1. Se prisliste" +
+                "\n 2. Restance " +
+                "\n 3. Samlede indtægt " +
+                "\n 4. Søg efter medlem " +
+                "\n 5. Opdater betalinger " +
+                "\n 6. Din profil" +
+                "\n10. Log ud"+
+                "\n 0. Afslut");
     }
 
 
@@ -127,6 +127,7 @@ public class UI {
                 case 4 -> System.out.println(search());
                 case 5 -> controller.updatePayments(); // virker ikke
                 case 6 -> dinProfil(member);
+                case 10-> isRunning = false;
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -137,12 +138,13 @@ public class UI {
     public void trainerMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som træner af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
-                "\n1. Top 5 " +
-                "\n2. Se resultater " +
-                "\n3. Ret resultater " +
-                "\n4. Registring til konkurrencer " +
-                "\n9. Din profil" +
-                "\n0. Afslut");
+                "\n 1. Top 5 " +
+                "\n 2. Se resultater " +
+                "\n 3. Ret resultater " +
+                "\n 4. Registring til konkurrencer " +
+                "\n 9. Din profil" +
+                "\n10. Log ud"+
+                "\n 0. Afslut");
     }
     public void runTrainer(Member member){
         boolean isRunning = true;
@@ -156,6 +158,7 @@ public class UI {
                 case 3 -> System.out.println("ggg");
                 case 4 -> System.out.println("ooo");
                 case 9 -> dinProfil(member);
+                case 10-> isRunning = false;
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -166,8 +169,9 @@ public class UI {
     public void memberMenu(Member member){
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som medlem af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
-                "\n9. Din profil" +
-                "\n0. Afslut");
+                "\n 9. Din profil" +
+                "\n10. Log ud"+
+                "\n 0. Afslut");
     }
 
 
@@ -181,7 +185,7 @@ public class UI {
             switch (command) {
 
                 case 9 -> dinProfil(member);
-
+                case 10-> isRunning = false;
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
@@ -418,6 +422,7 @@ public class UI {
                 int i = 1;
                 for (Member member : searchResult) {
                     System.out.println(i+": "+member.getFirstName()+" "+member.getLastName());
+                    i++;
                 }
                 memberChoice = searchResult.get(returnInt()-1);
             }else {
