@@ -42,7 +42,7 @@ public class UI {
                 case CHAIRMAN -> runChairman(access.getMember());
             }
 
-        }while (access.getUserType()==Users.NO_USER||access.getUserType()==Users.WRONG_PASSWORD||true);
+        }while (true);
 
 
     }
@@ -329,7 +329,8 @@ public class UI {
             userType = Users.MEMBER;
         }
 
-        controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
+        //controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
+        controller.addMember(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType);
     }
 
     private Users returnUserType() {

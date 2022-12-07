@@ -3,9 +3,9 @@ package Program;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-//import static Program.Subscription.database;
 
-public class Member {
+
+public abstract class Member {
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
