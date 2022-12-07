@@ -120,19 +120,20 @@ public class UI {
     }
 
 
-    public void runCashier(Member member){
+    public void runCashier(Member herSelf){
         boolean isRunning = true;
+        Member memberToLookAt;
         while (isRunning) {
-            cashierMenu(member);
+            cashierMenu(herSelf);
             int command = returnInt();
 
             switch (command) {
                 case 1 -> priceList();
                 case 2 -> sort.sortByPayed(controller.getMemberList()); // viser intet
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
-                case 4 -> System.out.println(search());
+                case 4 -> lookAtMember(search());
                 case 5 -> controller.updatePayments(); // virker ikke
-                case 6 -> dinProfil(member);
+                case 6 -> dinProfil(herSelf);
                 case 10-> isRunning = false;
                 case 0 -> System.exit(0);
                 default -> invalidInput();
@@ -141,6 +142,9 @@ public class UI {
         }
 
     }
+
+
+
     public void trainerMenu(Member member) {
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som træner af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
@@ -318,14 +322,12 @@ public class UI {
             System.out.println("Indtast fødsels år: ");
             int year = returnInt();
             dateOfBirth = returnDate(day,month,year);
-            System.out.println(day+" "+month+" "+year);
+
         }while(dateOfBirth==null);
         System.out.println("Er det et aktivt meslemskab:");
         boolean active = returnBoolean();
         System.out.println("Er personen konkurrence svømmer?: ");
         boolean isCompetitionSwimmer = returnBoolean();
-        //System.out.println("Har personen betalt medlemsskab?");
-        //boolean hasPayed = returnBoolean();
         System.out.println("Er det en bruger med adminitrativ adgang?");
         Users userType;
         if(returnBoolean()) {
@@ -335,7 +337,6 @@ public class UI {
             userType = Users.MEMBER;
         }
 
-        //controller.addMember(new Member(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType));
         controller.addMember(firstName,lastName,dateOfBirth,active,isCompetitionSwimmer,userType);
     }
 
@@ -438,15 +439,30 @@ public class UI {
         }
         return memberChoice;
     }
-
-   /* public boolean catchFileException(FileHandler fileHandler){
-        {
-            try{
-                fileHandler
-            }catch (FileNotFoundException e){
-                System.out.println("file not found error");
+    private void lookAtMember(Member memberToLookAt) {
+        boolean run = true;
+        int choice;
+        System.out.println("Looking at: "+memberToLookAt.getFirstName()+" "+memberToLookAt.getLastName());
+        while (run) {
+            System.out.println("\n1. info\n2. se kontoudtog\n0. Tilbage til hovedmenu ");
+            choice = returnInt();
+            switch (choice) {
+                case 1 -> System.out.println(memberToLookAt);
+                case 2 -> System.out.println(accoutStatement(memberToLookAt));
+                case 0 -> run = false;
+                default -> invalidInput();
             }
         }
-    }*/
+    }
+    private String accoutStatement(Member memberToLookAt) {
+        String accoutStatement ="Dato    Kontingent     Betaling\n";
+        double sum = 0;
+        for(AccountTransaction transaction: memberToLookAt.getPaymentList()){
+            accoutStatement += transaction.getDate()+" "+transaction.getSubscription()+" "+transaction.getPayment()+"\n";
+            sum += - transaction.getSubscription() + transaction.getPayment();
+        }
+        accoutStatement += "Saldo er: "+sum;
+        return accoutStatement;
+    }
 
 }
