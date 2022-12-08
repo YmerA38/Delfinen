@@ -50,4 +50,8 @@ public class Results {
     public void setDistance(int distance) {
         this.distance = distance;
     }
+    @Override
+    public String toString(){
+        return distance +"00m "+discipline +" på "+  time +"sekunder. Ved "+ competitionName;
+    }
 }
