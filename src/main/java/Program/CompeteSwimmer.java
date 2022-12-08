@@ -27,8 +27,8 @@ public class CompeteSwimmer extends Member{
     }
 
     public void addResult(Discipline discipline, double time, int distance, String competitionName){
-        resultList.add(new Results(Discipline.CRAWL,12.6,20,"DM"));
-        resultList.add(new Results(Discipline.BUTTERFLY,5,50,"DM"));
         resultList.add(new Results(discipline,time,distance,competitionName));
+        //resultList.add(new Results(Discipline.BUTTERFLY,5,50,"DM"));
+        //resultList.add(new Results(discipline,time,distance,competitionName));
     }
 }

@@ -19,7 +19,6 @@ public abstract class Member {
     private String password;
     private Users userType;
     private LocalDate nextPayment;
-
     private double subscriptionRate;
     private ArrayList<AccountTransaction> paymentList = new ArrayList<>();
 
@@ -35,10 +34,8 @@ public abstract class Member {
         this.password = "1234";
         this.userType = userType;
         this.hasPayed = false;
-
     }
-
-    public Member(Member member) {
+    /*public Member(Member member) {
         this.firstName = member.getFirstName();
         this.lastName = member.getLastName();
         this.dateOfBirth = member.getDateOfBirth();
@@ -52,10 +49,7 @@ public abstract class Member {
         this.password = member.getPassword();
         this.userType = member.getUserType();
         this.nextPayment = member.getNextPayment();
-
-
-    }
-
+    }*/
 
     // denne contrukter er til brug for fileHandler
     public Member(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
@@ -74,7 +68,6 @@ public abstract class Member {
         this.password = password;
         this.userType = userType;
         this.nextPayment = nextPayment;
-
 
     }
 

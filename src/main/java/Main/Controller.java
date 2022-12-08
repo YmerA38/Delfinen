@@ -182,6 +182,10 @@ public class Controller {
     public boolean evalUsername(String newUseName) {
         return database.evalUsername(newUseName);
     }
+
+    public void addResult(Member swimmer,Discipline discipline,double time,int distance,String competitionName) {
+        ((CompeteSwimmer)swimmer).addResult(discipline,time,distance,competitionName);
+    }
 }
 
 

@@ -45,10 +45,7 @@ public class UI {
                 case CASHIER -> cashierMenu(access.getMember());
                 case CHAIRMAN -> chairmanMenu(access.getMember());
             }
-
         }while (true);
-
-
     }
 
     public Access loginUser(){
@@ -146,6 +143,7 @@ public class UI {
                 "\n 2. Se resultater " +
                 "\n 3. Ret resultater " +
                 "\n 4. Registring til konkurrencer " +
+                "\n 5. Tilføj nyt resultat" +
                 "\n 9. Din profil" +
                 "\n10. Log ud"+
                 "\n 0. Afslut");
@@ -161,6 +159,7 @@ public class UI {
                 case 2 -> viewMemberResults();
                 case 3 -> System.out.println("ggg");
                 case 4 -> System.out.println("ooo");
+                case 5 -> addResult(search());
                 case 9 -> dinProfil(himSelf);
                 case 10-> isRunning = false;
                 case 0 -> System.exit(0);
@@ -170,6 +169,39 @@ public class UI {
         }
 
     }
+
+    private void addResult(Member swimmer) {
+        if(swimmer instanceof CompeteSwimmer){
+            System.out.println("Tilføjer resultater for: "+swimmer.getFirstName());
+            System.out.println("Vælg deciplin:");
+            boolean pass = true;
+            Discipline discipline = null;
+            double time;
+            int distance;
+            String competitionName;
+            do {
+                System.out.println("\n1. Crawl\n2. Rygcrawl\n3. Butterfly");
+                int choice = returnInt();
+                switch (choice){
+                    case 1 -> discipline = Discipline.CRAWL;
+                    case 2 -> discipline = Discipline.BACKSTROKE;
+                    case 3 -> discipline = Discipline.BUTTERFLY;
+                    default -> pass = false;
+                }
+            }while (!pass);
+            System.out.println("Indtast distance i antal 100m");
+            distance = returnInt();
+            System.out.println("Indtast tid i sekunder");
+            time = returnDouble();
+            System.out.println("Indtast navn på konkurence");
+            competitionName = scan.nextLine();
+            controller.addResult(swimmer,discipline,time,distance,competitionName);
+            System.out.println(swimmer.getFirstName()+"s resultat er tilføjet");
+        }else{
+            System.out.println(swimmer.getFirstName()+" er ikke en konkurencesvømmer");
+        }
+    }
+
     public void memberMenuText(Member member){
         System.out.println("Velkommen "+member.getFirstName()+" "+member.getLastName()+"\n" +
                 "Som medlem af "+CLUB_NAME+" har du følgende valgmulighede" + "-".repeat(35) +
