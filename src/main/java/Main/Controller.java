@@ -21,6 +21,11 @@ public class Controller {
     //}
     public void addMember(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting, Users userType){
         database.addMember(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
+        try{// ønsker at gemme med det samme
+            save();
+        }catch (FileNotFoundException e){
+            System.out.println("file not found error");
+        }
     }
 
     public void editMember() {
