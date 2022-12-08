@@ -112,8 +112,8 @@ public class Controller {
 
 
     }
-    public ArrayList<Results> getResultList(){
-        return CompeteSwimmer.getResultList;
+    public ArrayList<Results> getResultList(Member member){
+        return ((CompeteSwimmer)member).getResultList;
     }
 
     public ArrayList<Member> getMemberList () {
