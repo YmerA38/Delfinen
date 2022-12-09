@@ -124,7 +124,7 @@ public class Controller {
 
     public void save() throws FileNotFoundException {
         fileHandler.save(database.getMemberList());
-        fileHandler.saveResult(database.getResultList());
+
     }
 
 
@@ -182,6 +182,10 @@ public class Controller {
 
     public void addResult(Member swimmer,Discipline discipline,double time,int distance,String competitionName) {
         ((CompeteSwimmer)swimmer).addResult(discipline,time,distance,competitionName);
+    }
+
+    public void saveResult(Member swimmer) {
+        fileHandler.saveResult(((CompeteSwimmer)swimmer).getResultList());
     }
 }
 

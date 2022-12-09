@@ -100,16 +100,21 @@ public class FileHandler {
         }
     }
 
-    public boolean saveResult(ArrayList<Results> resultsList) throws FileNotFoundException {
-        PrintStream fileSaver = new PrintStream(RESULT_SAVE);
-        fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
-        for (Results results : resultsList) {
-            fileSaver.println(results.getDiscipline() + "," + results.getTime() + "," + results.getDistance() + "," +
-                    results.getCompetitionName());
+    public boolean saveResult(ArrayList<Results> resultsList){
+        File saveFile = new File (RESULT_SAVE);
+        try {
+            PrintStream fileSaver = new PrintStream(saveFile);
+            fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
+            for (Results results : resultsList) {
+                fileSaver.println(results.getDiscipline() + "," + results.getTime() + "," + results.getDistance() + "," +
+                        results.getCompetitionName());
+            }
+            fileSaver.flush();
+            fileSaver.close();
+            return true;
+        }catch (FileNotFoundException e){
+            return false;
         }
-        fileSaver.flush();
-        fileSaver.close();
-        return true;
 
     }
 }

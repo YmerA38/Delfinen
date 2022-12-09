@@ -195,6 +195,7 @@ public class UI {
             competitionName = scan.nextLine();
             controller.addResult(swimmer,discipline,time,distance,competitionName);
             System.out.println(swimmer.getFirstName()+"s resultat er tilføjet");
+            controller.saveResult(swimmer);
         }else{
             System.out.println(swimmer.getFirstName()+" er ikke en konkurencesvømmer");
         }
