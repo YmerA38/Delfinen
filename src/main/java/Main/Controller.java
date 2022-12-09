@@ -1,7 +1,6 @@
 package Main;
 
 import Program.*;
-import UI.UI;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -146,7 +145,7 @@ public class Controller {
         return database.totalIncome();
     }
 
-    public String updatePayments() {
+    public String updatePaymentsAndSave() {
         database.autoSetPayments();
         String message = "";
         for (Member member: database.getMemberList()) {

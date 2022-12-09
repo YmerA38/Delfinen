@@ -103,8 +103,8 @@ public class UI {
                 "\n 1. Se prisliste" +
                 "\n 2. Restance " +
                 "\n 3. Samlede indtægt " +
-                "\n 4. Søg efter medlem " +
-                "\n 5. Opdater betalinger " +
+                "\n 4. Se på et medlem " +
+
                 "\n 6. Din profil" +
                 "\n10. Log ud"+
                 "\n 0. Afslut");
@@ -113,25 +113,23 @@ public class UI {
 
     public void cashierMenu(Member herSelf){
         boolean isRunning = true;
-        Member memberToLookAt;
+        controller.loadAllpaymentFiles();
+        controller.updatePaymentsAndSave();
         while (isRunning) {
             cashierMenuText(herSelf);
             int command = returnInt();
-
             switch (command) {
                 case 1 -> priceList();
                 case 2 -> sort.sortByPayed(controller.getMemberList()); // viser intet
                 case 3 -> System.out.println("Den totale indkomst fra kontingenter er "+controller.getTotalPayment()+"kr");
                 case 4 -> lookAtMember(search());
-                case 5 -> controller.updatePayments();
+
                 case 6 -> dinProfil(herSelf);
                 case 10-> isRunning = false;
                 case 0 -> System.exit(0);
                 default -> invalidInput();
             }
-
         }
-
     }
 
 
@@ -259,6 +257,7 @@ public class UI {
 
                 }
                 case 3 -> {
+                    controller.lodPayment(you);
                     double balance = you.getBallance();
                     if (balance<=0) {
                         System.out.println("Du skylder " + -balance + "kr.");
@@ -270,6 +269,7 @@ public class UI {
                     double amount = returnDouble();
                     if(amount>0) {
                         you.payment(amount);
+                        controller.savePayment(you);
                     }
                 }
                 case 0 -> run = false;
@@ -480,21 +480,22 @@ public class UI {
             choice = returnInt();
             switch (choice) {
                 case 1 -> System.out.println(memberToLookAt);
-                case 2 -> System.out.println(accoutStatement(memberToLookAt));
+                case 2 -> System.out.println(accountStatement(memberToLookAt));
                 case 0 -> run = false;
                 default -> invalidInput();
             }
         }
     }
-    private String accoutStatement(Member memberToLookAt) {
-        String accoutStatement ="Dato    Kontingent     Betaling\n";
+    private String accountStatement(Member memberToLookAt) {
+        System.out.println("Account statement for "+ memberToLookAt.getFirstName()+" "+memberToLookAt.getFirstName());
+        String accountStatement ="Dato    Kontingent     Betaling\n";
         double sum = 0;
         for(AccountTransaction transaction: memberToLookAt.getPaymentList()){
-            accoutStatement += transaction.getDate()+" "+transaction.getSubscription()+" "+transaction.getPayment()+"\n";
+            accountStatement += transaction.getDate()+" "+transaction.getSubscription()+" "+transaction.getPayment()+"\n";
             sum += - transaction.getSubscription() + transaction.getPayment();
         }
-        accoutStatement += "Saldo er: "+sum;
-        return accoutStatement;
+        accountStatement += "Saldo er: "+sum;
+        return accountStatement;
     }
 
 }
