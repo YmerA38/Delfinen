@@ -76,8 +76,6 @@ public class Controller {
     }
 
     public void deleteMember() {
-
-
         System.out.println("Skriv fornavnet eller efternavnet på det medlem du vil slette");
         String searchTerm = scan.next();
         ArrayList<Member> searchResult = database.getMemberList();

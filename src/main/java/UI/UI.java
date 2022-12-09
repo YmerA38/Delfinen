@@ -294,9 +294,13 @@ public class UI {
     private void viewMemberResults() {
         for(Member member: controller.getMemberList()){
             if(member instanceof CompeteSwimmer) {
-                System.out.println("\n" + "-".repeat(30) + "\n" + member.getFirstName() + " " + member.getLastName() + "\n");
-                for (Results results : controller.getResultList(member)) {
-                    System.out.println(results);
+                if(!((CompeteSwimmer)member).getResultList().isEmpty()) {
+                    System.out.println("\n" + "-".repeat(30) + "\n" + member.getFirstName() + " " + member.getLastName() + "\n");
+                    for (Results results : controller.getResultList(member)) {
+                        System.out.println(results);
+                    }
+                }else {
+                    System.out.println("Har ingen resultater");
                 }
             }
         }
