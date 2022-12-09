@@ -83,7 +83,9 @@ public class FileHandler {
             Scanner fileScanner = new Scanner(new File(FILE_PAYMENT + member.getMembershipNumber() + FILE_PAYMENT_EXT));
             String line;
             String[] part;
-            fileScanner.nextLine();
+            if(fileScanner.hasNextLine()) {
+                fileScanner.nextLine();
+            }
             do {
                 line = fileScanner.nextLine();
                 if (!line.isEmpty()) {

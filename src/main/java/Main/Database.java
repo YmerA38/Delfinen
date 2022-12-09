@@ -79,6 +79,7 @@ public class Database {
             member.autoSetUserName("1");
         }
         member.setMembershipNumber(memberList.get(memberList.size()-1).getMembershipNumber()+1);//Nummeret fra den sidste på liste plus 1
+        member.putSubscription();
         member.setNextPayment(member.getDateOfMembership());
     }
 
