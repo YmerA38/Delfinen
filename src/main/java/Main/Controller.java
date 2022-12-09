@@ -110,7 +110,7 @@ public class Controller {
 
     }
     public ArrayList<Results> getResultList(Member member){
-        return ((CompeteSwimmer)member).getResultList;
+        return ((CompeteSwimmer)member).getResultList();
     }
 
     public ArrayList<Member> getMemberList () {

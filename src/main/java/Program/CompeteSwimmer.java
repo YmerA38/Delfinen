@@ -1,12 +1,11 @@
 package Program;
 
 import java.time.LocalDate;
-import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class CompeteSwimmer extends Member{
-    public static ArrayList<Results> getResultList;
-    private AbstractList<Results> resultList;
+    public ArrayList<Results> resultList;
+
     public CompeteSwimmer(String firstName, String lastName, LocalDate dateOfBirth, boolean isActive, boolean isCompeting,
                           Users userType) {
         super(firstName,lastName,dateOfBirth,isActive,isCompeting,userType);
@@ -22,7 +21,7 @@ public class CompeteSwimmer extends Member{
     }
 
 
-    public AbstractList<Results> getResultList() {
+    public ArrayList<Results> getResultList() {
         return resultList;
     }
 
