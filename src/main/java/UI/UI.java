@@ -413,7 +413,9 @@ public class UI {
                 returnDouble = Integer.parseInt(scan.nextLine());
                 pass = true;
             } catch (NumberFormatException e) {
-                System.out.println("fejl! indtast et tal");
+                if(!pass) {
+                    System.out.println("fejl! indtast et tal");
+                }
             }
         }while (!pass);
         return returnDouble;
@@ -487,11 +489,11 @@ public class UI {
         }
     }
     private String accountStatement(Member memberToLookAt) {
-        System.out.println("Account statement for "+ memberToLookAt.getFirstName()+" "+memberToLookAt.getFirstName());
-        String accountStatement ="Dato    Kontingent     Betaling\n";
+        System.out.println("Account statement for "+ memberToLookAt.getFirstName()+" "+memberToLookAt.getLastName());
+        String accountStatement ="Dato          Kontingent     Betaling\n";
         double sum = 0;
         for(AccountTransaction transaction: memberToLookAt.getPaymentList()){
-            accountStatement += transaction.getDate()+" "+transaction.getSubscription()+" "+transaction.getPayment()+"\n";
+            accountStatement += transaction.getDate()+" "+transaction.getSubscription()+" ".repeat(10)+transaction.getPayment()+"\n";
             sum += - transaction.getSubscription() + transaction.getPayment();
         }
         accountStatement += "Saldo er: "+sum;
