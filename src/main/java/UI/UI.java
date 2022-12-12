@@ -150,6 +150,11 @@ public class UI {
         boolean isRunning = true;
         while (isRunning) {
             trainerMenuText(himSelf);
+            try {
+                controller.loadAllResults();
+            }catch (FileNotFoundException e){
+                System.out.println("resulter kunne ikke loades");
+            }
             int command = returnInt();
 
             switch (command) {
@@ -195,7 +200,7 @@ public class UI {
             competitionName = scan.nextLine();
             controller.addResult(swimmer,discipline,time,distance,competitionName);
             System.out.println(swimmer.getFirstName()+"s resultat er tilføjet");
-            controller.saveResult(swimmer);
+            controller.saveResult();
         }else{
             System.out.println(swimmer.getFirstName()+" er ikke en konkurencesvømmer");
         }

@@ -100,14 +100,21 @@ public class FileHandler {
         }
     }
 
-    public boolean saveResult(ArrayList<Results> resultsList){
+    public boolean saveResult(Database database){
         File saveFile = new File (RESULT_SAVE);
+        int no;
         try {
             PrintStream fileSaver = new PrintStream(saveFile);
-            fileSaver.println("Navn,Efternavn,Fødselsdato,aktiv,konkurrence,betalt,oprettet,nr,Hold,Brugernavn,kode,Adgangstype");
-            for (Results results : resultsList) {
-                fileSaver.println(results.getDiscipline() + "," + results.getTime() + "," + results.getDistance() + "," +
-                        results.getCompetitionName());
+            fileSaver.println("MedlemsNr,Diciplin,Tid,Distance[100m],Konkurence");
+            for(Member member : database.getMemberList()) {
+                if(member instanceof CompeteSwimmer) {
+                    no = member.getMembershipNumber();
+                    for (Results results : ((CompeteSwimmer) member).getResultList()) {
+                        fileSaver.println(no + "," + results.getDiscipline() + "," + results.getTime() + "," + results.getDistance() + "," +
+                                results.getCompetitionName());
+                    }
+                    fileSaver.println("-".repeat(50));
+                }
             }
             fileSaver.flush();
             fileSaver.close();
@@ -116,5 +123,37 @@ public class FileHandler {
             return false;
         }
 
+    }
+
+    public void loadResults(Database database) throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File(RESULT_SAVE));
+        fileScanner.nextLine();
+        String line ="";
+        String[] part;
+
+        do{
+            if(fileScanner.hasNextLine()) {
+                line = fileScanner.nextLine();
+                if(line.charAt(0)=='-'){
+                    fileScanner.nextLine();
+                }
+                if(!line.isEmpty()){
+                    part = line.split(",");
+                    for (Member member: database.getMemberList()){
+                        if(member.getMembershipNumber()==Integer.parseInt(part[0])){
+                            ((CompeteSwimmer)member).getResultList().add(new Results(Discipline.valueOf(part[1]),
+                                    Double.parseDouble(part[2]),Integer.parseInt(part[3]),part[4]));
+                        }
+                    }
+
+                }
+            }
+        }while(!line.isEmpty()&&fileScanner.hasNextLine());
+
+        for (Member member: database.getMemberList()){
+
+
+
+        }
     }
 }

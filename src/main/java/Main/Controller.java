@@ -184,8 +184,12 @@ public class Controller {
         ((CompeteSwimmer)swimmer).addResult(discipline,time,distance,competitionName);
     }
 
-    public void saveResult(Member swimmer) {
-        fileHandler.saveResult(((CompeteSwimmer)swimmer).getResultList());
+    public void saveResult() {
+        fileHandler.saveResult(database);
+    }
+
+    public void loadAllResults() throws FileNotFoundException {
+        fileHandler.loadResults(database);
     }
 }
 
